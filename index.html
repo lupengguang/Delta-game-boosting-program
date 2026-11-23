@@ -63,7 +63,7 @@
     will-change:transform;
   }
   .screen::-webkit-scrollbar{display:none}
-  #home{opacity:1;transform:translateX(0)}
+  #home{opacity:1;transform:translateX(0);background:#e6f2ff}
   #detail{
     opacity:0;transform:translateX(102%);
     background:linear-gradient(180deg,#0a0f0d,#060a08 50%,#050807);
@@ -89,6 +89,7 @@
   .hero::before{
     content:"";position:absolute;inset:0;z-index:1;
     background:
+      linear-gradient(180deg,transparent 80%,rgba(230,242,255,.82) 94%,#e6f2ff 100%),
       linear-gradient(180deg,rgba(3,6,5,.62) 0%,rgba(3,6,5,.05) 26%,rgba(5,8,7,.26) 56%,rgba(5,8,7,.86) 84%,#050807 100%),
       radial-gradient(70% 55% at 80% 35%,transparent 40%,rgba(3,6,5,.55) 100%);
   }
@@ -221,6 +222,19 @@
   .more svg{transition:.3s}
   .more:hover{color:var(--green);text-shadow:0 0 12px rgba(47,240,140,.6)}
   .more:hover svg{transform:translateX(3px)}
+
+  /* 首页淡蓝背景下的板块标题 */
+  #home .sec-title{color:#123048}
+  #home .more{color:#5b7285}
+  #home .more:hover{color:#0a8a5f;text-shadow:none}
+  #home .chip{
+    color:#5f5a00;background:rgba(214,243,106,.5);
+    border-color:rgba(160,150,20,.45);text-shadow:none;
+  }
+  #home .chip.rank{
+    color:#066f4d;background:rgba(47,240,140,.22);
+    border-color:rgba(10,150,100,.4);text-shadow:none;
+  }
 
   /* 热门卡片 */
   .hot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
