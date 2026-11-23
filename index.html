@@ -385,12 +385,29 @@
     overflow-y:auto;overflow-x:hidden;scrollbar-width:none;
     padding-bottom:96px;
     background:
-      radial-gradient(90% 42% at 50% 0%,rgba(47,240,140,.14),transparent 62%),
-      radial-gradient(55% 30% at 100% 34%,rgba(0,190,150,.07),transparent 70%),
-      linear-gradient(180deg,#08100c,#050807 58%);
+      radial-gradient(85% 38% at 50% 0%,rgba(255,255,255,.95),transparent 62%),
+      radial-gradient(60% 32% at 100% 32%,rgba(112,186,255,.32),transparent 70%),
+      linear-gradient(180deg,#eef7ff 0%,#ddedff 46%,#cbe4ff 100%);
   }
   .profile-page::-webkit-scrollbar{display:none}
   #app.profile-open .profile-page{opacity:1;transform:none;pointer-events:auto}
+
+  /* 淡蓝背景下的页头适配 */
+  .profile-page .statusbar{color:#16354e;text-shadow:0 1px 0 rgba(255,255,255,.7)}
+  .profile-page .brand .name{color:#123048;text-shadow:0 1px 0 rgba(255,255,255,.5)}
+  .profile-page .brand .name em{color:#0a8a5f}
+  .profile-page .brand .mark{filter:drop-shadow(0 3px 8px rgba(11,143,99,.25))}
+  .profile-page .brand .mark path:nth-child(1){stroke:#0b8f63}
+  .profile-page .brand .mark path:nth-child(2){stroke:#12a874}
+  .profile-page .brand .mark path:nth-child(3){fill:#0b8f63}
+  .profile-page .pf-bell{
+    background:rgba(255,255,255,.72);border-color:rgba(16,52,78,.14);color:#173a52;
+    box-shadow:0 4px 14px rgba(40,90,140,.1);
+  }
+  .profile-page .pf-bell:hover{
+    background:#fff;color:#0b8f63;border-color:rgba(11,143,99,.5);
+    box-shadow:0 0 18px rgba(50,140,255,.25);
+  }
 
   .pf-top{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 0}
   .pf-bell{position:relative}
