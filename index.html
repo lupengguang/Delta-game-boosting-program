@@ -1363,6 +1363,28 @@
     border-color:rgba(255,255,255,.45);
   }
   .d-actions .skill:hover{color:#fff;background:linear-gradient(160deg,#ef6a7d,#cf4a5f);border-color:#fff}
+  .d-actions .skill:hover{color:#fff;background:linear-gradient(160deg,#ef6a7d,#cf4a5f);border-color:#fff}
+
+  /* 首页服务入口四宫格 */
+  .entry.svc{min-height:124px;padding:12px 11px}
+  .entry.svc .entry-bg{opacity:.58}
+  .entry.svc::after{background:linear-gradient(180deg,rgba(5,9,7,.3),rgba(5,9,7,.8) 60%,rgba(4,7,6,.94))}
+  .svc-ic{
+    position:absolute;top:11px;left:11px;z-index:3;width:30px;height:30px;border-radius:50%;
+    display:grid;place-items:center;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54 60%,#a82c42);
+    border:1px solid rgba(255,255,255,.55);
+    box-shadow:0 6px 14px -8px rgba(150,30,50,.65),inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .entry.svc .e-title{font-size:16px}
+  .entry.svc .e-sub{font-size:8.5px;margin-top:3px;line-height:1.45;padding-right:24px}
+  .e-go{
+    position:absolute;right:10px;bottom:11px;z-index:3;width:22px;height:22px;border-radius:50%;
+    display:grid;place-items:center;color:#fff;background:rgba(194,63,84,.9);
+    border:1px solid rgba(255,255,255,.35);box-shadow:0 4px 10px -5px rgba(150,30,50,.6);
+    transition:transform .3s,background .3s;
+  }
+  .entry.svc:hover .e-go{transform:translateX(2px);background:#d94b5f}
 
 </style>
 
@@ -1446,23 +1468,33 @@
       </div>
 
       <div class="entries reveal d1">
-        <div class="entry" data-detail data-tilt>
-          <div class="entry-bg"><img src="assets/card-task.jpg" alt="我要接单" loading="lazy"></div>
-          <span class="corner tl"></span><span class="corner br"></span>
-          <div class="e-title">我要接单</div>
-          <div class="e-sub">海量订单 · 等你来接</div>
-          <div class="e-btn">立即寻找
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
-          </div>
+        <div class="entry svc" data-tilt data-svc="在线客服">
+          <div class="entry-bg"><img src="assets/service-online.jpg" alt="在线客服" loading="lazy" onerror="this.style.display='none'"></div>
+          <span class="svc-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 13v-1.8a7.5 7.5 0 0 1 15 0V13"/><rect x="3" y="12.5" width="4" height="7" rx="1.8"/><rect x="17" y="12.5" width="4" height="7" rx="1.8"/><path d="M19 19.5a3 3 0 0 1-3 3h-2.5"/></svg></span>
+          <div class="e-title">在线客服</div>
+          <div class="e-sub">7×24 小时在线答疑</div>
+          <span class="e-go"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
-        <div class="entry" data-detail data-tilt>
-          <div class="entry-bg"><img src="assets/card-knife.jpg" alt="寻找陪跑" loading="lazy"></div>
-          <span class="corner tl"></span><span class="corner br"></span>
-          <div class="e-title">寻找陪跑</div>
-          <div class="e-sub">找护航适配战斗风格</div>
-          <div class="e-btn">立即寻找
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
-          </div>
+        <div class="entry svc" data-tilt data-svc="考核入住">
+          <div class="entry-bg"><img src="assets/service-exam.jpg" alt="考核入住" loading="lazy" onerror="this.style.display='none'"></div>
+          <span class="svc-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 3.5h6v3H9z"/><path d="m8.5 13.5 2.2 2.2 4.8-5"/></svg></span>
+          <div class="e-title">考核入住</div>
+          <div class="e-sub">通过考核即可接单</div>
+          <span class="e-go"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </div>
+        <div class="entry svc" data-tilt data-svc="老板权益">
+          <div class="entry-bg"><img src="assets/service-benefit.jpg" alt="老板权益" loading="lazy" onerror="this.style.display='none'"></div>
+          <span class="svc-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 4.3 3.2L12 5.2l4.2 6.5 4.3-3.2-1.8 10H5.3l-1.8-10Z"/><path d="M5.5 21h13"/></svg></span>
+          <div class="e-title">老板权益</div>
+          <div class="e-sub">专属折扣 · 优先派单</div>
+          <span class="e-go"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </div>
+        <div class="entry svc" data-tilt data-svc="售后客服">
+          <div class="entry-bg"><img src="assets/service-after.jpg" alt="售后客服" loading="lazy" onerror="this.style.display='none'"></div>
+          <span class="svc-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.2c0 4.4 2.9 7.7 7 9.8 4.1-2.1 7-5.4 7-9.8V6l-7-3Z"/><path d="m9 12 2.2 2.2L15 9.5"/></svg></span>
+          <div class="e-title">售后客服</div>
+          <div class="e-sub">订单问题极速处理</div>
+          <span class="e-go"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
       </div>
     </div>
@@ -1989,6 +2021,11 @@
   /* 我的页入口反馈 */
   document.querySelectorAll('[data-pf]').forEach(el=>{
     el.addEventListener('click', ()=>showToast('「' + el.dataset.pf + '」功能开发中'));
+  });
+
+  /* 首页服务入口反馈 */
+  document.querySelectorAll('[data-svc]').forEach(el=>{
+    el.addEventListener('click', ()=>showToast('「' + el.dataset.svc + '」功能开发中'));
   });
 
   /* 3D 倾斜 */
