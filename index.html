@@ -157,7 +157,7 @@
   .stat .lab{font-size:9.5px;color:#9fb0a8;margin-top:3px;letter-spacing:.02em;white-space:nowrap}
 
   /* 接单 / 陪跑入口 */
-  .entries{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 18px 0}
+  .entries{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 18px 0}
   .entry{
     position:relative;overflow:hidden;border-radius:12px;
     min-height:152px;padding:14px 13px;
@@ -1365,26 +1365,77 @@
   .d-actions .skill:hover{color:#fff;background:linear-gradient(160deg,#ef6a7d,#cf4a5f);border-color:#fff}
   .d-actions .skill:hover{color:#fff;background:linear-gradient(160deg,#ef6a7d,#cf4a5f);border-color:#fff}
 
-  /* 首页服务入口四宫格 */
-  .entry.svc{min-height:124px;padding:12px 11px}
-  .entry.svc .entry-bg{opacity:.58}
-  .entry.svc::after{background:linear-gradient(180deg,rgba(5,9,7,.3),rgba(5,9,7,.8) 60%,rgba(4,7,6,.94))}
+  /* 首页服务入口：一行四列 + 悬停交互 */
+  .entry.svc{min-height:128px;padding:10px 8px 11px}
+  .entry.svc::before{
+    content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,190,200,.3),transparent 62%);
+    opacity:0;transition:opacity .35s;
+  }
+  .entry.svc:hover::before{opacity:1}
+  .entry.svc .entry-bg{opacity:.58;transition:opacity .5s}
+  .entry.svc::after{
+    background:linear-gradient(180deg,rgba(5,9,7,.3),rgba(5,9,7,.8) 60%,rgba(4,7,6,.94));
+    transition:background .45s;
+  }
+  .entry.svc:hover::after{background:linear-gradient(180deg,rgba(5,9,7,.22),rgba(90,25,38,.42) 60%,rgba(70,12,22,.94))}
+  .entry.svc:hover .entry-bg{opacity:.74}
+  .entry.svc .entry-bg img{transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .5s}
+  .entry.svc:hover .entry-bg img{transform:scale(1.12);filter:brightness(1.08) saturate(1.1)}
   .svc-ic{
-    position:absolute;top:11px;left:11px;z-index:3;width:30px;height:30px;border-radius:50%;
+    position:absolute;top:9px;left:8px;z-index:3;width:28px;height:28px;border-radius:50%;
     display:grid;place-items:center;color:#fff;
     background:linear-gradient(160deg,#ef6a7d,#c23f54 60%,#a82c42);
     border:1px solid rgba(255,255,255,.55);
     box-shadow:0 6px 14px -8px rgba(150,30,50,.65),inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;
   }
-  .entry.svc .e-title{font-size:16px}
-  .entry.svc .e-sub{font-size:8.5px;margin-top:3px;line-height:1.45;padding-right:24px}
+  .svc-ic::after{
+    content:"";position:absolute;inset:-4px;border-radius:50%;
+    border:1px solid rgba(255,160,178,.65);opacity:0;transform:scale(.85);transition:.35s;
+  }
+  .entry.svc:hover .svc-ic{
+    transform:scale(1.12) rotate(-6deg);
+    box-shadow:0 0 22px rgba(217,75,95,.55),inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .entry.svc:hover .svc-ic::after{opacity:1;transform:scale(1.12)}
+  .entry.svc .e-title{font-size:14px;letter-spacing:.01em;transition:letter-spacing .35s}
+  .entry.svc .e-sub{font-size:8px;margin-top:3px;line-height:1.45;max-width:100%;transition:color .3s}
+  .entry.svc:hover .e-title{letter-spacing:.04em}
+  .entry.svc:hover .e-sub{color:#ffd7dd}
   .e-go{
-    position:absolute;right:10px;bottom:11px;z-index:3;width:22px;height:22px;border-radius:50%;
+    position:absolute;top:9px;right:8px;z-index:3;width:18px;height:18px;border-radius:50%;
     display:grid;place-items:center;color:#fff;background:rgba(194,63,84,.9);
     border:1px solid rgba(255,255,255,.35);box-shadow:0 4px 10px -5px rgba(150,30,50,.6);
-    transition:transform .3s,background .3s;
+    transition:transform .3s,background .3s,box-shadow .3s;
   }
-  .entry.svc:hover .e-go{transform:translateX(2px);background:#d94b5f}
+  .entry.svc:hover .e-go{
+    transform:translateX(3px) scale(1.06);background:#e2586c;
+    box-shadow:0 0 14px rgba(217,75,95,.65);
+  }
+  .svc-shine{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.22) 46%,transparent 60%);
+    transform:translateX(-135%);transition:transform .85s cubic-bezier(.2,.8,.2,1);
+  }
+  .entry.svc:hover .svc-shine{transform:translateX(135%)}
+  .entry.svc:hover{
+    transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-6px) scale(1.025);
+    border-color:rgba(255,190,200,.85);
+    box-shadow:0 24px 46px -18px rgba(200,70,90,.6),0 0 0 1px rgba(255,160,175,.32),inset 0 0 34px rgba(255,130,150,.12);
+  }
+  .entry.svc:active{transform:perspective(700px) rotateX(0deg) rotateY(0deg) translateY(-2px) scale(.99)}
+  @media (max-width:360px){
+    .entries{gap:6px}
+    .entry.svc{min-height:116px;padding:9px 8px 10px}
+    .entry.svc .e-title{font-size:11.5px;letter-spacing:0}
+    .entry.svc:hover .e-title{letter-spacing:.02em}
+    .entry.svc .e-sub{display:none}
+    .svc-ic{width:24px;height:24px;top:8px;left:8px}
+    .svc-ic svg{width:13px;height:13px}
+    .e-go{width:16px;height:16px;top:8px;right:8px}
+    .e-go svg{width:9px;height:9px}
+  }
 
 </style>
 
@@ -1470,30 +1521,34 @@
       <div class="entries reveal d1">
         <div class="entry svc" data-tilt data-svc="在线客服">
           <div class="entry-bg"><img src="assets/service-online.jpg" alt="在线客服" loading="lazy" onerror="this.style.display='none'"></div>
+          <span class="svc-shine"></span>
           <span class="svc-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 13v-1.8a7.5 7.5 0 0 1 15 0V13"/><rect x="3" y="12.5" width="4" height="7" rx="1.8"/><rect x="17" y="12.5" width="4" height="7" rx="1.8"/><path d="M19 19.5a3 3 0 0 1-3 3h-2.5"/></svg></span>
           <div class="e-title">在线客服</div>
-          <div class="e-sub">7×24 小时在线答疑</div>
+          <div class="e-sub">7×24 小时在线</div>
           <span class="e-go"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
         <div class="entry svc" data-tilt data-svc="考核入住">
           <div class="entry-bg"><img src="assets/service-exam.jpg" alt="考核入住" loading="lazy" onerror="this.style.display='none'"></div>
+          <span class="svc-shine"></span>
           <span class="svc-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 3.5h6v3H9z"/><path d="m8.5 13.5 2.2 2.2 4.8-5"/></svg></span>
           <div class="e-title">考核入住</div>
-          <div class="e-sub">通过考核即可接单</div>
+          <div class="e-sub">通过考核接单</div>
           <span class="e-go"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
         <div class="entry svc" data-tilt data-svc="老板权益">
           <div class="entry-bg"><img src="assets/service-benefit.jpg" alt="老板权益" loading="lazy" onerror="this.style.display='none'"></div>
+          <span class="svc-shine"></span>
           <span class="svc-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 4.3 3.2L12 5.2l4.2 6.5 4.3-3.2-1.8 10H5.3l-1.8-10Z"/><path d="M5.5 21h13"/></svg></span>
           <div class="e-title">老板权益</div>
-          <div class="e-sub">专属折扣 · 优先派单</div>
+          <div class="e-sub">专属折扣</div>
           <span class="e-go"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
         <div class="entry svc" data-tilt data-svc="售后客服">
           <div class="entry-bg"><img src="assets/service-after.jpg" alt="售后客服" loading="lazy" onerror="this.style.display='none'"></div>
+          <span class="svc-shine"></span>
           <span class="svc-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.2c0 4.4 2.9 7.7 7 9.8 4.1-2.1 7-5.4 7-9.8V6l-7-3Z"/><path d="m9 12 2.2 2.2L15 9.5"/></svg></span>
           <div class="e-title">售后客服</div>
-          <div class="e-sub">订单问题极速处理</div>
+          <div class="e-sub">极速处理</div>
           <span class="e-go"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
       </div>
@@ -2037,6 +2092,8 @@
       const y = (e.clientY - r.top) / r.height - .5;
       card.style.setProperty('--ry', (x * 12).toFixed(2) + 'deg');
       card.style.setProperty('--rx', (-y * 12).toFixed(2) + 'deg');
+      card.style.setProperty('--mx', ((x + .5) * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', ((y + .5) * 100).toFixed(1) + '%');
     });
     card.addEventListener('pointerleave', ()=>{
       card.style.setProperty('--ry','0deg');
