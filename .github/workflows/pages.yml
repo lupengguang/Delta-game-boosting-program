@@ -40,6 +40,9 @@ jobs:
         with:
           path: dist
 
+      - name: Wait for artifact ingestion
+        run: sleep 20
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
