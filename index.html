@@ -2354,17 +2354,17 @@
   }
 
   /* ================= 七宗罪活动页 ================= */
-  #sinsPage,#selfPage{
+  #sinsPage,#selfPage,#playPage{
     z-index:30;opacity:0;transform:translateX(102%);padding-bottom:24px;
     background:
       radial-gradient(50% 24% at 8% 6%,rgba(255,196,176,.24),transparent 70%),
       radial-gradient(45% 22% at 96% 40%,rgba(255,176,156,.18),transparent 72%),
       #fff;
   }
-  #app.sins-open #sinsPage,#app.self-open #selfPage{opacity:1;transform:translateX(0)}
-  #app.sins-open #home,#app.self-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
-  #app.sins-open .tabbar,#app.self-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
-  #sinsPage .statusbar,#selfPage .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
+  #app.sins-open #sinsPage,#app.self-open #selfPage,#app.play-open #playPage{opacity:1;transform:translateX(0)}
+  #app.sins-open #home,#app.self-open #home,#app.play-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
+  #app.sins-open .tabbar,#app.self-open .tabbar,#app.play-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
+  #sinsPage .statusbar,#selfPage .statusbar,#playPage .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
 
   .sn-hero{
     position:relative;margin:0 18px;border-radius:16px;overflow:hidden;
@@ -2639,7 +2639,7 @@
           </div>
           <span class="act-go"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
-        <div class="act-card" data-detail>
+        <div class="act-card" data-open-play>
           <img src="assets/card-knife.jpg" alt="大大怪电竞陪玩跑刀" loading="lazy">
           <span class="act-shine"></span>
           <span class="act-tag">大大怪电竞</span>
@@ -3739,6 +3739,79 @@
     </div>
   </section>
 
+  <!-- ================= 陪玩跑刀活动页 ================= -->
+  <section class="screen" id="playPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="od-head">
+      <button type="button" class="od-back" id="playBack" aria-label="返回">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="od-head-txt"><h2>陪玩跑刀</h2><p>ESCORT · 陪玩服务</p></div>
+    </div>
+
+    <div class="sn-hero">
+      <img src="assets/card-knife.jpg" alt="陪玩跑刀">
+      <span class="sn-tag">大大怪电竞</span>
+      <div class="sn-hero-txt">
+        <div class="sn-title">陪玩跑刀</div>
+        <div class="sn-sub">陪玩服务</div>
+      </div>
+    </div>
+
+    <div class="sn-sec">
+      <div class="sn-sec-head">
+        <div class="sn-sec-title">服务价格</div>
+        <div class="sn-sec-note">3 项可选</div>
+      </div>
+      <div class="sf-list">
+        <button type="button" class="sf-card" data-pkg="陪玩跑刀·55跑1000W">
+          <div class="sf-head">
+            <span class="tier-price">55<i>R</i></span>
+            <span class="tier-safe">跑刀目标 <b>1000W</b></span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">55 元跑 1000W，物资全部归老板</div>
+          </div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+        <button type="button" class="sf-card" data-pkg="陪玩跑刀·娱乐陪玩48/1h">
+          <div class="sf-head">
+            <span class="tier-price">48<i>R</i></span>
+            <span class="tier-safe">娱乐陪玩 · 48 / 1h</span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">娱乐陪玩 48 / 1h，轻松上分不压力</div>
+          </div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+        <button type="button" class="sf-card" data-pkg="陪玩跑刀·技术陪玩68/1h">
+          <div class="sf-head">
+            <span class="tier-price">68<i>R</i></span>
+            <span class="tier-safe">技术陪玩 · 68 / 1h</span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">技术陪玩 68 / 1h，实战带飞高胜率</div>
+          </div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- 底部导航 -->
   <nav class="tabbar" aria-label="底部导航">
     <button type="button" class="tab active" data-tab="home" aria-label="首页">
@@ -3803,6 +3876,7 @@
       if(app.classList.contains('order-open')){ app.classList.remove('order-open'); return; }
       if(app.classList.contains('sins-open')){ app.classList.remove('sins-open'); return; }
       if(app.classList.contains('self-open')){ app.classList.remove('self-open'); return; }
+      if(app.classList.contains('play-open')){ app.classList.remove('play-open'); return; }
       if(app.classList.contains('plat-open')){ app.classList.remove('plat-open'); return; }
       closeDetail();
     }
@@ -4131,6 +4205,22 @@
       app.classList.remove('self-open');
     });
     selfPage.querySelectorAll('[data-pkg]').forEach(el=>{
+      el.addEventListener('click', ()=>openOrder(el));
+    });
+  }
+
+  /* 陪玩跑刀活动页 */
+  const playPage = document.getElementById('playPage');
+  const playEntry = document.querySelector('[data-open-play]');
+  if(playEntry && playPage){
+    playEntry.addEventListener('click', ()=>{
+      app.classList.add('play-open');
+      playPage.scrollTop = 0;
+    });
+    document.getElementById('playBack').addEventListener('click', ()=>{
+      app.classList.remove('play-open');
+    });
+    playPage.querySelectorAll('[data-pkg]').forEach(el=>{
       el.addEventListener('click', ()=>openOrder(el));
     });
   }
