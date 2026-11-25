@@ -1982,6 +1982,69 @@
     .clear-title{font-size:15px}
     .clear-price{font-size:18px}
   }
+  @media (max-width:360px){
+    .clear-thumb{width:80px;height:80px;flex-basis:80px}
+    .clear-title{font-size:15px}
+    .clear-price{font-size:18px}
+  }
+
+  /* 手游端趣味玩法系列 */
+  .series-banner{
+    position:relative;overflow:hidden;border-radius:14px;
+    padding:15px 14px;margin-bottom:10px;
+    background:
+      radial-gradient(90% 130% at 92% 12%,rgba(255,150,120,.35),transparent 62%),
+      linear-gradient(120deg,#2a1210,#5a2320 55%,#8a3a2a);
+    border:1px solid rgba(255,170,140,.25);
+    box-shadow:0 16px 30px -20px rgba(120,40,30,.6);
+  }
+  .series-title{font-size:20px;font-weight:900;color:#fff;letter-spacing:.03em;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+  .series-sub{font-size:8.5px;color:#f0cdc4;margin-top:5px;letter-spacing:.04em}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .tier-card{
+    appearance:none;-webkit-appearance:none;position:relative;
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    padding:13px 6px 11px;border-radius:13px;
+    border:1px solid rgba(230,170,90,.45);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,234,216,.92));
+    font-family:inherit;cursor:pointer;
+    box-shadow:0 12px 24px -18px rgba(160,70,50,.4);
+    transition:transform .3s,border-color .3s,box-shadow .3s;
+  }
+  .tier-card:hover{transform:translateY(-4px);border-color:rgba(217,75,95,.55);box-shadow:0 18px 30px -16px rgba(190,60,80,.42)}
+  .tier-name{font-size:12px;font-weight:800;color:#6f4a50}
+  .tier-price{font-size:20px;font-weight:900;color:#c23f54;letter-spacing:-.02em}
+  .tier-safe{font-size:8px;color:#96767b}
+  .tier-safe b{font-size:10px;font-weight:900;color:#2a161a}
+  .tier-buy{
+    display:inline-flex;align-items:center;gap:3px;margin-top:2px;
+    font-size:7.5px;font-weight:700;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);
+    padding:4px 8px;border-radius:11px;
+    box-shadow:0 6px 12px -7px rgba(150,30,50,.6);
+    transition:background .3s,box-shadow .3s;
+  }
+  .tier-card:hover .tier-buy{background:linear-gradient(160deg,#f27c8e,#cf4a5f);box-shadow:0 0 12px rgba(217,75,95,.45)}
+  .tier-card.tier-hot{
+    background:linear-gradient(160deg,#fff3e8,#ffd9bd);
+    border-color:rgba(230,150,70,.75);
+    box-shadow:0 16px 30px -18px rgba(210,120,60,.45);
+  }
+  .tier-rec{
+    position:absolute;top:6px;right:6px;font-size:6.5px;font-weight:700;color:#fff;
+    background:linear-gradient(160deg,#e8a24a,#c87920);
+    padding:2px 5px;border-radius:5px;
+  }
+  @media (max-width:360px){
+    .series-title{font-size:18px}
+    .series-sub{font-size:7.5px}
+    .tier-card{padding:11px 5px 9px}
+    .tier-name{font-size:11px}
+    .tier-price{font-size:17px}
+    .tier-safe{font-size:7px}
+    .tier-safe b{font-size:9px}
+    .tier-buy{font-size:7px;padding:3px 6px}
+  }
 
 </style>
 
@@ -2767,6 +2830,39 @@
             <button type="button" class="fun-buy" data-fun="你俩练练">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 手游端趣味玩法系列 -->
+    <div class="mp-sec">
+      <div class="mp-sec-head">
+        <div class="mp-sec-title">手游端趣味玩法系列 <span class="chip">SERIES</span></div>
+        <div class="mp-note">3 档</div>
+      </div>
+      <div class="series-banner">
+        <div class="series-title">手游千万只是开始</div>
+        <div class="series-sub">体验 · 进阶 · 终极 ｜ 逐级进阶更高保底</div>
+      </div>
+      <div class="tier-grid">
+        <button type="button" class="tier-card" data-pkg="趣味系列·体验版">
+          <span class="tier-name">体验版</span>
+          <span class="tier-price">368R</span>
+          <span class="tier-safe">保底 <b>300W</b></span>
+          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="tier-card" data-pkg="趣味系列·进阶版">
+          <span class="tier-name">进阶版</span>
+          <span class="tier-price">588R</span>
+          <span class="tier-safe">保底 <b>688W</b></span>
+          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="tier-card tier-hot" data-pkg="趣味系列·终极版">
+          <span class="tier-rec">推荐</span>
+          <span class="tier-name">终极版</span>
+          <span class="tier-price">888R</span>
+          <span class="tier-safe">保底 <b>1088W</b></span>
+          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
       </div>
     </div>
 
