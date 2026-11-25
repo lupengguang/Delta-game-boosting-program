@@ -2353,6 +2353,79 @@
     .od-pack-tip{font-size:8.5px}
   }
 
+  /* ================= 七宗罪活动页 ================= */
+  #sinsPage{
+    z-index:30;opacity:0;transform:translateX(102%);padding-bottom:24px;
+    background:
+      radial-gradient(50% 24% at 8% 6%,rgba(255,196,176,.24),transparent 70%),
+      radial-gradient(45% 22% at 96% 40%,rgba(255,176,156,.18),transparent 72%),
+      #fff;
+  }
+  #app.sins-open #sinsPage{opacity:1;transform:translateX(0)}
+  #app.sins-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
+  #app.sins-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
+  #sinsPage .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
+
+  .sn-hero{
+    position:relative;margin:0 18px;border-radius:16px;overflow:hidden;
+    background:#160c0b;box-shadow:0 20px 40px -22px rgba(120,40,30,.55);
+  }
+  .sn-hero img{width:100%;height:186px;object-fit:cover;display:block;filter:saturate(.98) brightness(.82);transition:transform .8s}
+  .sn-hero:hover img{transform:scale(1.04)}
+  .sn-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,6,5,.1) 25%,rgba(12,6,5,.75) 100%)}
+  .sn-tag{
+    position:absolute;top:12px;left:12px;z-index:2;font-size:8px;font-weight:700;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);padding:3px 8px;border-radius:7px;
+    box-shadow:0 6px 14px -8px rgba(150,30,50,.7);
+  }
+  .sn-hero-txt{position:absolute;left:14px;right:14px;bottom:13px;z-index:2}
+  .sn-title{font-size:26px;font-weight:900;color:#fff;letter-spacing:.04em;text-shadow:0 3px 16px rgba(0,0,0,.55)}
+  .sn-sub{display:inline-flex;align-items:center;gap:5px;font-size:9px;color:#f0cdc4;margin-top:5px;letter-spacing:.06em}
+  .sn-sub::before{content:"";width:5px;height:5px;border-radius:50%;background:#ef6a7d;box-shadow:0 0 8px rgba(239,106,125,.9)}
+
+  .sn-sec{margin:12px 18px 0}
+  .sn-sec-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+  .sn-sec-title{font-size:14px;font-weight:900;color:#2a161a;letter-spacing:.02em}
+  .sn-sec-note{font-size:8px;color:#96767b}
+  .sn-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .sn-rule{
+    padding:12px 11px;border-radius:14px;
+    border:1px solid rgba(230,170,90,.45);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,232,212,.92));
+    box-shadow:0 12px 24px -20px rgba(160,70,50,.4);
+    transition:transform .3s,border-color .3s,box-shadow .3s;
+  }
+  .sn-rule:hover{transform:translateY(-3px);border-color:rgba(217,75,95,.55);box-shadow:0 18px 30px -18px rgba(190,60,80,.45)}
+  .sn-rule.wide{grid-column:1/-1}
+  .sn-rule-top{display:flex;align-items:center;gap:6px}
+  .sn-no{font-size:9px;font-weight:900;color:#c23f54;letter-spacing:.08em}
+  .sn-name{font-size:13px;font-weight:900;color:#2a161a;letter-spacing:.03em}
+  .sn-desc{font-size:8.5px;line-height:1.6;color:#6f4a50;margin-top:5px}
+  .sn-desc b{color:#2a161a;font-weight:800}
+  .sn-example{display:block;margin-top:5px;font-size:8px;color:#a98a8e;line-height:1.55}
+
+  #sinsPage .tier-card{padding:14px 6px 12px}
+  #sinsPage .tier-name{font-size:11px}
+  #sinsPage .tier-price{font-size:21px}
+  #sinsPage .tier-price i{font-size:11px;font-style:normal}
+  #sinsPage .tier-safe{font-size:7.5px;line-height:1.35;margin-top:1px}
+  #sinsPage .tier-safe b{font-size:11px}
+
+  @media (max-width:360px){
+    .sn-hero{margin:0 14px}
+    .sn-hero img{height:156px}
+    .sn-title{font-size:22px}
+    .sn-sec{margin:10px 14px 0}
+    .sn-rule{padding:10px 9px}
+    .sn-name{font-size:12px}
+    .sn-desc{font-size:8px}
+    .sn-example{font-size:7.5px}
+    #sinsPage .tier-card{padding:12px 4px 10px}
+    #sinsPage .tier-name{font-size:10px}
+    #sinsPage .tier-price{font-size:18px}
+    #sinsPage .tier-safe b{font-size:10px}
+  }
+
 </style>
 
 </head>
@@ -2531,7 +2604,7 @@
           </div>
           <span class="act-go"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
-        <div class="act-card" data-act="大大怪电竞七宗罪">
+        <div class="act-card" data-open-sins>
           <img src="assets/op-redwolf.jpg" alt="大大怪电竞七宗罪" loading="lazy">
           <span class="act-shine"></span>
           <span class="act-tag">大大怪电竞</span>
@@ -3470,6 +3543,101 @@
     </div>
   </section>
 
+  <!-- ================= 七宗罪活动页 ================= -->
+  <section class="screen" id="sinsPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="od-head">
+      <button type="button" class="od-back" id="sinsBack" aria-label="返回">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="od-head-txt"><h2>七宗罪</h2><p>SEVEN SINS · 系列任务</p></div>
+    </div>
+
+    <div class="sn-hero">
+      <img src="assets/op-redwolf.jpg" alt="七宗罪">
+      <span class="sn-tag">大大怪电竞</span>
+      <div class="sn-hero-txt">
+        <div class="sn-title">七宗罪</div>
+        <div class="sn-sub">系列任务</div>
+      </div>
+    </div>
+
+    <div class="sn-sec">
+      <div class="sn-sec-head">
+        <div class="sn-sec-title">任务规则</div>
+        <div class="sn-sec-note">7 项 · 任选完成</div>
+      </div>
+      <div class="sn-grid">
+        <div class="sn-rule">
+          <div class="sn-rule-top"><span class="sn-no">01</span><span class="sn-name">傲慢</span></div>
+          <div class="sn-desc">打手开局只能穿一级头甲进图，清图并撤离成功。</div>
+        </div>
+        <div class="sn-rule">
+          <div class="sn-rule-top"><span class="sn-no">02</span><span class="sn-name">嫉妒</span></div>
+          <div class="sn-desc">必须击败一队有<b>大套</b>的同行队，撤离成功。</div>
+        </div>
+        <div class="sn-rule">
+          <div class="sn-rule-top"><span class="sn-no">03</span><span class="sn-name">暴怒</span></div>
+          <div class="sn-desc">护子全程不静步，进图就开始宣战，清图撤离成功（静步为任务失败）。</div>
+        </div>
+        <div class="sn-rule">
+          <div class="sn-rule-top"><span class="sn-no">04</span><span class="sn-name">懒惰</span></div>
+          <div class="sn-desc">蹲闸 / 蹲飞升 / 堵桥，一局游戏三选一；进行了就蹲着不动，<b>800W</b> 以上撤离成功。</div>
+        </div>
+        <div class="sn-rule">
+          <div class="sn-rule-top"><span class="sn-no">05</span><span class="sn-name">贪婪</span></div>
+          <div class="sn-desc">单局吃 <b>10 个保险</b>（包括小保险）撤离成功（打手吃也算，大小都算）。</div>
+        </div>
+        <div class="sn-rule">
+          <div class="sn-rule-top"><span class="sn-no">06</span><span class="sn-name">暴食</span></div>
+          <div class="sn-desc">单局带出价值 <b>1000W</b>，撤离成功。</div>
+        </div>
+        <div class="sn-rule wide">
+          <div class="sn-rule-top"><span class="sn-no">07</span><span class="sn-name">色欲</span></div>
+          <div class="sn-desc">累计击杀 <b>8 个女干员 / 男干员</b>（板板二选一）（禁止养猪）撤离成功。
+            <span class="sn-example">例：第一局撤离击杀 4 个女干员，则需再一局撤离击杀 4 个女干员，方可进行其他任务。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sn-sec">
+      <div class="sn-sec-head">
+        <div class="sn-sec-title">套餐价格</div>
+        <div class="sn-sec-note">3 档可选</div>
+      </div>
+      <div class="tier-grid">
+        <button type="button" class="tier-card" data-pkg="七宗罪·任选三宗罪">
+          <span class="tier-name">任选三宗罪</span>
+          <span class="tier-price">456<i>R</i></span>
+          <span class="tier-safe">基础保底 <b>3888W</b></span>
+          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="tier-card" data-pkg="七宗罪·任选五宗罪">
+          <span class="tier-name">任选五宗罪</span>
+          <span class="tier-price">733<i>R</i></span>
+          <span class="tier-safe">基础保底 <b>6888W</b></span>
+          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="tier-card tier-hot" data-pkg="七宗罪·全选七宗罪">
+          <span class="tier-rec">推荐</span>
+          <span class="tier-name">全选七宗罪</span>
+          <span class="tier-price">1020<i>R</i></span>
+          <span class="tier-safe">基础保底 <b>9999W</b></span>
+          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- 底部导航 -->
   <nav class="tabbar" aria-label="底部导航">
     <button type="button" class="tab active" data-tab="home" aria-label="首页">
@@ -3532,6 +3700,7 @@
     if(e.key === 'Escape'){
       if(app.classList.contains('checkout-open')){ app.classList.remove('checkout-open'); return; }
       if(app.classList.contains('order-open')){ app.classList.remove('order-open'); return; }
+      if(app.classList.contains('sins-open')){ app.classList.remove('sins-open'); return; }
       if(app.classList.contains('plat-open')){ app.classList.remove('plat-open'); return; }
       closeDetail();
     }
@@ -3829,6 +3998,22 @@
       if(!co.account.value.trim()){ showToast('请填写游戏ID'); co.account.focus(); return; }
       if(!co.contact.value.trim()){ showToast('请填写联系方式'); co.contact.focus(); return; }
       showToast('订单提交成功，客服将尽快联系你');
+    });
+  }
+
+  /* 七宗罪活动页 */
+  const sinsPage = document.getElementById('sinsPage');
+  const sinsEntry = document.querySelector('[data-open-sins]');
+  if(sinsEntry && sinsPage){
+    sinsEntry.addEventListener('click', ()=>{
+      app.classList.add('sins-open');
+      sinsPage.scrollTop = 0;
+    });
+    document.getElementById('sinsBack').addEventListener('click', ()=>{
+      app.classList.remove('sins-open');
+    });
+    sinsPage.querySelectorAll('[data-pkg]').forEach(el=>{
+      el.addEventListener('click', ()=>openOrder(el));
     });
   }
 
