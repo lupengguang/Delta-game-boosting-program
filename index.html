@@ -975,15 +975,46 @@
   .tp-tip{color:#a28488}
   .tp-tip b{color:#c05366}
 
-  /* 分类页：同步手游端订单分区 */
+  /* 分类页：左侧分区导航 + 右侧内容 */
   .cat-body{
     position:absolute;left:0;right:0;top:120px;bottom:0;
-    overflow-y:auto;overflow-x:hidden;scrollbar-width:none;
-    padding-bottom:96px;display:none;
+    display:none;overflow:hidden;
   }
-  .cat-body::-webkit-scrollbar{display:none}
   #tabPage.cat-on .tp-body{display:none}
-  #tabPage.cat-on .cat-body{display:block}
+  #tabPage.cat-on .cat-body{display:flex}
+  .cat-tabs{
+    flex:0 0 86px;overflow-y:auto;scrollbar-width:none;
+    padding:4px 0 100px 12px;display:flex;flex-direction:column;gap:8px;
+  }
+  .cat-tabs::-webkit-scrollbar{display:none}
+  .cat-tab{
+    appearance:none;-webkit-appearance:none;font-family:inherit;cursor:pointer;
+    text-align:left;padding:10px 8px;border-radius:10px;
+    font-size:10px;font-weight:700;line-height:1.35;color:#7a5b60;
+    background:rgba(255,255,255,.66);border:1px solid rgba(230,170,90,.35);
+    box-shadow:0 6px 14px -12px rgba(160,70,50,.35);
+    transition:background .3s,color .3s,border-color .3s,box-shadow .3s,transform .3s;
+  }
+  .cat-tab:hover{color:#c23f54;border-color:rgba(217,75,95,.5);transform:translateX(1px)}
+  .cat-tab.on{
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);
+    border-color:rgba(255,255,255,.4);color:#fff;
+    box-shadow:0 8px 16px -9px rgba(150,30,50,.6);
+  }
+  .cat-content{
+    flex:1;min-width:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;
+    padding:2px 14px 100px 10px;
+  }
+  .cat-content::-webkit-scrollbar{display:none}
+  .cat-panel{display:none}
+  .cat-panel.on{display:block}
+  .cat-content .mp-sec{padding:0 0 16px}
+  .cat-content .mp-sec:last-child{padding-bottom:0}
+  @media (max-width:360px){
+    .cat-tabs{flex-basis:76px;padding-left:10px;gap:6px}
+    .cat-tab{font-size:9px;padding:9px 6px}
+    .cat-content{padding:2px 10px 100px 8px}
+  }
 
   /* 我的：白色 + 粉红光斑 */
   .profile-page{
@@ -2793,7 +2824,10 @@
       <div class="tp-desc" id="tpDesc">按游戏模式与段位筛选陪玩<br>敬请期待</div>
       <div class="tp-tip">点击底部「<b>首页</b>」返回</div>
     </div>
-    <div class="cat-body" id="categoryList"></div>
+    <div class="cat-body" id="categoryList">
+      <div class="cat-tabs" id="categoryTabs"></div>
+      <div class="cat-content" id="categoryContent"></div>
+    </div>
   </section>
 
   <!-- ================= 我的 ================= -->
@@ -3920,27 +3954,55 @@
     booster:{name:'打手',en:'BOOSTER',desc:'查看认证打手与接单战绩<br>敬请期待'},
     orders:{name:'订单',en:'ORDERS',desc:'查看进行中与历史订单<br>敬请期待'}
   };
+  const CAT_SHORT = {
+    '保底套餐':'保底套餐',
+    '普通订单':'普通订单',
+    '机密清图':'机密清图',
+    '堵桥单':'堵桥单',
+    '三角洲环太平洋单':'环太平洋',
+    '手游趣味单':'趣味单',
+    '手游端趣味玩法系列':'趣味系列'
+  };
   function buildCategory(){
-    const list = document.getElementById('categoryList');
-    if(!list || list.dataset.built === '1' || !mobilePage) return;
-    const frag = document.createDocumentFragment();
-    mobilePage.querySelectorAll('.mp-sec').forEach(sec=>{
-      if(sec.querySelector('.mp-reserve')) return;
+    const tabsBox = document.getElementById('categoryTabs');
+    const content = document.getElementById('categoryContent');
+    if(!tabsBox || !content || tabsBox.dataset.built === '1' || !mobilePage) return;
+    const secs = Array.from(mobilePage.querySelectorAll('.mp-sec')).filter(sec=>!sec.querySelector('.mp-reserve'));
+    secs.forEach((sec, idx)=>{
+      const titleEl = sec.querySelector('.mp-sec-title');
+      let full = '';
+      if(titleEl){
+        const t = titleEl.cloneNode(true);
+        t.querySelectorAll('.chip').forEach(n=>n.remove());
+        full = t.textContent.trim();
+      }
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cat-tab' + (idx === 0 ? ' on' : '');
+      btn.textContent = CAT_SHORT[full] || full || ('分区' + (idx + 1));
+      const panel = document.createElement('div');
+      panel.className = 'cat-panel' + (idx === 0 ? ' on' : '');
       const clone = sec.cloneNode(true);
       clone.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));
-      frag.appendChild(clone);
+      panel.appendChild(clone);
+      btn.addEventListener('click', ()=>{
+        tabsBox.querySelectorAll('.cat-tab').forEach(b=>b.classList.toggle('on', b === btn));
+        content.querySelectorAll('.cat-panel').forEach(p=>p.classList.toggle('on', p === panel));
+        content.scrollTop = 0;
+      });
+      tabsBox.appendChild(btn);
+      content.appendChild(panel);
     });
-    list.appendChild(frag);
-    list.querySelectorAll('[data-pkg]').forEach(el=>{
+    content.querySelectorAll('[data-pkg]').forEach(el=>{
       el.addEventListener('click', ()=>openOrder(el));
     });
-    list.querySelectorAll('[data-fun]').forEach(el=>{
+    content.querySelectorAll('[data-fun]').forEach(el=>{
       el.addEventListener('click', e=>{
         e.stopPropagation();
         openOrder(el.closest('.fun-card') || el);
       });
     });
-    list.dataset.built = '1';
+    tabsBox.dataset.built = '1';
   }
   function setTab(name){
     tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab === name));
