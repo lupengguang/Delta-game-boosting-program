@@ -2198,6 +2198,26 @@
   .od-step b{display:block;font-size:15px;font-weight:900;color:#c23f54;line-height:1}
   .od-step span{display:block;font-size:7.5px;color:#6f4a50;margin-top:5px;line-height:1.3}
 
+  /* 下单须知 */
+  .od-pack-tip{
+    margin-top:10px;padding:9px 11px;border-radius:10px;
+    font-size:9px;color:#8a4512;line-height:1.5;
+    background:linear-gradient(160deg,#fff4e4,#ffe3c2);
+    border:1px solid rgba(226,150,70,.5);
+  }
+  .od-pack-tip b{color:#c23f54;font-weight:900}
+  .od-notice-list{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .od-notice-list > li{display:flex;gap:7px;font-size:9px;line-height:1.65;color:#6f4a50}
+  .od-notice-list > li > span:last-child{flex:1;min-width:0}
+  .od-notice-list b{color:#2a161a;font-weight:800}
+  .od-notice-list .n{
+    flex:0 0 auto;width:15px;height:15px;border-radius:50%;margin-top:1px;
+    display:grid;place-items:center;font-size:7.5px;font-weight:900;color:#b23a52;
+    background:rgba(217,75,95,.1);border:1px solid rgba(217,75,95,.24);
+  }
+  .od-notice-list .sub{display:block;margin-top:5px;font-size:8.5px;line-height:1.6;color:#8a6b70}
+  .od-notice-list .sub + .sub{margin-top:4px}
+
   .od-bar,.co-bar{
     position:sticky;bottom:0;z-index:14;
     display:flex;align-items:center;justify-content:space-between;gap:10px;
@@ -2286,6 +2306,9 @@
     .co-price{font-size:16px}
     .od-steps{gap:4px}
     .od-step{padding:8px 3px}
+    .od-notice-list > li{font-size:8.5px}
+    .od-notice-list .sub{font-size:8px}
+    .od-pack-tip{font-size:8.5px}
   }
 
 </style>
@@ -3275,6 +3298,25 @@
           <li><span class="od-dot">✓</span><span><b>身份认证</b>：打手实名认证，拒绝黑单</span></li>
           <li><span class="od-dot">✓</span><span><b>售后客服</b>：7×24 小时在线处理售后</span></li>
         </ul>
+      </div>
+
+      <div class="od-sec">
+        <div class="od-sec-title">下单须知</div>
+        <div class="od-pack-tip">绝密 / 机密单如需包卡服务 <b>+20R</b></div>
+        <ol class="od-notice-list">
+          <li><span class="n">1</span><span>拒绝卡保底行为，所有护航单的保底金额必须大于规定保底金额最低 <b>30W</b>；如果没有达到保底金额，<b>免费补单</b>。</span></li>
+          <li><span class="n">2</span><span>允许随意携带红弹，若老板保险装不下，可找打手帮塞。</span></li>
+          <li><span class="n">3</span><span>机密撤离失败地图 <b>+20W</b> 保底，绝密撤离失败 <b>+60W</b> 保底，监狱撤离失败 <b>+80W</b> 保底；撤离失败时，保险总带出价值 ＞ 地图战备值，则计入保底。</span></li>
+          <li><span class="n">4</span><span>如老板破产、凑不齐战备值时，可向打手提出带老板跑刀或进入机密地图，保底金额 = 跑刀（机密）前初始保底 − 跑刀（机密）带出金额。</span></li>
+          <li><span class="n">5</span><span>打手服务态度不好可向客服举报（客服团队会帮助老板惩罚涉事打手）。</span></li>
+          <li><span class="n">6</span><span>打手私藏装备问题
+            <span class="sub">(1) 结单后老板背包很空，可向客服索要打手带出背包物资截图；如核实成功本单打手私藏物资，本单给老板重新打。</span>
+            <span class="sub">(2) 老板背包塞满前，打手优先放入更高价值物品；其余低价值物品无法由老板带出时，可由打手带出。</span>
+          </span></li>
+          <li><span class="n">7</span><span>老板不得私加打手，打手不得私加老板。</span></li>
+          <li><span class="n">8</span><span>老板原则上需要听打手指挥，若因不听指挥导致自身死亡或给打手造成不必要的麻烦（包括挂机），俱乐部会根据情况扣除半数保底或直接结单（特殊单除外）。</span></li>
+          <li><span class="n">9</span><span>打手双倒算炸单；打手双倒后，将打手救起前杀一个人 <b>+50W</b> 保底，将打手救起前撤离失败则不计入保底。</span></li>
+        </ol>
       </div>
     </div>
 
