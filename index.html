@@ -1835,6 +1835,42 @@
     .pr-tier b{font-size:13px}
     .pr-reserve{padding:10px}
   }
+  @media (max-width:360px){
+    .pr-card{padding:9px 10px}
+    .pr-desc{font-size:9px}
+    .pr-price{font-size:15px}
+    .pr-tier{width:30px;height:30px;border-radius:9px}
+    .pr-tier b{font-size:13px}
+    .pr-reserve{padding:10px}
+  }
+
+  /* 七处图片预留卡 */
+  .pr-card.pr-featured{
+    padding:0;border-color:rgba(230,170,90,.55);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,231,210,.93));
+    box-shadow:0 16px 30px -18px rgba(190,120,60,.45);
+  }
+  .pr-thumb{
+    position:relative;height:104px;overflow:hidden;
+    border-bottom:1px dashed rgba(205,140,60,.35);
+    background:linear-gradient(160deg,rgba(255,246,236,.9),rgba(255,226,204,.8));
+  }
+  .pr-thumb img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;
+    transition:transform .7s;
+  }
+  .pr-thumb-ph{
+    position:absolute;inset:0;z-index:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    color:#b08b6a;font-size:8.5px;letter-spacing:.06em;
+  }
+  .pr-thumb-ph svg{opacity:.65}
+  .pr-card.pr-featured:hover .pr-thumb img{transform:scale(1.05)}
+  .pr-main{padding:10px 12px}
+  @media (max-width:360px){
+    .pr-thumb{height:92px}
+    .pr-main{padding:9px 10px}
+  }
 
 </style>
 
@@ -2464,7 +2500,7 @@
     <div class="mp-sec">
       <div class="mp-sec-head">
         <div class="mp-sec-title">三角洲环太平洋单 <span class="chip">监狱版</span></div>
-        <div class="mp-note">大大怪电竞 · 3 档</div>
+        <div class="mp-note">大大怪电竞 · 4 档</div>
       </div>
       <div class="pr-list">
         <button type="button" class="pr-card" data-pkg="环太平洋单·四处">
@@ -2500,10 +2536,27 @@
             <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
+        <button type="button" class="pr-card pr-featured" data-pkg="环太平洋单·七处">
+          <div class="pr-thumb">
+            <span class="pr-thumb-ph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.7"/><path d="m4 18 5-4.6 4 3.4 3-2.6 4 3.8"/></svg>图片预留</span>
+            <img src="assets/pacific-7.jpg" alt="环太平洋单·七处" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="pr-main">
+            <div class="pr-top">
+              <span class="pr-tier"><b>7</b><i>处</i></span>
+              <span class="pr-desc">监狱七处不同复活点成功撤离</span>
+              <span class="pr-price">1988R</span>
+            </div>
+            <div class="pr-foot">
+              <span class="pr-safe">保底 <b>9666W</b></span>
+              <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </button>
       </div>
       <div class="pr-reserve">
         <b>+</b>
-        <div><strong>七处 / 疾风档位</strong><span>价格与保底内容待补充</span></div>
+        <div><strong>疾风档位</strong><span>价格与保底内容待补充</span></div>
       </div>
     </div>
 
