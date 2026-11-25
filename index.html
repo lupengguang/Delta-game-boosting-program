@@ -2103,6 +2103,191 @@
     .ord-buy{font-size:7px;padding:3px 7px}
   }
 
+  /* ================= 订单详情页 / 下单页 ================= */
+  #orderDetail,#checkout{
+    z-index:34;opacity:0;transform:translateX(102%);
+    display:flex;flex-direction:column;
+    background:
+      radial-gradient(50% 24% at 8% 6%,rgba(255,196,176,.24),transparent 70%),
+      radial-gradient(45% 22% at 96% 40%,rgba(255,176,156,.18),transparent 72%),
+      #fff;
+  }
+  #checkout{z-index:36}
+  #app.order-open #orderDetail{opacity:1;transform:translateX(0)}
+  #app.order-open #mobilePage{opacity:.4;transform:translateX(-14%) scale(.96)}
+  #app.checkout-open #checkout{opacity:1;transform:translateX(0)}
+  #app.checkout-open #orderDetail{opacity:.4;transform:translateX(-14%) scale(.96)}
+  #orderDetail .statusbar,#checkout .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
+
+  .od-head{
+    position:sticky;top:0;z-index:12;display:flex;align-items:center;gap:11px;
+    padding:8px 18px 9px;
+    background:linear-gradient(180deg,rgba(255,252,250,.98),rgba(255,250,247,.94));
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(205,140,60,.12);
+  }
+  .od-back{
+    appearance:none;-webkit-appearance:none;
+    width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.7);
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);color:#fff;
+    display:grid;place-items:center;cursor:pointer;flex:0 0 auto;
+    box-shadow:0 8px 18px -10px rgba(150,30,50,.6);
+    transition:transform .3s,box-shadow .3s;
+  }
+  .od-back:hover{transform:translateX(-2px);box-shadow:0 0 16px rgba(217,75,95,.55)}
+  .od-head-txt{min-width:0}
+  .od-head-txt h2{font-size:16px;font-weight:900;color:#2a161a;letter-spacing:.02em}
+  .od-head-txt p{font-size:8px;color:#96767b;margin-top:2px;letter-spacing:.08em}
+
+  .od-wrap,.co-wrap{flex:1;padding:12px 18px 18px}
+  .od-hero{position:relative;border-radius:16px;overflow:hidden;background:#160c0b;box-shadow:0 20px 40px -22px rgba(120,40,30,.55)}
+  .od-hero img{width:100%;height:230px;object-fit:cover;display:block;filter:saturate(.98) brightness(.9);transition:transform .8s}
+  .od-hero:hover img{transform:scale(1.03)}
+  .od-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,6,5,.12) 30%,rgba(12,6,5,.72) 100%)}
+  .od-flag{
+    position:absolute;top:12px;left:12px;z-index:2;font-size:8px;font-weight:700;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);padding:3px 8px;border-radius:7px;
+    box-shadow:0 6px 14px -8px rgba(150,30,50,.7);
+  }
+  .od-hero-info{position:absolute;left:14px;right:14px;bottom:14px;z-index:2}
+  .od-world{font-size:13px;font-weight:700;color:#f6dfe2;letter-spacing:.05em}
+  .od-guarantee{display:flex;align-items:baseline;gap:6px;margin-top:2px}
+  .od-guarantee small{font-size:9px;color:#e8b9bf}
+  .od-guarantee b{font-size:34px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.02em;text-shadow:0 3px 18px rgba(0,0,0,.5)}
+  .od-guarantee b i{font-size:14px;font-style:normal;margin-left:2px}
+
+  .od-main{
+    margin-top:12px;padding:15px 14px;border-radius:16px;
+    border:1px solid rgba(230,170,90,.45);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,232,212,.92));
+    box-shadow:0 16px 32px -22px rgba(160,70,50,.45);
+  }
+  .od-name{font-size:19px;font-weight:900;color:#2a161a;letter-spacing:.02em}
+  .od-sub{font-size:9.5px;color:#96767b;margin-top:5px}
+  .od-price-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed rgba(205,140,60,.32)}
+  .od-price{font-size:26px;font-weight:900;color:#c23f54;letter-spacing:-.02em}
+  .od-price small{font-size:12px;font-weight:800;margin-right:1px}
+  .od-trust{
+    font-size:8px;font-weight:700;color:#b23a52;
+    background:rgba(217,75,95,.08);border:1px solid rgba(217,75,95,.22);
+    padding:3px 8px;border-radius:9px;white-space:nowrap;
+  }
+
+  .od-sec{
+    margin-top:12px;padding:14px;border-radius:16px;
+    border:1px solid rgba(230,170,90,.38);
+    background:linear-gradient(160deg,rgba(255,251,246,.95),rgba(255,236,219,.9));
+    box-shadow:0 14px 28px -22px rgba(160,70,50,.4);
+    transition:border-color .3s,box-shadow .3s;
+  }
+  .od-sec:hover{border-color:rgba(217,75,95,.4);box-shadow:0 18px 32px -20px rgba(190,60,80,.36)}
+  .od-sec-title{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:900;color:#2a161a}
+  .od-sec-title::before{content:"";width:3px;height:12px;border-radius:2px;background:linear-gradient(180deg,#ef6a7d,#c23f54)}
+  .od-rules{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:7px}
+  .od-rules li{display:flex;gap:7px;font-size:9px;line-height:1.55;color:#6f4a50}
+  .od-rules li > span:last-child{flex:1;min-width:0}
+  .od-rules li b{color:#2a161a;font-weight:800}
+  .od-dot{
+    flex:0 0 auto;width:14px;height:14px;border-radius:50%;margin-top:1px;
+    display:grid;place-items:center;font-size:7px;font-weight:900;color:#b23a52;
+    background:rgba(217,75,95,.1);border:1px solid rgba(217,75,95,.24);
+  }
+  .od-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:11px}
+  .od-step{padding:9px 4px;border-radius:11px;text-align:center;background:rgba(255,255,255,.72);border:1px solid rgba(230,170,90,.32);transition:transform .3s,box-shadow .3s}
+  .od-step:hover{transform:translateY(-2px);box-shadow:0 10px 18px -14px rgba(190,60,80,.4)}
+  .od-step b{display:block;font-size:15px;font-weight:900;color:#c23f54;line-height:1}
+  .od-step span{display:block;font-size:7.5px;color:#6f4a50;margin-top:5px;line-height:1.3}
+
+  .od-bar,.co-bar{
+    position:sticky;bottom:0;z-index:14;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:10px 18px 14px;
+    background:linear-gradient(180deg,rgba(255,252,250,.6),rgba(255,248,244,.96));
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border-top:1px solid rgba(205,140,60,.16);
+  }
+  .od-bar-price,.co-total{font-size:9px;color:#96767b;line-height:1.2}
+  .od-bar-price b,.co-total b{display:block;font-size:21px;font-weight:900;color:#c23f54;letter-spacing:-.02em;margin-top:1px}
+  .od-buy-btn,.co-submit{
+    appearance:none;-webkit-appearance:none;font-family:inherit;
+    display:inline-flex;align-items:center;justify-content:center;gap:5px;
+    font-size:12px;font-weight:800;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);
+    border:1px solid rgba(255,255,255,.35);padding:11px 26px;border-radius:24px;cursor:pointer;
+    box-shadow:0 12px 22px -12px rgba(150,30,50,.7);
+    transition:transform .3s,box-shadow .3s;
+  }
+  .od-buy-btn:hover,.co-submit:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(217,75,95,.5)}
+
+  /* 下单页 */
+  .co-card{
+    display:flex;align-items:center;gap:11px;padding:11px;border-radius:16px;
+    border:1px solid rgba(230,170,90,.45);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,232,212,.92));
+    box-shadow:0 14px 28px -22px rgba(160,70,50,.4);
+    transition:border-color .3s,box-shadow .3s;
+  }
+  .co-card:hover{border-color:rgba(217,75,95,.45);box-shadow:0 18px 32px -20px rgba(190,60,80,.4)}
+  .co-thumb{width:76px;height:76px;flex:0 0 76px;border-radius:11px;overflow:hidden;background:#160c0b}
+  .co-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.9)}
+  .co-info{flex:1;min-width:0}
+  .co-name{font-size:14px;font-weight:900;color:#2a161a;letter-spacing:.01em}
+  .co-desc{font-size:8.5px;color:#96767b;margin-top:3px;line-height:1.4}
+  .co-safe{font-size:8px;color:#6f4a50;margin-top:3px}
+  .co-safe b{color:#c23f54;font-weight:900}
+  .co-price{flex:0 0 auto;font-size:18px;font-weight:900;color:#c23f54;letter-spacing:-.02em}
+
+  .co-sec{
+    margin-top:11px;padding:13px 14px;border-radius:16px;
+    border:1px solid rgba(230,170,90,.38);
+    background:linear-gradient(160deg,rgba(255,251,246,.95),rgba(255,236,219,.9));
+  }
+  .co-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .co-label{font-size:11px;font-weight:800;color:#2a161a}
+  .stepper{display:flex;align-items:center;border:1px solid rgba(217,75,95,.3);border-radius:10px;overflow:hidden;background:rgba(255,255,255,.8)}
+  .stepper button{
+    appearance:none;-webkit-appearance:none;width:30px;height:28px;border:0;background:transparent;
+    color:#c23f54;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;
+    transition:background .25s;
+  }
+  .stepper button:hover{background:rgba(217,75,95,.12)}
+  .stepper span{min-width:34px;text-align:center;font-size:12px;font-weight:800;color:#2a161a;line-height:28px;border-left:1px solid rgba(217,75,95,.16);border-right:1px solid rgba(217,75,95,.16)}
+
+  .co-form{
+    margin-top:11px;padding:2px 14px;border-radius:16px;
+    border:1px solid rgba(230,170,90,.38);
+    background:linear-gradient(160deg,rgba(255,251,246,.95),rgba(255,236,219,.9));
+  }
+  .co-field{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px dashed rgba(205,140,60,.26)}
+  .co-field:last-child{border-bottom:0}
+  .co-field label{width:72px;flex:0 0 72px;font-size:9.5px;font-weight:700;color:#6f4a50;line-height:16px}
+  .co-field input,.co-field textarea{
+    flex:1;min-width:0;border:0;background:transparent;outline:none;resize:none;
+    font-family:inherit;font-size:10.5px;color:#2a161a;line-height:16px;
+  }
+  .co-field input::placeholder,.co-field textarea::placeholder{color:#c2a6aa}
+  .co-tip{
+    margin-top:11px;padding:10px 12px;border-radius:12px;
+    font-size:8px;line-height:1.6;color:#8a5a60;
+    background:rgba(255,255,255,.7);border:1px dashed rgba(205,140,60,.35);
+  }
+
+  @media (max-width:360px){
+    .od-head{padding:8px 14px 9px}
+    .od-wrap,.co-wrap{padding:10px 14px 16px}
+    .od-hero img{height:196px}
+    .od-guarantee b{font-size:28px}
+    .od-name{font-size:17px}
+    .od-price{font-size:23px}
+    .od-bar,.co-bar{padding:9px 14px 12px}
+    .od-buy-btn,.co-submit{padding:10px 20px;font-size:11px}
+    .co-thumb{width:66px;height:66px;flex-basis:66px}
+    .co-name{font-size:13px}
+    .co-price{font-size:16px}
+    .od-steps{gap:4px}
+    .od-step{padding:8px 3px}
+  }
+
 </style>
 
 </head>
@@ -3026,6 +3211,137 @@
     </div>
   </section>
 
+  <!-- ================= 订单详情页 ================= -->
+  <section class="screen" id="orderDetail">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="od-head">
+      <button type="button" class="od-back" id="odBack" aria-label="返回">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="od-head-txt"><h2>订单详情</h2><p>ORDER DETAIL</p></div>
+    </div>
+
+    <div class="od-wrap">
+      <div class="od-hero">
+        <img id="odImg" src="assets/card-task.jpg" alt="订单封面">
+        <span class="od-flag" id="odFlag">基础保底</span>
+        <div class="od-hero-info">
+          <div class="od-world" id="odWorld">航天 / 巴克</div>
+          <div class="od-guarantee" id="odGuarantee"><small>保底</small><b>688<i>W</i></b></div>
+        </div>
+      </div>
+
+      <div class="od-main">
+        <div class="od-name" id="odName">航天/巴克保底单</div>
+        <div class="od-sub" id="odSub">78 元 · 保底 688W</div>
+        <div class="od-price-row">
+          <div class="od-price"><small>¥</small><span id="odPrice">78</span></div>
+          <span class="od-trust">官方担保 · 安全交易</span>
+        </div>
+      </div>
+
+      <div class="od-sec">
+        <div class="od-sec-title">套餐说明</div>
+        <ul class="od-rules">
+          <li><span class="od-dot">1</span><span id="odDesc">78 元 · 保底 688W</span></li>
+          <li><span class="od-dot">2</span><span>真人打手全程护航，<b>不挂机 · 不掉线</b></span></li>
+          <li><span class="od-dot">3</span><span>按套餐保底结算，未达标<b>免费补打</b></span></li>
+          <li><span class="od-dot">4</span><span>账号信息全程加密，<b>隐私保护</b></span></li>
+        </ul>
+      </div>
+
+      <div class="od-sec">
+        <div class="od-sec-title">下单流程</div>
+        <div class="od-steps">
+          <div class="od-step"><b>1</b><span>选择套餐</span></div>
+          <div class="od-step"><b>2</b><span>填写账号</span></div>
+          <div class="od-step"><b>3</b><span>开始护航</span></div>
+          <div class="od-step"><b>4</b><span>保底结算</span></div>
+        </div>
+      </div>
+
+      <div class="od-sec">
+        <div class="od-sec-title">服务保障</div>
+        <ul class="od-rules">
+          <li><span class="od-dot">✓</span><span><b>资金担保</b>：平台托管，确认完成后付款</span></li>
+          <li><span class="od-dot">✓</span><span><b>身份认证</b>：打手实名认证，拒绝黑单</span></li>
+          <li><span class="od-dot">✓</span><span><b>售后客服</b>：7×24 小时在线处理售后</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="od-bar">
+      <div class="od-bar-price">合计<b id="odBarPrice">¥78</b></div>
+      <button type="button" class="od-buy-btn" id="odBuy">立即下单
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= 下单页 ================= -->
+  <section class="screen" id="checkout">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="od-head">
+      <button type="button" class="od-back" id="coBack" aria-label="返回">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="od-head-txt"><h2>确认订单</h2><p>CHECKOUT</p></div>
+    </div>
+
+    <div class="co-wrap">
+      <div class="co-card">
+        <div class="co-thumb"><img id="coImg" src="assets/card-task.jpg" alt="订单封面"></div>
+        <div class="co-info">
+          <div class="co-name" id="coName">航天/巴克保底单</div>
+          <div class="co-desc" id="coDesc">78 元 · 保底 688W</div>
+          <div class="co-safe" id="coSafe">保底 <b>688W</b></div>
+        </div>
+        <div class="co-price" id="coPrice">¥78</div>
+      </div>
+
+      <div class="co-sec">
+        <div class="co-row">
+          <span class="co-label">购买数量</span>
+          <div class="stepper">
+            <button type="button" id="qtyMinus" aria-label="减少数量">−</button>
+            <span id="qtyVal">1</span>
+            <button type="button" id="qtyPlus" aria-label="增加数量">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="co-form">
+        <div class="co-field"><label for="coAccount">游戏账号</label><input id="coAccount" type="text" placeholder="请输入游戏账号 / ID" autocomplete="off"></div>
+        <div class="co-field"><label for="coServer">游戏区服</label><input id="coServer" type="text" placeholder="如：微信区 / QQ区" autocomplete="off"></div>
+        <div class="co-field"><label for="coContact">联系方式</label><input id="coContact" type="text" placeholder="微信号或 QQ 号" autocomplete="off"></div>
+        <div class="co-field"><label for="coNote">订单备注</label><textarea id="coNote" rows="2" placeholder="选填，特殊需求可备注"></textarea></div>
+      </div>
+
+      <div class="co-tip">下单后客服将在 5 分钟内联系你，请保持联系方式畅通；本页面为演示环境，不会产生真实扣款。</div>
+    </div>
+
+    <div class="co-bar">
+      <div class="co-total">合计<b id="coTotal">¥78</b></div>
+      <button type="button" class="co-submit" id="coSubmit">提交订单</button>
+    </div>
+  </section>
+
   <!-- 底部导航 -->
   <nav class="tabbar" aria-label="底部导航">
     <button type="button" class="tab active" data-tab="home" aria-label="首页">
@@ -3086,6 +3402,8 @@
   document.getElementById('backBtn').addEventListener('click', closeDetail);
   document.addEventListener('keydown', e=>{
     if(e.key === 'Escape'){
+      if(app.classList.contains('checkout-open')){ app.classList.remove('checkout-open'); return; }
+      if(app.classList.contains('order-open')){ app.classList.remove('order-open'); return; }
       if(app.classList.contains('plat-open')){ app.classList.remove('plat-open'); return; }
       closeDetail();
     }
@@ -3201,13 +3519,132 @@
       app.classList.remove('plat-open');
     });
     mobilePage.querySelectorAll('[data-pkg]').forEach(el=>{
-      el.addEventListener('click', ()=>showToast('「' + el.dataset.pkg + '」下单功能开发中'));
+      el.addEventListener('click', ()=>openOrder(el));
     });
     mobilePage.querySelectorAll('[data-fun]').forEach(el=>{
       el.addEventListener('click', e=>{
         e.stopPropagation();
-        showToast('「' + el.dataset.fun + '」下单功能开发中');
+        openOrder(el.closest('.fun-card') || el);
       });
+    });
+  }
+
+  /* ================= 订单详情 / 下单页 ================= */
+  const orderPage = document.getElementById('orderDetail');
+  const checkoutPage = document.getElementById('checkout');
+  const od = {
+    img: document.getElementById('odImg'),
+    flag: document.getElementById('odFlag'),
+    world: document.getElementById('odWorld'),
+    guarantee: document.getElementById('odGuarantee'),
+    name: document.getElementById('odName'),
+    sub: document.getElementById('odSub'),
+    price: document.getElementById('odPrice'),
+    desc: document.getElementById('odDesc'),
+    barPrice: document.getElementById('odBarPrice')
+  };
+  const co = {
+    img: document.getElementById('coImg'),
+    name: document.getElementById('coName'),
+    desc: document.getElementById('coDesc'),
+    safe: document.getElementById('coSafe'),
+    price: document.getElementById('coPrice'),
+    total: document.getElementById('coTotal'),
+    qty: document.getElementById('qtyVal'),
+    account: document.getElementById('coAccount'),
+    server: document.getElementById('coServer'),
+    contact: document.getElementById('coContact'),
+    note: document.getElementById('coNote')
+  };
+  const currentOrder = { name:'', price:0, guarantee:'', qty:1 };
+  const fmtMoney = n => Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/0+$/,'').replace(/\.$/,'');
+
+  function pickText(root, sels){
+    for(let i=0;i<sels.length;i++){
+      const n = root.querySelector(sels[i]);
+      if(n && n.textContent.trim()) return n.textContent.trim();
+    }
+    return '';
+  }
+
+  function openOrder(card){
+    if(!card || !orderPage) return;
+    const pkg = (card.dataset.pkg || pickText(card, ['.fun-title','.pkg-name','.clear-title','.tier-name']) || '代练套餐').trim();
+    const priceText = pickText(card, ['.pkg-price','.clear-price','.pr-price','.tier-price','.ord-price','.fun-price']);
+    const price = parseFloat(priceText.replace(/[^\d.]/g,'')) || 0;
+    const guarantee = pickText(card, ['.pkg-guarantee b','.clear-safe b','.pr-safe b','.tier-safe b','.ord-safe b','.fun-safe b']);
+    let desc = pickText(card, ['.pkg-desc','.clear-desc','.pr-desc','.ord-desc','.fun-sub','.tier-name']);
+    if(/趣味系列/.test(pkg)) desc = '手游千万只是开始 · ' + (desc || '趣味玩法');
+    desc = desc || '真人打手全程护航 · 按保底结算';
+    const flag = pickText(card, ['.pkg-flag','.clear-tag','.ord-tag','.pr-tier'])
+      || (/环太平洋/.test(pkg) ? '环太平洋' : /趣味系列/.test(pkg) ? '趣味系列' : /普通订单/.test(pkg) ? '普通订单' : /堵桥/.test(pkg) ? '无人生还' : /机密/.test(pkg) ? '机密' : '精选套餐');
+    let world = pickText(card, ['.pkg-world']);
+    if(!world) world = /监狱/.test(pkg) ? '监狱' : /航天|巴克/.test(pkg) ? '航天 / 巴克' : /机密/.test(pkg) ? '机密地图' : /堵桥/.test(pkg) ? '堵桥点位' : /环太平洋/.test(pkg) ? '监狱 · 环太平洋' : /趣味/.test(pkg) ? '手游端 · 趣味玩法' : '手游端 · 全地图';
+    if(/^\d+(\.\d+)?\s*元/.test(desc)) desc = world + ' · ' + (guarantee ? '保底 ' + guarantee : '高价值物资') + ' 护航对局';
+    const imgEl = card.querySelector('.pkg-poster img, .clear-thumb img, .pr-thumb img, img');
+    const img = imgEl && imgEl.getAttribute('src') ? imgEl.getAttribute('src') : 'assets/detail-bg.jpg';
+
+    currentOrder.name = pkg;
+    currentOrder.price = price;
+    currentOrder.guarantee = guarantee;
+    currentOrder.qty = 1;
+
+    od.img.src = img;
+    od.img.alt = pkg;
+    od.flag.textContent = flag;
+    od.world.textContent = world;
+    if(guarantee){
+      const unit = (guarantee.match(/[A-Za-z]+$/) || ['W'])[0];
+      const num = guarantee.replace(/[^\d.]/g,'');
+      od.guarantee.innerHTML = '<small>保底</small><b>' + num + '<i>' + unit + '</i></b>';
+      od.guarantee.style.display = '';
+    } else {
+      od.guarantee.style.display = 'none';
+    }
+    od.name.textContent = pkg;
+    od.sub.textContent = (price ? fmtMoney(price) + ' 元' : '价格咨询客服') + (guarantee ? ' · 保底 ' + guarantee : '');
+    od.price.textContent = price ? fmtMoney(price) : '—';
+    od.desc.textContent = desc;
+    od.barPrice.textContent = price ? '¥' + fmtMoney(price) : '咨询客服';
+
+    co.img.src = img;
+    co.img.alt = pkg;
+    co.name.textContent = pkg;
+    co.desc.textContent = desc;
+    co.safe.innerHTML = guarantee ? '保底 <b>' + guarantee + '</b>' : '高价值物资 · 详见说明';
+    co.price.textContent = price ? '¥' + fmtMoney(price) : '—';
+    co.qty.textContent = '1';
+    co.total.textContent = price ? '¥' + fmtMoney(price) : '咨询客服';
+
+    app.classList.remove('checkout-open');
+    app.classList.add('order-open');
+    orderPage.scrollTop = 0;
+  }
+
+  function setQty(n){
+    currentOrder.qty = Math.min(9, Math.max(1, n));
+    co.qty.textContent = currentOrder.qty;
+    const total = currentOrder.price * currentOrder.qty;
+    co.total.textContent = currentOrder.price ? '¥' + fmtMoney(total) : '咨询客服';
+  }
+
+  if(orderPage && checkoutPage){
+    document.getElementById('odBack').addEventListener('click', ()=>{
+      app.classList.remove('order-open');
+    });
+    document.getElementById('coBack').addEventListener('click', ()=>{
+      app.classList.remove('checkout-open');
+    });
+    document.getElementById('odBuy').addEventListener('click', ()=>{
+      app.classList.add('checkout-open');
+      checkoutPage.scrollTop = 0;
+    });
+    document.getElementById('qtyMinus').addEventListener('click', ()=>setQty(currentOrder.qty - 1));
+    document.getElementById('qtyPlus').addEventListener('click', ()=>setQty(currentOrder.qty + 1));
+    document.getElementById('coSubmit').addEventListener('click', ()=>{
+      if(!co.account.value.trim()){ showToast('请填写游戏账号 / ID'); co.account.focus(); return; }
+      if(!co.contact.value.trim()){ showToast('请填写联系方式'); co.contact.focus(); return; }
+      showToast('订单提交成功，客服将尽快联系你');
     });
   }
 
