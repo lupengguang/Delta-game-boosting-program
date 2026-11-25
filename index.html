@@ -1928,6 +1928,58 @@
     .fun-rules{gap:5px}
     .fun-rules li{font-size:8.5px}
   }
+  @media (max-width:360px){
+    .fun-card{padding:10px}
+    .fun-title{font-size:15px}
+    .fun-price{font-size:17px}
+    .fun-ic{width:34px;height:34px;border-radius:10px}
+    .fun-rules{gap:5px}
+    .fun-rules li{font-size:8.5px}
+  }
+
+  /* 机密清图单 */
+  .clear-card{
+    appearance:none;-webkit-appearance:none;display:flex;align-items:center;gap:11px;
+    width:100%;text-align:left;padding:10px;border-radius:14px;
+    border:1px solid rgba(230,170,90,.5);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,233,214,.92));
+    font-family:inherit;cursor:pointer;
+    box-shadow:0 14px 28px -20px rgba(160,70,50,.4);
+    transition:transform .35s,border-color .3s,box-shadow .35s;
+  }
+  .clear-card:hover{transform:translateY(-3px);border-color:rgba(217,75,95,.55);box-shadow:0 20px 34px -18px rgba(190,60,80,.45)}
+  .clear-thumb{position:relative;width:92px;height:92px;flex:0 0 92px;border-radius:11px;overflow:hidden;background:#160c0b}
+  .clear-thumb img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    filter:saturate(.95) brightness(.85);transition:transform .7s;
+  }
+  .clear-thumb::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(12,6,5,.05),rgba(10,4,3,.55));
+  }
+  .clear-tag{
+    position:absolute;top:7px;left:7px;z-index:2;
+    font-size:7px;font-weight:700;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);
+    padding:2px 6px;border-radius:6px;
+  }
+  .clear-card:hover .clear-thumb img{transform:scale(1.06)}
+  .clear-main{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+  .clear-title{font-size:16px;font-weight:900;color:#2a161a;letter-spacing:.02em}
+  .clear-desc{font-size:8px;color:#96767b;margin-top:3px}
+  .clear-bottom{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:9px}
+  .clear-price{font-size:20px;font-weight:900;color:#c23f54;letter-spacing:-.01em}
+  .clear-buy{
+    display:inline-flex;align-items:center;gap:3px;font-size:8px;font-weight:700;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);padding:4px 8px;border-radius:12px;
+    box-shadow:0 6px 12px -7px rgba(150,30,50,.6);transition:background .3s,box-shadow .3s;
+  }
+  .clear-card:hover .clear-buy{background:linear-gradient(160deg,#f27c8e,#cf4a5f);box-shadow:0 0 12px rgba(217,75,95,.45)}
+  @media (max-width:360px){
+    .clear-thumb{width:80px;height:80px;flex-basis:80px}
+    .clear-title{font-size:15px}
+    .clear-price{font-size:18px}
+  }
 
 </style>
 
@@ -2551,6 +2603,28 @@
           </div>
         </button>
       </div>
+    </div>
+
+    <!-- 机密清图单 -->
+    <div class="mp-sec">
+      <div class="mp-sec-head">
+        <div class="mp-sec-title">机密清图 <span class="chip">NEW</span></div>
+        <div class="mp-note">大大怪电竞</div>
+      </div>
+      <button type="button" class="clear-card" data-pkg="机密清图单">
+        <div class="clear-thumb">
+          <img src="assets/card-task.jpg" alt="机密清图单" loading="lazy">
+          <span class="clear-tag">机密</span>
+        </div>
+        <div class="clear-main">
+          <div class="clear-title">机密清图单</div>
+          <div class="clear-desc">机密地图清图 · 高价值物资</div>
+          <div class="clear-bottom">
+            <span class="clear-price">¥39.9</span>
+            <span class="clear-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </button>
     </div>
 
     <!-- 环太平洋单（监狱版） -->
