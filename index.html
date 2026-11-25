@@ -2478,6 +2478,17 @@
   .sf-line b{color:#c23f54;font-weight:800}
   .sf-foot{display:flex;justify-content:flex-end;margin-top:8px}
 
+  /* 枪械单 */
+  .gun-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+  .gun-chips span{
+    font-size:7.5px;font-weight:700;color:#a05a20;letter-spacing:.03em;
+    background:rgba(255,255,255,.72);border:1px solid rgba(220,150,70,.5);
+    padding:2px 7px;border-radius:6px;
+    transition:background .3s,color .3s;
+  }
+  .gun-chips span.ph{color:#b98f92;border-style:dashed;background:transparent}
+  .sf-card:hover .gun-chips span{background:#fff;color:#8a4512}
+
   @media (max-width:360px){
     .sn-hero{margin:0 14px}
     .sn-hero img{height:156px}
@@ -3384,6 +3395,55 @@
       </div>
     </div>
 
+    <!-- 枪械单 -->
+    <div class="mp-sec">
+      <div class="mp-sec-head">
+        <div class="mp-sec-title">枪械单 <span class="chip">NEW</span></div>
+        <div class="mp-note">大大怪电竞 · 3 档</div>
+      </div>
+      <div class="sf-list">
+        <button type="button" class="sf-card" data-pkg="枪械单·低阶玩法">
+          <div class="sf-head">
+            <span class="tier-price">118<i>R</i></span>
+            <span class="tier-safe">基础保底 <b>1900W</b></span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">低阶玩法 · 累计带出左侧列全部枪械</div>
+          </div>
+          <div class="gun-chips"><span>M14</span><span>M7</span></div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+        <button type="button" class="sf-card" data-pkg="枪械单·高阶玩法">
+          <div class="sf-head">
+            <span class="tier-price">288<i>R</i></span>
+            <span class="tier-safe">基础保底 <b>3888W</b></span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">高阶玩法 · 累计带出整张图内全部 6 把枪械</div>
+          </div>
+          <div class="gun-chips"><span>M14</span><span>AS-VAL</span><span>AWM</span><span>M7</span><span class="ph">待补充</span><span class="ph">待补充</span></div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+        <button type="button" class="sf-card" data-pkg="枪械单·全收集版">
+          <div class="sf-head">
+            <span class="tier-price">1288<i>R</i></span>
+            <span class="tier-safe">基础保底 <b>6888W</b></span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">全收集版 · 整张图内全部 6 把枪械</div>
+          </div>
+          <div class="gun-chips"><span>M14</span><span>AS-VAL</span><span>AWM</span><span>M7</span><span class="ph">待补充</span><span class="ph">待补充</span></div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
     <!-- 预留板块：陪玩推荐（后期替换为真实陪玩列表） -->
     <div class="mp-sec">
       <div class="mp-sec-head"><div class="mp-sec-title">陪玩推荐</div><span class="mp-reserve">预留板块</span></div>
@@ -3961,7 +4021,8 @@
     '堵桥单':'堵桥单',
     '三角洲环太平洋单':'环太平洋',
     '手游趣味单':'趣味单',
-    '手游端趣味玩法系列':'趣味系列'
+    '手游端趣味玩法系列':'趣味系列',
+    '枪械单':'枪械单'
   };
   function buildCategory(){
     const tabsBox = document.getElementById('categoryTabs');
