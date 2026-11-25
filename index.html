@@ -1651,7 +1651,7 @@
     .guard.inline .g-item small{display:none}
   }
 
-  /* ================= 手游端 / 救姜饼人活动页面 ================= */
+  /* ================= 手游端 / 拯救姜饼人活动页面 ================= */
   #mobilePage,#gingerbreadPage{
     z-index:32;opacity:0;transform:translateX(102%);padding-bottom:24px;
     background:
@@ -1663,10 +1663,6 @@
   #app.plat-open #home,#app.act-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
   #app.plat-open .tabbar,#app.act-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
   #mobilePage .statusbar,#gingerbreadPage .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
-  .gb-hero{height:auto;background:#fff;border-radius:14px;border-color:rgba(230,170,90,.45);box-shadow:0 16px 30px -20px rgba(160,70,50,.45)}
-  .gb-hero img{position:static;width:100%;height:auto;display:block;filter:none}
-  .gb-hero::after{display:none}
-  .gb-hero .mp-hero-body{display:none}
   .gb-rules{margin-top:0}
   .gb-notice{margin-top:10px;padding:9px 10px;border-radius:10px;background:rgba(194,63,84,.08);border:1px solid rgba(194,63,84,.18);color:#a72f46;font-size:8.5px;line-height:1.55;font-weight:700}
 
@@ -2675,12 +2671,12 @@
         </div>
       </div>
       <div class="act-scroll" id="actScroll">
-        <div class="act-card" data-act="大大怪电竞救姜饼人" data-open-gingerbread>
-          <img src="assets/gingerbread-poster.png" alt="大大怪电竞救姜饼人" loading="lazy">
+        <div class="act-card" data-act="大大怪电竞拯救姜饼人" data-open-gingerbread>
+          <img src="assets/card-task.jpg" alt="大大怪电竞拯救姜饼人" loading="lazy">
           <span class="act-shine"></span>
           <span class="act-tag">大大怪电竞</span>
           <div class="act-info">
-            <div class="act-name">救姜饼人</div>
+            <div class="act-name">拯救姜饼人</div>
             <div class="act-meta"><i></i>限时活动</div>
           </div>
           <span class="act-go"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
@@ -3493,7 +3489,7 @@
     </div>
   </section>
 
-  <!-- ================= 救姜饼人活动页 ================= -->
+  <!-- ================= 拯救姜饼人活动页 ================= -->
   <section class="screen" id="gingerbreadPage">
     <div class="statusbar">
       <span>9:41</span>
@@ -3508,11 +3504,16 @@
       <button type="button" class="mp-back" id="gingerbreadBack" aria-label="返回">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
       </button>
-      <div class="mp-head-txt"><h2>救姜饼人</h2><p>GINGERBREAD · 限时活动</p></div>
+      <div class="mp-head-txt"><h2>拯救姜饼人</h2><p>GINGERBREAD · 限时活动</p></div>
     </div>
 
-    <div class="mp-hero gb-hero">
-      <img src="assets/gingerbread-poster.png" alt="大大怪电竞拯救姜饼人" loading="lazy">
+    <div class="sn-hero">
+      <img src="assets/card-task.jpg" alt="大大怪电竞拯救姜饼人">
+      <span class="sn-tag">大大怪电竞</span>
+      <div class="sn-hero-txt">
+        <div class="sn-title">拯救姜饼人</div>
+        <div class="sn-sub">限时活动 · 姜饼人收集</div>
+      </div>
     </div>
 
     <div class="mp-sec">
@@ -3521,7 +3522,7 @@
         <div class="mp-note">3 档可选</div>
       </div>
       <div class="pr-list">
-        <button type="button" class="pr-card" data-pkg="救姜饼人·体验版" data-flag="体验版" data-world="大大怪电竞 · 救姜饼人" data-img="assets/gingerbread-poster.png" data-count="5" data-limit="8" data-extra="百万大红/千万撤离可抵 2 个姜饼人">
+        <button type="button" class="pr-card" data-pkg="拯救姜饼人·体验版" data-flag="体验版" data-world="大大怪电竞 · 拯救姜饼人" data-img="assets/card-task.jpg" data-count="5" data-limit="8" data-extra="百万大红/千万撤离可抵 2 个姜饼人">
           <div class="pr-top">
             <span class="pr-tier"><b>5</b><i>个</i></span>
             <span class="pr-desc">成功撤离带出 <b>5 个姜饼人</b>，上限 <b>8 个</b><br>百万大红/千万撤离可抵 <b>2 个姜饼人</b></span>
@@ -3532,7 +3533,7 @@
             <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="pr-card" data-pkg="救姜饼人·基础版" data-flag="基础版" data-world="大大怪电竞 · 救姜饼人" data-img="assets/gingerbread-poster.png" data-count="15" data-limit="20" data-extra="百万大红/千万撤离可抵 2 个姜饼人">
+        <button type="button" class="pr-card" data-pkg="拯救姜饼人·基础版" data-flag="基础版" data-world="大大怪电竞 · 拯救姜饼人" data-img="assets/card-task.jpg" data-count="15" data-limit="20" data-extra="百万大红/千万撤离可抵 2 个姜饼人">
           <div class="pr-top">
             <span class="pr-tier"><b>15</b><i>个</i></span>
             <span class="pr-desc">成功撤离带出 <b>15 个姜饼人</b>，上限 <b>20 个</b><br>百万大红/千万撤离可抵 <b>2 个姜饼人</b></span>
@@ -3543,7 +3544,7 @@
             <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="pr-card" data-pkg="救姜饼人·巅峰版" data-flag="巅峰版" data-world="大大怪电竞 · 救姜饼人" data-img="assets/gingerbread-poster.png" data-count="25" data-limit="30" data-extra="无赖子不出不结">
+        <button type="button" class="pr-card" data-pkg="拯救姜饼人·巅峰版" data-flag="巅峰版" data-world="大大怪电竞 · 拯救姜饼人" data-img="assets/card-task.jpg" data-count="25" data-limit="30" data-extra="无赖子不出不结">
           <div class="pr-top">
             <span class="pr-tier"><b>25</b><i>个</i></span>
             <span class="pr-desc">成功撤离带出 <b>25 个姜饼人</b>，上限 <b>30 个</b><br><b>无赖子不出不结</b></span>
@@ -4337,7 +4338,7 @@
     el.addEventListener('click', ()=>showToast('「' + el.dataset.plat + '」专区开发中'));
   });
 
-  /* 活动卡片与救姜饼人活动页 */
+  /* 活动卡片与拯救姜饼人活动页 */
   const gingerbreadPage = document.getElementById('gingerbreadPage');
   document.querySelectorAll('[data-act]').forEach(el=>{
     el.addEventListener('click', ()=>{
@@ -4512,7 +4513,7 @@
     od.barPrice.textContent = price ? '¥' + fmtMoney(price) : '咨询客服';
 
     const ruleLines = orderPage.querySelector('.od-sec .od-rules').querySelectorAll('li > span:last-child');
-    if(/^救姜饼人/.test(pkg)){
+    if(/^拯救姜饼人/.test(pkg)){
       ruleLines[1].innerHTML = '成功撤离带出 <b>' + card.dataset.count + ' 个姜饼人</b>，上限 <b>' + card.dataset.limit + ' 个</b>；撤离失败 <b>+1 姜饼人</b>';
       ruleLines[2].textContent = card.dataset.extra;
       ruleLines[3].innerHTML = '私藏或丢弃物资将<b>直接结单</b>；指定地图需加价 <b>15%</b>';
