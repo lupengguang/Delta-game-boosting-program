@@ -975,6 +975,16 @@
   .tp-tip{color:#a28488}
   .tp-tip b{color:#c05366}
 
+  /* 分类页：同步手游端订单分区 */
+  .cat-body{
+    position:absolute;left:0;right:0;top:120px;bottom:0;
+    overflow-y:auto;overflow-x:hidden;scrollbar-width:none;
+    padding-bottom:96px;display:none;
+  }
+  .cat-body::-webkit-scrollbar{display:none}
+  #tabPage.cat-on .tp-body{display:none}
+  #tabPage.cat-on .cat-body{display:block}
+
   /* 我的：白色 + 粉红光斑 */
   .profile-page{
     background:
@@ -2783,6 +2793,7 @@
       <div class="tp-desc" id="tpDesc">按游戏模式与段位筛选陪玩<br>敬请期待</div>
       <div class="tp-tip">点击底部「<b>首页</b>」返回</div>
     </div>
+    <div class="cat-body" id="categoryList"></div>
   </section>
 
   <!-- ================= 我的 ================= -->
@@ -3909,6 +3920,28 @@
     booster:{name:'打手',en:'BOOSTER',desc:'查看认证打手与接单战绩<br>敬请期待'},
     orders:{name:'订单',en:'ORDERS',desc:'查看进行中与历史订单<br>敬请期待'}
   };
+  function buildCategory(){
+    const list = document.getElementById('categoryList');
+    if(!list || list.dataset.built === '1' || !mobilePage) return;
+    const frag = document.createDocumentFragment();
+    mobilePage.querySelectorAll('.mp-sec').forEach(sec=>{
+      if(sec.querySelector('.mp-reserve')) return;
+      const clone = sec.cloneNode(true);
+      clone.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));
+      frag.appendChild(clone);
+    });
+    list.appendChild(frag);
+    list.querySelectorAll('[data-pkg]').forEach(el=>{
+      el.addEventListener('click', ()=>openOrder(el));
+    });
+    list.querySelectorAll('[data-fun]').forEach(el=>{
+      el.addEventListener('click', e=>{
+        e.stopPropagation();
+        openOrder(el.closest('.fun-card') || el);
+      });
+    });
+    list.dataset.built = '1';
+  }
   function setTab(name){
     tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab === name));
     if(name === 'home'){
@@ -3922,6 +3955,9 @@
       return;
     }
     app.classList.remove('profile-open');
+    const isCategory = name === 'category';
+    document.getElementById('tabPage').classList.toggle('cat-on', isCategory);
+    if(isCategory) buildCategory();
     const meta = tabMeta[name];
     tpTitle.textContent = meta.name;
     tpEn.textContent = meta.en;
