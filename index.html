@@ -1436,6 +1436,55 @@
     .e-go{width:16px;height:16px;top:8px;right:8px}
     .e-go svg{width:9px;height:9px}
   }
+  @media (max-width:360px){
+    .entries{gap:6px}
+    .entry.svc{min-height:116px;padding:9px 8px 10px}
+    .entry.svc .e-title{font-size:11.5px;letter-spacing:0}
+    .entry.svc:hover .e-title{letter-spacing:.02em}
+    .entry.svc .e-sub{display:none}
+    .svc-ic{width:24px;height:24px;top:8px;left:8px}
+    .svc-ic svg{width:13px;height:13px}
+    .e-go{width:16px;height:16px;top:8px;right:8px}
+    .e-go svg{width:9px;height:9px}
+  }
+
+  /* 热门选择：手游 / 端游双卡 */
+  .plat-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .plat-grid .hot{aspect-ratio:.82}
+  .plat-grid .hot .h-info{padding:13px 12px}
+  .plat-grid .hot .h-title{font-size:18px;letter-spacing:.04em}
+  .plat-grid .hot .h-desc{font-size:10px;margin-top:5px;line-height:1.5}
+  .h-plat{
+    position:absolute;top:10px;right:10px;z-index:3;
+    font-size:7.5px;font-weight:700;letter-spacing:.14em;color:#ffe9ec;
+    background:rgba(12,8,10,.52);border:1px solid rgba(255,150,165,.35);
+    padding:3px 7px;border-radius:10px;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    transition:border-color .3s,box-shadow .3s;
+  }
+  .hot:hover .h-plat{border-color:rgba(255,190,200,.7);box-shadow:0 0 14px rgba(217,75,95,.35)}
+  .h-enter{
+    margin-top:auto;display:inline-flex;align-items:center;gap:5px;align-self:flex-start;
+    padding:6px 12px;border-radius:18px;font-size:10px;font-weight:700;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);
+    border:1px solid rgba(255,255,255,.38);
+    box-shadow:0 8px 18px -10px rgba(150,30,50,.65);
+    transition:background .3s,box-shadow .3s,transform .3s;
+  }
+  .h-enter svg{display:block;transition:transform .3s}
+  .hot:hover .h-enter{
+    background:linear-gradient(160deg,#f27c8e,#cf4a5f);
+    box-shadow:0 0 18px rgba(217,75,95,.45);transform:translateY(-1px);
+  }
+  .hot:hover .h-enter svg{transform:translateX(3px)}
+  @media (max-width:360px){
+    .plat-grid{gap:8px}
+    .plat-grid .hot{aspect-ratio:.78}
+    .plat-grid .hot .h-title{font-size:16px}
+    .plat-grid .hot .h-desc{font-size:9px}
+    .h-plat{top:8px;right:8px;font-size:6.5px;padding:2px 6px}
+    .h-enter{font-size:9px;padding:5px 10px}
+  }
 
 </style>
 
@@ -1562,35 +1611,31 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
         </div>
       </div>
-      <div class="hot-grid">
-        <div class="hot reveal d1" data-detail data-tilt>
-          <img src="assets/card-task.jpg" alt="任务陪跑" loading="lazy">
+      <div class="hot-grid plat-grid">
+        <div class="hot reveal d1" data-plat="手游端" data-tilt>
+          <img src="assets/card-assault.jpg" alt="手游端" loading="lazy">
           <span class="corner tl"></span><span class="corner br"></span>
           <span class="shine"></span>
+          <span class="h-plat">MOBILE</span>
           <div class="h-info">
-            <div class="h-title">任务陪跑</div>
-            <div class="h-desc">高效完成</div>
-            <div class="h-price"><span class="cny">¥</span><span class="v">20</span><span class="q">起</span></div>
+            <div class="h-title">手游端</div>
+            <div class="h-desc">随时随地 · 开黑护航</div>
+            <span class="h-enter">进入
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </span>
           </div>
         </div>
-        <div class="hot reveal d2" data-detail data-tilt>
-          <img src="assets/card-assault.jpg" alt="猛攻陪跑" loading="lazy">
+        <div class="hot reveal d2" data-plat="端游" data-tilt>
+          <img src="assets/card-task.jpg" alt="端游" loading="lazy">
           <span class="corner tl"></span><span class="corner br"></span>
           <span class="shine"></span>
+          <span class="h-plat">PC</span>
           <div class="h-info">
-            <div class="h-title">猛攻陪跑</div>
-            <div class="h-desc">你找我对枪？告诉你什么叫猛攻！</div>
-            <div class="h-price"><span class="cny">¥</span><span class="v">30</span><span class="q">起</span></div>
-          </div>
-        </div>
-        <div class="hot reveal d3" data-detail data-tilt>
-          <img src="assets/card-knife.jpg" alt="跑刀陪玩" loading="lazy">
-          <span class="corner tl"></span><span class="corner br"></span>
-          <span class="shine"></span>
-          <div class="h-info">
-            <div class="h-title">跑刀陪玩</div>
-            <div class="h-desc">安全搬运</div>
-            <div class="h-price"><span class="cny">¥</span><span class="v">30</span><span class="q">起</span></div>
+            <div class="h-title">端游</div>
+            <div class="h-desc">高清大屏 · 稳定带飞</div>
+            <span class="h-enter">进入
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </span>
           </div>
         </div>
       </div>
@@ -2081,6 +2126,11 @@
   /* 首页服务入口反馈 */
   document.querySelectorAll('[data-svc]').forEach(el=>{
     el.addEventListener('click', ()=>showToast('「' + el.dataset.svc + '」功能开发中'));
+  });
+
+  /* 手游端 / 端游入口反馈 */
+  document.querySelectorAll('[data-plat]').forEach(el=>{
+    el.addEventListener('click', ()=>showToast('「' + el.dataset.plat + '」专区开发中'));
   });
 
   /* 3D 倾斜 */
