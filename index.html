@@ -1609,18 +1609,24 @@
     .guard.inline .g-item small{display:none}
   }
 
-  /* ================= 手游端页面 ================= */
-  #mobilePage{
+  /* ================= 手游端 / 救姜饼人活动页面 ================= */
+  #mobilePage,#gingerbreadPage{
     z-index:32;opacity:0;transform:translateX(102%);padding-bottom:24px;
     background:
       radial-gradient(55% 24% at 8% 5%,rgba(255,196,176,.28),transparent 70%),
       radial-gradient(45% 22% at 96% 38%,rgba(255,176,156,.2),transparent 72%),
       #fff;
   }
-  #app.plat-open #mobilePage{opacity:1;transform:translateX(0)}
-  #app.plat-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
-  #app.plat-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
-  #mobilePage .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
+  #app.plat-open #mobilePage,#app.act-open #gingerbreadPage{opacity:1;transform:translateX(0)}
+  #app.plat-open #home,#app.act-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
+  #app.plat-open .tabbar,#app.act-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
+  #mobilePage .statusbar,#gingerbreadPage .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
+  .gb-hero{height:auto;background:#fff;border-radius:14px;border-color:rgba(230,170,90,.45);box-shadow:0 16px 30px -20px rgba(160,70,50,.45)}
+  .gb-hero img{position:static;width:100%;height:auto;display:block;filter:none}
+  .gb-hero::after{display:none}
+  .gb-hero .mp-hero-body{display:none}
+  .gb-rules{margin-top:0}
+  .gb-notice{margin-top:10px;padding:9px 10px;border-radius:10px;background:rgba(194,63,84,.08);border:1px solid rgba(194,63,84,.18);color:#a72f46;font-size:8.5px;line-height:1.55;font-weight:700}
 
   .mp-head{
     position:sticky;top:0;z-index:12;
@@ -2118,7 +2124,7 @@
   }
   #checkout{z-index:36}
   #app.order-open #orderDetail{opacity:1;transform:translateX(0)}
-  #app.order-open #mobilePage{opacity:.4;transform:translateX(-14%) scale(.96)}
+  #app.order-open #mobilePage,#app.order-open #gingerbreadPage{opacity:.4;transform:translateX(-14%) scale(.96)}
   #app.checkout-open #checkout{opacity:1;transform:translateX(0)}
   #app.checkout-open #orderDetail{opacity:.4;transform:translateX(-14%) scale(.96)}
   #orderDetail .statusbar,#checkout .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
@@ -2358,17 +2364,17 @@
   }
 
   /* ================= 七宗罪活动页 ================= */
-  #sinsPage,#selfPage,#playPage{
+  #sinsPage,#selfPage,#playPage,#robotPage,#goldPage{
     z-index:30;opacity:0;transform:translateX(102%);padding-bottom:24px;
     background:
       radial-gradient(50% 24% at 8% 6%,rgba(255,196,176,.24),transparent 70%),
       radial-gradient(45% 22% at 96% 40%,rgba(255,176,156,.18),transparent 72%),
       #fff;
   }
-  #app.sins-open #sinsPage,#app.self-open #selfPage,#app.play-open #playPage{opacity:1;transform:translateX(0)}
-  #app.sins-open #home,#app.self-open #home,#app.play-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
-  #app.sins-open .tabbar,#app.self-open .tabbar,#app.play-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
-  #sinsPage .statusbar,#selfPage .statusbar,#playPage .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
+  #app.sins-open #sinsPage,#app.self-open #selfPage,#app.play-open #playPage,#app.robot-open #robotPage,#app.gold-open #goldPage{opacity:1;transform:translateX(0)}
+  #app.sins-open #home,#app.self-open #home,#app.play-open #home,#app.robot-open #home,#app.gold-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
+  #app.sins-open .tabbar,#app.self-open .tabbar,#app.play-open .tabbar,#app.robot-open .tabbar,#app.gold-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
+  #sinsPage .statusbar,#selfPage .statusbar,#playPage .statusbar,#robotPage .statusbar,#goldPage .statusbar{color:#3a2024;text-shadow:0 1px 0 rgba(255,255,255,.85)}
 
   .sn-hero{
     position:relative;margin:0 18px;border-radius:16px;overflow:hidden;
@@ -2435,6 +2441,14 @@
   .sf-line{font-size:9px;line-height:1.55;color:#6f4a50}
   .sf-line b{color:#c23f54;font-weight:800}
   .sf-foot{display:flex;justify-content:flex-end;margin-top:8px}
+
+  .rb-blood{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .rb-blood span{
+    font-size:8px;font-weight:700;color:#a72f46;padding:4px 8px;border-radius:8px;
+    background:rgba(194,63,84,.08);border:1px solid rgba(194,63,84,.2);
+  }
+  .rb-blood span b{font-weight:900}
+  .sf-head .tier-safe .rb-hp{font-size:13px;font-weight:900;color:#2a161a}
 
   @media (max-width:360px){
     .sn-hero{margin:0 14px}
@@ -2609,8 +2623,8 @@
         </div>
       </div>
       <div class="act-scroll" id="actScroll">
-        <div class="act-card" data-act="大大怪电竞救姜饼人">
-          <img src="assets/card-task.jpg" alt="大大怪电竞救姜饼人" loading="lazy">
+        <div class="act-card" data-act="大大怪电竞救姜饼人" data-open-gingerbread>
+          <img src="assets/gingerbread-poster.png" alt="大大怪电竞救姜饼人" loading="lazy">
           <span class="act-shine"></span>
           <span class="act-tag">大大怪电竞</span>
           <div class="act-info">
@@ -2649,7 +2663,7 @@
           </div>
           <span class="act-go"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
-        <div class="act-card" data-act="大大怪电竞金弹单">
+        <div class="act-card" data-open-gold>
           <img src="assets/card-assault.jpg" alt="大大怪电竞金弹单" loading="lazy">
           <span class="act-shine"></span>
           <span class="act-tag">大大怪电竞</span>
@@ -2659,13 +2673,13 @@
           </div>
           <span class="act-go"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
-        <div class="act-card" data-act="大大怪电竞邪恶和器人">
-          <img src="assets/mascot-community.jpg" alt="大大怪电竞邪恶和器人" loading="lazy">
+        <div class="act-card" data-open-robot>
+          <img src="assets/mascot-community.jpg" alt="大大怪电竞邪恶机器人" loading="lazy">
           <span class="act-shine"></span>
           <span class="act-tag">大大怪电竞</span>
           <div class="act-info">
-            <div class="act-name">邪恶和器人</div>
-            <div class="act-meta"><i></i>趣味玩法</div>
+            <div class="act-name">邪恶机器人</div>
+            <div class="act-meta"><i></i>血条玩法</div>
           </div>
           <span class="act-go"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
@@ -3374,6 +3388,146 @@
     </div>
   </section>
 
+  <!-- ================= 救姜饼人活动页 ================= -->
+  <section class="screen" id="gingerbreadPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="gingerbreadBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>救姜饼人</h2><p>GINGERBREAD · 限时活动</p></div>
+    </div>
+
+    <div class="mp-hero gb-hero">
+      <img src="assets/gingerbread-poster.png" alt="大大怪电竞拯救姜饼人" loading="lazy">
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head">
+        <div class="mp-sec-title">活动套餐 <span class="chip">LIMITED</span></div>
+        <div class="mp-note">3 档可选</div>
+      </div>
+      <div class="pr-list">
+        <button type="button" class="pr-card" data-pkg="救姜饼人·体验版" data-flag="体验版" data-world="大大怪电竞 · 救姜饼人" data-img="assets/gingerbread-poster.png" data-count="5" data-limit="8" data-extra="百万大红/千万撤离可抵 2 个姜饼人">
+          <div class="pr-top">
+            <span class="pr-tier"><b>5</b><i>个</i></span>
+            <span class="pr-desc">成功撤离带出 <b>5 个姜饼人</b>，上限 <b>8 个</b><br>百万大红/千万撤离可抵 <b>2 个姜饼人</b></span>
+            <span class="pr-price">388R</span>
+          </div>
+          <div class="pr-foot">
+            <span class="pr-safe">保底 <b>2000W</b></span>
+            <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+        <button type="button" class="pr-card" data-pkg="救姜饼人·基础版" data-flag="基础版" data-world="大大怪电竞 · 救姜饼人" data-img="assets/gingerbread-poster.png" data-count="15" data-limit="20" data-extra="百万大红/千万撤离可抵 2 个姜饼人">
+          <div class="pr-top">
+            <span class="pr-tier"><b>15</b><i>个</i></span>
+            <span class="pr-desc">成功撤离带出 <b>15 个姜饼人</b>，上限 <b>20 个</b><br>百万大红/千万撤离可抵 <b>2 个姜饼人</b></span>
+            <span class="pr-price">688R</span>
+          </div>
+          <div class="pr-foot">
+            <span class="pr-safe">保底 <b>4000W</b></span>
+            <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+        <button type="button" class="pr-card" data-pkg="救姜饼人·巅峰版" data-flag="巅峰版" data-world="大大怪电竞 · 救姜饼人" data-img="assets/gingerbread-poster.png" data-count="25" data-limit="30" data-extra="无赖子不出不结">
+          <div class="pr-top">
+            <span class="pr-tier"><b>25</b><i>个</i></span>
+            <span class="pr-desc">成功撤离带出 <b>25 个姜饼人</b>，上限 <b>30 个</b><br><b>无赖子不出不结</b></span>
+            <span class="pr-price">1488R</span>
+          </div>
+          <div class="pr-foot">
+            <span class="pr-safe">保底 <b>1E</b></span>
+            <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="mp-sec">
+      <div class="od-sec gb-rules">
+        <div class="od-sec-title">点单须知</div>
+        <ul class="od-rules">
+          <li><span class="od-dot">1</span><span>本单玩法由打手选图，板板可加价 <b>15%</b> 指定地图。</span></li>
+          <li><span class="od-dot">2</span><span>炸单补偿机制与老板权益一致，航天/巴克 <b>+60W</b>，监狱 <b>+80W</b>。</span></li>
+        </ul>
+        <div class="gb-notice">此单特殊性，如老板私藏、丢弃物资则直接结单。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 邪恶机器人活动页 ================= -->
+  <section class="screen" id="robotPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="od-head">
+      <button type="button" class="od-back" id="robotBack" aria-label="返回">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="od-head-txt"><h2>邪恶机器人</h2><p>EVIL ROBOT · 血条玩法</p></div>
+    </div>
+
+    <div class="sn-hero">
+      <img src="assets/mascot-community.jpg" alt="大大怪电竞邪恶机器人">
+      <span class="sn-tag">大大怪电竞</span>
+      <div class="sn-hero-txt">
+        <div class="sn-title">邪恶机器人</div>
+        <div class="sn-sub">血条玩法</div>
+      </div>
+    </div>
+
+    <div class="sn-sec">
+      <div class="sn-sec-head">
+        <div class="sn-sec-title">活动套餐</div>
+        <div class="sn-sec-note">358 元 · 初始 10 点血量</div>
+      </div>
+      <div class="sf-list">
+        <button type="button" class="sf-card" data-pkg="邪恶机器人·358R" data-flag="邪恶机器人" data-world="大大怪电竞 · 邪恶机器人" data-img="assets/mascot-community.jpg" data-desc="初始 10 点血量 · 撤离金额越高扣血越多" data-safe="初始 <b>10 点血量</b>">
+          <div class="sf-head">
+            <span class="tier-price">358<i>R</i></span>
+            <span class="tier-safe">初始血量 <span class="rb-hp">10 点</span></span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">撤离 <b>600 万</b>以上扣 <b>1 滴血</b></div>
+            <div class="sf-line">撤离 <b>800 万</b>以上扣 <b>3 滴血</b></div>
+            <div class="sf-line">撤离 <b>1000 万</b>以上扣 <b>4 滴血</b></div>
+            <div class="sf-line">撤离 <b>1200 万</b>以上扣 <b>5 滴血</b></div>
+            <div class="sf-line">撤离 <b>1300 万</b>以上扣 <b>6 滴血</b></div>
+            <div class="sf-line">每死一把 <b>+1 滴血</b>，无上限</div>
+            <div class="sf-line">血条清空 <b>直接截单</b>（丢包不算）</div>
+          </div>
+          <div class="rb-blood">
+            <span>初始 <b>10</b> 点</span>
+            <span>600W <b>-1</b></span>
+            <span>800W <b>-3</b></span>
+            <span>1000W <b>-4</b></span>
+            <span>1200W <b>-5</b></span>
+            <span>1300W <b>-6</b></span>
+            <span>死亡 <b>+1</b></span>
+          </div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= 订单详情页 ================= -->
   <section class="screen" id="orderDetail">
     <div class="statusbar">
@@ -3565,6 +3719,81 @@
     <div class="co-bar">
       <div class="co-total">合计<b id="coTotal">¥78</b></div>
       <button type="button" class="co-submit" id="coSubmit">立即下单</button>
+    </div>
+  </section>
+
+  <!-- ================= 金弹单活动页 ================= -->
+  <section class="screen" id="goldPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="od-head">
+      <button type="button" class="od-back" id="goldBack" aria-label="返回">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="od-head-txt"><h2>金弹单</h2><p>GOLD AMMO · 纯金弹收集</p></div>
+    </div>
+
+    <div class="sn-hero">
+      <img src="assets/card-assault.jpg" alt="大大怪电竞金弹单">
+      <span class="sn-tag">大大怪电竞</span>
+      <div class="sn-hero-txt">
+        <div class="sn-title">金弹单</div>
+        <div class="sn-sub">高收益单 · 纯金弹</div>
+      </div>
+    </div>
+
+    <div class="sn-sec">
+      <div class="sn-sec-head">
+        <div class="sn-sec-title">活动套餐</div>
+        <div class="sn-sec-note">2 档可选</div>
+      </div>
+      <div class="sf-list">
+        <button type="button" class="sf-card" data-pkg="金弹单·398R" data-flag="金弹单" data-world="大大怪电竞 · 金弹单" data-desc="398 元 · 保底 2888W · 带出 1000 发纯金弹" data-safe="带出 <b>1000 发纯金弹</b>" data-ammo="1000">
+          <div class="sf-head">
+            <span class="tier-price">398<i>R</i></span>
+            <span class="tier-safe">保底 <b>2888W</b></span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">带出 <b>1000 发纯金弹</b></div>
+            <div class="sf-line">炸单 <b>+50 发金弹</b>；心/泪/复苏抵 <b>200 发金弹</b></div>
+          </div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+        <button type="button" class="sf-card" data-pkg="金弹单·688R" data-flag="金弹单" data-world="大大怪电竞 · 金弹单" data-desc="688 元 · 保底 5888W · 带出 2000 发纯金弹" data-safe="带出 <b>2000 发纯金弹</b>" data-ammo="2000">
+          <div class="sf-head">
+            <span class="tier-price">688<i>R</i></span>
+            <span class="tier-safe">保底 <b>5888W</b></span>
+          </div>
+          <div class="sf-lines">
+            <div class="sf-line">带出 <b>2000 发纯金弹</b></div>
+            <div class="sf-line">炸单 <b>+50 发金弹</b>；心/泪/复苏抵 <b>200 发金弹</b></div>
+          </div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="sn-sec">
+      <div class="od-sec">
+        <div class="od-sec-title">活动规则</div>
+        <ol class="od-notice-list">
+          <li><span class="n">1</span><span>炸单 <b>+50 发金弹</b>。</span></li>
+          <li><span class="n">2</span><span>撤离失败不计入，丢包撤离不计入；打手双倒后老板自己撤离不计入；撤离点打手双倒、老板成功撤离计入。</span></li>
+          <li><span class="n">3</span><span>心/泪/复苏抵 <b>200 发金弹</b>，撤离失败也算。</span></li>
+          <li><span class="n">4</span><span>此单会和打手拉群；每次成功撤离，老板发带出截图，客服统计。</span></li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -3877,6 +4106,9 @@
       if(app.classList.contains('sins-open')){ app.classList.remove('sins-open'); return; }
       if(app.classList.contains('self-open')){ app.classList.remove('self-open'); return; }
       if(app.classList.contains('play-open')){ app.classList.remove('play-open'); return; }
+      if(app.classList.contains('robot-open')){ app.classList.remove('robot-open'); return; }
+      if(app.classList.contains('gold-open')){ app.classList.remove('gold-open'); return; }
+      if(app.classList.contains('act-open')){ app.classList.remove('act-open'); return; }
       if(app.classList.contains('plat-open')){ app.classList.remove('plat-open'); return; }
       closeDetail();
     }
@@ -3946,10 +4178,26 @@
     el.addEventListener('click', ()=>showToast('「' + el.dataset.plat + '」专区开发中'));
   });
 
-  /* 活动卡片反馈 */
+  /* 活动卡片与救姜饼人活动页 */
+  const gingerbreadPage = document.getElementById('gingerbreadPage');
   document.querySelectorAll('[data-act]').forEach(el=>{
-    el.addEventListener('click', ()=>showToast('「' + el.dataset.act + '」活动详情开发中'));
+    el.addEventListener('click', ()=>{
+      if(el.hasAttribute('data-open-gingerbread') && gingerbreadPage){
+        app.classList.add('act-open');
+        gingerbreadPage.scrollTop = 0;
+        return;
+      }
+      showToast('「' + el.dataset.act + '」活动详情开发中');
+    });
   });
+  if(gingerbreadPage){
+    document.getElementById('gingerbreadBack').addEventListener('click', ()=>{
+      app.classList.remove('act-open');
+    });
+    gingerbreadPage.querySelectorAll('[data-pkg]').forEach(el=>{
+      el.addEventListener('click', ()=>openOrder(el));
+    });
+  }
 
   /* 活动横向滑动 */
   const actScroll = document.getElementById('actScroll');
@@ -4070,16 +4318,16 @@
     const priceText = pickText(card, ['.pkg-price','.clear-price','.pr-price','.tier-price','.ord-price','.fun-price']);
     const price = parseFloat(priceText.replace(/[^\d.]/g,'')) || 0;
     const guarantee = pickText(card, ['.pkg-guarantee b','.clear-safe b','.pr-safe b','.tier-safe b','.ord-safe b','.fun-safe b']);
-    let desc = pickText(card, ['.pkg-desc','.clear-desc','.pr-desc','.ord-desc','.fun-sub','.tier-name']);
+    let desc = card.dataset.desc || pickText(card, ['.pkg-desc','.clear-desc','.pr-desc','.ord-desc','.fun-sub','.tier-name']);
     if(/趣味系列/.test(pkg)) desc = '手游千万只是开始 · ' + (desc || '趣味玩法');
     desc = desc || '真人打手全程护航 · 按保底结算';
-    const flag = pickText(card, ['.pkg-flag','.clear-tag','.ord-tag','.pr-tier'])
+    const flag = card.dataset.flag || pickText(card, ['.pkg-flag','.clear-tag','.ord-tag','.pr-tier'])
       || (/环太平洋/.test(pkg) ? '环太平洋' : /趣味系列/.test(pkg) ? '趣味系列' : /普通订单/.test(pkg) ? '普通订单' : /堵桥/.test(pkg) ? '无人生还' : /机密/.test(pkg) ? '机密' : '精选套餐');
-    let world = pickText(card, ['.pkg-world']);
+    let world = card.dataset.world || pickText(card, ['.pkg-world']);
     if(!world) world = /监狱/.test(pkg) ? '监狱' : /航天|巴克/.test(pkg) ? '航天 / 巴克' : /机密/.test(pkg) ? '机密地图' : /堵桥/.test(pkg) ? '堵桥点位' : /环太平洋/.test(pkg) ? '监狱 · 环太平洋' : /趣味/.test(pkg) ? '手游端 · 趣味玩法' : '手游端 · 全地图';
     if(/^\d+(\.\d+)?\s*元/.test(desc)) desc = world + ' · ' + (guarantee ? '保底 ' + guarantee : '高价值物资') + ' 护航对局';
     const imgEl = card.querySelector('.pkg-poster img, .clear-thumb img, .pr-thumb img, img');
-    const img = imgEl && imgEl.getAttribute('src') ? imgEl.getAttribute('src') : 'assets/detail-bg.jpg';
+    const img = card.dataset.img || (imgEl && imgEl.getAttribute('src') ? imgEl.getAttribute('src') : 'assets/detail-bg.jpg');
 
     currentOrder.name = pkg;
     currentOrder.price = price;
@@ -4104,11 +4352,30 @@
     od.desc.textContent = desc;
     od.barPrice.textContent = price ? '¥' + fmtMoney(price) : '咨询客服';
 
+    const ruleLines = orderPage.querySelector('.od-sec .od-rules').querySelectorAll('li > span:last-child');
+    if(/^救姜饼人/.test(pkg)){
+      ruleLines[1].innerHTML = '成功撤离带出 <b>' + card.dataset.count + ' 个姜饼人</b>，上限 <b>' + card.dataset.limit + ' 个</b>；撤离失败 <b>+1 姜饼人</b>';
+      ruleLines[2].textContent = card.dataset.extra;
+      ruleLines[3].innerHTML = '私藏或丢弃物资将<b>直接结单</b>；指定地图需加价 <b>15%</b>';
+    } else if(/^金弹单/.test(pkg)){
+      ruleLines[1].innerHTML = '本档需带出 <b>' + card.dataset.ammo + ' 发纯金弹</b>，按客服统计结果结算';
+      ruleLines[2].innerHTML = '炸单 <b>+50 发金弹</b>；心/泪/复苏抵 <b>200 发金弹</b>，撤离失败也算';
+      ruleLines[3].innerHTML = '撤离失败、丢包撤离不计入；每次成功撤离老板发带出截图，客服统计';
+    } else if(/^邪恶机器人/.test(pkg)){
+      ruleLines[1].innerHTML = '初始 <b>10 点血量</b>，撤离 600W / 800W / 1000W / 1200W / 1300W 以上分别扣 <b>1 / 3 / 4 / 5 / 6 滴血</b>';
+      ruleLines[2].innerHTML = '每死一把 <b>+1 滴血</b>，无上限；血条清空<b>直接截单</b>（丢包不算）';
+      ruleLines[3].innerHTML = '按撤离金额实时扣血，血量归零即结束本单';
+    } else {
+      ruleLines[1].innerHTML = '真人打手全程护航，<b>不挂机 · 不掉线</b>';
+      ruleLines[2].innerHTML = '按套餐保底结算，未达标<b>免费补打</b>';
+      ruleLines[3].innerHTML = '账号信息全程加密，<b>隐私保护</b>';
+    }
+
     co.img.src = img;
     co.img.alt = pkg;
     co.name.textContent = pkg;
     co.desc.textContent = desc;
-    co.safe.innerHTML = guarantee ? '保底 <b>' + guarantee + '</b>' : '高价值物资 · 详见说明';
+    co.safe.innerHTML = guarantee ? '保底 <b>' + guarantee + '</b>' : (card.dataset.safe || '高价值物资 · 详见说明');
     co.price.textContent = price ? '¥' + fmtMoney(price) : '—';
 
     app.classList.remove('checkout-open');
@@ -4221,6 +4488,38 @@
       app.classList.remove('play-open');
     });
     playPage.querySelectorAll('[data-pkg]').forEach(el=>{
+      el.addEventListener('click', ()=>openOrder(el));
+    });
+  }
+
+  /* 邪恶机器人活动页 */
+  const robotPage = document.getElementById('robotPage');
+  const robotEntry = document.querySelector('[data-open-robot]');
+  if(robotEntry && robotPage){
+    robotEntry.addEventListener('click', ()=>{
+      app.classList.add('robot-open');
+      robotPage.scrollTop = 0;
+    });
+    document.getElementById('robotBack').addEventListener('click', ()=>{
+      app.classList.remove('robot-open');
+    });
+    robotPage.querySelectorAll('[data-pkg]').forEach(el=>{
+      el.addEventListener('click', ()=>openOrder(el));
+    });
+  }
+
+  /* 金弹单活动页 */
+  const goldPage = document.getElementById('goldPage');
+  const goldEntry = document.querySelector('[data-open-gold]');
+  if(goldEntry && goldPage){
+    goldEntry.addEventListener('click', ()=>{
+      app.classList.add('gold-open');
+      goldPage.scrollTop = 0;
+    });
+    document.getElementById('goldBack').addEventListener('click', ()=>{
+      app.classList.remove('gold-open');
+    });
+    goldPage.querySelectorAll('[data-pkg]').forEach(el=>{
       el.addEventListener('click', ()=>openOrder(el));
     });
   }
