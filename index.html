@@ -1871,6 +1871,63 @@
     .pr-thumb{height:92px}
     .pr-main{padding:9px 10px}
   }
+  @media (max-width:360px){
+    .pr-thumb{height:92px}
+    .pr-main{padding:9px 10px}
+  }
+
+  /* 手游趣味单 */
+  .fun-list{display:flex;flex-direction:column;gap:10px}
+  .fun-card{
+    padding:12px;border-radius:14px;border:1px solid rgba(230,170,90,.45);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,232,212,.92));
+    box-shadow:0 14px 28px -20px rgba(160,70,50,.4);
+    transition:transform .35s,border-color .3s,box-shadow .35s;
+  }
+  .fun-card:hover{transform:translateY(-3px);border-color:rgba(217,75,95,.5);box-shadow:0 20px 34px -18px rgba(190,60,80,.45)}
+  .fun-head{display:flex;align-items:center;gap:10px}
+  .fun-ic{
+    width:38px;height:38px;border-radius:11px;flex:0 0 auto;
+    display:grid;place-items:center;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);
+    box-shadow:0 6px 14px -8px rgba(150,30,50,.6);
+  }
+  .fun-title-wrap{min-width:0}
+  .fun-title{font-size:16px;font-weight:900;color:#2a161a;letter-spacing:.02em}
+  .fun-sub{font-size:8px;color:#96767b;margin-top:2px}
+  .fun-price{margin-left:auto;font-size:19px;font-weight:900;color:#c23f54;letter-spacing:-.01em;flex:0 0 auto}
+  .fun-rules{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .fun-rules li{display:flex;gap:7px;font-size:9px;color:#6f4a50;line-height:1.5}
+  .fun-rules li > span:last-child{flex:1;min-width:0}
+  .fun-rules li strong{color:#2a161a;font-weight:800}
+  .fr-no{
+    flex:0 0 auto;width:15px;height:15px;border-radius:50%;margin-top:1px;
+    display:grid;place-items:center;font-size:7.5px;font-weight:900;color:#b23a52;
+    background:rgba(217,75,95,.1);border:1px solid rgba(217,75,95,.24);
+  }
+  .fun-foot{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-top:10px;padding-top:9px;border-top:1px dashed rgba(205,140,60,.3);
+  }
+  .fun-safe{font-size:8.5px;color:#96767b}
+  .fun-safe b{font-size:12px;font-weight:900;color:#2a161a}
+  .fun-buy{
+    appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;gap:4px;
+    font-family:inherit;font-size:8.5px;font-weight:700;color:#fff;
+    background:linear-gradient(160deg,#ef6a7d,#c23f54);border:1px solid rgba(255,255,255,.35);
+    padding:5px 10px;border-radius:13px;cursor:pointer;
+    box-shadow:0 6px 12px -7px rgba(150,30,50,.6);
+    transition:transform .3s,box-shadow .3s;
+  }
+  .fun-card:hover .fun-buy{transform:translateY(-1px);box-shadow:0 0 14px rgba(217,75,95,.45)}
+  @media (max-width:360px){
+    .fun-card{padding:10px}
+    .fun-title{font-size:15px}
+    .fun-price{font-size:17px}
+    .fun-ic{width:34px;height:34px;border-radius:10px}
+    .fun-rules{gap:5px}
+    .fun-rules li{font-size:8.5px}
+  }
 
 </style>
 
@@ -2560,6 +2617,50 @@
       </div>
     </div>
 
+    <!-- 手游趣味单 -->
+    <div class="mp-sec">
+      <div class="mp-sec-head">
+        <div class="mp-sec-title">手游趣味单 <span class="chip">FUN</span></div>
+        <div class="mp-note">双玩法 · 2 档</div>
+      </div>
+      <div class="fun-list">
+        <div class="fun-card">
+          <div class="fun-head">
+            <span class="fun-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.8-3.6 3-5.3 5.5-5.3s4.7 1.7 5.5 5.3"/><circle cx="17" cy="9" r="2.3"/><path d="M15.2 14.2c2.1.2 3.5 1.6 4.1 3.9"/></svg></span>
+            <div class="fun-title-wrap"><div class="fun-title">咱俩练练</div><div class="fun-sub">老板 VS 双打手</div></div>
+            <span class="fun-price">168R</span>
+          </div>
+          <ol class="fun-rules">
+            <li><span class="fr-no">1</span><span>老板和两位打手轮流 <strong>1V1</strong></span></li>
+            <li><span class="fr-no">2</span><span>一局 7 回合，两局共 14 回合，双方同武器装备子弹</span></li>
+            <li><span class="fr-no">3</span><span>老板赢一回合 <strong>+200W</strong> 保底，输一回合 <strong>-100W</strong> 保底</span></li>
+            <li><span class="fr-no">4</span><span>最终保底不得低于 <strong>1288W</strong></span></li>
+            <li><span class="fr-no">5</span><span>回合结束后去绝密地图打累计保底</span></li>
+          </ol>
+          <div class="fun-foot">
+            <span class="fun-safe">初始保底 <b>1688W</b></span>
+            <button type="button" class="fun-buy" data-fun="咱俩练练">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="fun-card">
+          <div class="fun-head">
+            <span class="fun-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
+            <div class="fun-title-wrap"><div class="fun-title">你俩练练</div><div class="fun-sub">双打手 1V1</div></div>
+            <span class="fun-price">188R</span>
+          </div>
+          <ol class="fun-rules">
+            <li><span class="fr-no">1</span><span>两位打手进行 <strong>1V1</strong> 单挑</span></li>
+            <li><span class="fr-no">2</span><span>老板在游戏开始前与客服进行押宝</span></li>
+            <li><span class="fr-no">3</span><span>押对保底 <strong>+1000W</strong></span></li>
+          </ol>
+          <div class="fun-foot">
+            <span class="fun-safe">初始保底 <b>1888W</b></span>
+            <button type="button" class="fun-buy" data-fun="你俩练练">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- 预留板块：陪玩推荐（后期替换为真实陪玩列表） -->
     <div class="mp-sec">
       <div class="mp-sec-head"><div class="mp-sec-title">陪玩推荐</div><span class="mp-reserve">预留板块</span></div>
@@ -2772,6 +2873,12 @@
     });
     mobilePage.querySelectorAll('[data-pkg]').forEach(el=>{
       el.addEventListener('click', ()=>showToast('「' + el.dataset.pkg + '」下单功能开发中'));
+    });
+    mobilePage.querySelectorAll('[data-fun]').forEach(el=>{
+      el.addEventListener('click', e=>{
+        e.stopPropagation();
+        showToast('「' + el.dataset.fun + '」下单功能开发中');
+      });
     });
   }
 
