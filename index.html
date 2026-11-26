@@ -1642,6 +1642,43 @@
   #app.pc-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
   #pcPage .statusbar{color:#2B1B0C;text-shadow:0 1px 0 rgba(255,255,255,.85)}
   #app.order-open #pcPage{opacity:.4;transform:translateX(-14%) scale(.96)}
+
+  /* ================= 平台区分：手游=青蓝 / 端游=钛金 ================= */
+  .plat-mobile{--plat:#0E93AB;--plat-deep:#086B7D;--plat-soft:rgba(14,147,171,.1);--plat-line:rgba(14,147,171,.42)}
+  .plat-pc{--plat:#C9761A;--plat-deep:#9C4706;--plat-soft:rgba(201,118,26,.1);--plat-line:rgba(201,118,26,.42)}
+  .plat-badge{
+    display:inline-flex;align-items:center;gap:4px;margin-left:7px;vertical-align:middle;
+    font-size:7px;font-weight:800;letter-spacing:.14em;color:#fff;
+    padding:3px 7px;border-radius:7px;
+    background:linear-gradient(160deg,var(--plat),var(--plat-deep));
+    box-shadow:0 6px 14px -8px var(--plat),inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .plat-mobile .mp-back{background:linear-gradient(160deg,#19A7BF,#086B7D);box-shadow:0 8px 18px -10px rgba(8,107,125,.6)}
+  .plat-mobile .mp-back:hover{box-shadow:0 0 20px rgba(14,147,171,.45)}
+  .plat-mobile .mp-hero-tag{border-color:rgba(120,224,240,.55);color:#e2fdff;background:rgba(6,52,61,.55)}
+  .plat-mobile .mp-sec-title::before,.plat-pc .mp-sec-title::before{
+    content:"";flex:0 0 auto;width:3px;height:14px;border-radius:2px;
+    background:var(--plat);box-shadow:0 0 8px var(--plat);
+  }
+  .plat-mobile .mp-sec .chip{background:var(--plat-soft);border-color:var(--plat-line);color:var(--plat-deep)}
+  /* 首页平台提示 */
+  .plat-legend{
+    display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 2px 0;
+    padding:8px 10px;border-radius:10px;
+    font-size:8px;font-weight:700;line-height:1.5;color:#452C0A;
+    background:linear-gradient(120deg,rgba(14,147,171,.08),rgba(201,118,26,.2));
+    border:1px dashed rgba(201,118,26,.3);
+  }
+  .plat-legend .lg-m{color:#086B7D;font-weight:900}
+  .plat-legend .lg-p{color:#9C4706;font-weight:900}
+  .plat-legend .sep{width:1px;height:9px;background:rgba(69,44,10,.22)}
+  .hot[data-open-mobile]{border-color:rgba(14,147,171,.5)}
+  .hot[data-open-mobile]:hover{
+    border-color:rgba(14,147,171,.95);
+    box-shadow:0 26px 46px -18px rgba(14,147,171,.6),0 0 0 1px rgba(14,147,171,.28),inset 0 0 40px rgba(14,147,171,.12);
+  }
+  .hot[data-open-mobile] .h-plat{background:rgba(6,60,71,.72);border-color:rgba(120,224,240,.5);color:#e6fdff}
+  .hot[data-open-pc] .h-plat{background:rgba(90,46,4,.72);border-color:rgba(255,205,150,.55)}
   .gb-rules{margin-top:0}
   .gb-notice{margin-top:10px;padding:9px 10px;border-radius:10px;background:rgba(184,84,8,.08);border:1px solid rgba(184,84,8,.18);color:var(--ink);font-size:8.5px;line-height:1.55;font-weight:700}
 
@@ -1662,7 +1699,7 @@
     appearance:none;-webkit-appearance:none;
   }
   .mp-back:hover{transform:translateX(-2px) scale(1.05);box-shadow:0 0 20px rgba(210,97,14,.45)}
-  .mp-head-txt h2{margin:0;font-size:22px;font-weight:900;letter-spacing:.02em;color:#241708}
+  .mp-head-txt h2{margin:0;font-size:22px;font-weight:900;letter-spacing:.02em;color:#241708;display:flex;align-items:center;flex-wrap:wrap}
   .mp-head-txt p{margin:3px 0 0;font-size:8.5px;letter-spacing:.2em;color:#452C0A}
 
   .mp-hero{
@@ -2355,6 +2392,161 @@
 
   .co-warn{margin:12px 2px 2px;font-size:8px;line-height:1.6;color:var(--ink);letter-spacing:.01em}
 
+  /* ================= 未成年提示弹窗 ================= */
+  .age-gate{
+    position:absolute;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;
+    padding:22px 18px;opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .3s ease,visibility .3s ease;
+  }
+  #app.gate-open .age-gate{opacity:1;visibility:visible;pointer-events:auto}
+  .age-mask{position:absolute;inset:0;background:rgba(26,13,4,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+  .age-card{
+    position:relative;z-index:2;width:100%;max-width:336px;
+    padding:14px 15px 13px;border-radius:18px;
+    background:linear-gradient(168deg,#fffdfa,#fff6ec 58%,#ffe9d2);
+    border:1px solid rgba(255,255,255,.9);
+    box-shadow:0 30px 60px -24px rgba(70,28,0,.7),0 0 0 1px rgba(210,97,14,.16);
+    transform:translateY(16px) scale(.96);
+    transition:transform .38s cubic-bezier(.22,.9,.18,1);
+  }
+  #app.gate-open .age-card{transform:translateY(0) scale(1)}
+  .age-close{
+    position:absolute;top:9px;right:9px;width:26px;height:26px;border-radius:50%;
+    appearance:none;-webkit-appearance:none;cursor:pointer;display:grid;place-items:center;
+    color:#8A5A22;background:rgba(255,255,255,.72);border:1px solid rgba(210,97,14,.28);
+    transition:background .3s,transform .3s,color .3s;
+  }
+  .age-close:hover{background:#fff;color:#B85408;transform:rotate(90deg)}
+  .age-brand{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .age-brand-mark{
+    font-size:12px;font-weight:900;letter-spacing:.18em;color:#2B1B0C;
+    padding:2px 0 0;
+  }
+  .age-brand-mark::before,.age-brand-mark::after{content:"◆";font-size:6px;color:rgba(210,97,14,.8);margin:0 5px;vertical-align:middle}
+  .age-brand-sub{font-size:6.5px;letter-spacing:.34em;color:#9C7A50}
+  .age-title{
+    display:flex;align-items:center;justify-content:center;gap:6px;margin-top:9px;
+    font-size:16px;font-weight:900;letter-spacing:.01em;color:#2B1B0C;
+  }
+  .age-title svg{flex:0 0 auto;filter:drop-shadow(0 3px 6px rgba(210,97,14,.45))}
+  .age-desc{margin:8px 2px 0;text-align:center;font-size:9.5px;line-height:1.8;font-weight:600;color:#5B4023}
+  .age-item{
+    display:flex;align-items:flex-start;gap:9px;margin-top:10px;padding:11px 2px 0;
+    border-top:1px dashed rgba(210,97,14,.28);cursor:pointer;
+  }
+  .age-item input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+  .age-box{
+    flex:0 0 17px;width:17px;height:17px;margin-top:1px;border-radius:50%;
+    display:grid;place-items:center;color:#fff;
+    background:#fff;border:1.5px solid rgba(210,97,14,.45);
+    transition:background .25s,border-color .25s,box-shadow .25s;
+  }
+  .age-box svg{width:9px;height:9px;opacity:0;transform:scale(.4);transition:opacity .25s,transform .25s}
+  .age-item input:checked + .age-box{
+    background:linear-gradient(160deg,#D9A54B,#B47B22);border-color:rgba(180,123,34,.8);
+    box-shadow:0 4px 10px -5px rgba(180,123,34,.9);
+  }
+  .age-item input:checked + .age-box svg{opacity:1;transform:scale(1)}
+  .age-item-txt{min-width:0}
+  .age-item-txt b{display:block;font-size:11px;font-weight:800;line-height:1.55;color:#2B1B0C}
+  .age-item-txt em{display:block;margin-top:3px;font-size:8px;font-style:normal;line-height:1.6;color:#8A6A44}
+  .age-btn{
+    width:100%;margin-top:13px;padding:12px;border-radius:24px;border:1px solid rgba(255,255,255,.55);
+    appearance:none;-webkit-appearance:none;font-family:inherit;cursor:pointer;
+    font-size:13px;font-weight:900;letter-spacing:.2em;text-indent:.2em;color:#fff;
+    background:linear-gradient(160deg,#E88B2A,#B85408);
+    box-shadow:0 14px 26px -14px rgba(156,71,6,.8);
+    transition:transform .3s,box-shadow .3s,opacity .3s,filter .3s;
+  }
+  .age-btn:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.25)}
+  .age-btn:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(210,97,14,.5)}
+  .age-foot{margin-top:8px;text-align:center;font-size:6.5px;letter-spacing:.16em;color:#9C7A50}
+
+  /* ================= 进入小程序欢迎弹窗 ================= */
+  .welcome-gate{
+    position:absolute;inset:0;z-index:76;display:flex;align-items:center;justify-content:center;
+    padding:22px 18px;opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .34s ease,visibility .34s ease;
+  }
+  #app.welcome-open .welcome-gate{opacity:1;visibility:visible;pointer-events:auto}
+  .wg-mask{
+    position:absolute;inset:0;
+    background:radial-gradient(62% 38% at 50% 26%,rgba(232,139,42,.2),transparent 72%),rgba(6,6,5,.74);
+    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  }
+  .wg-card{
+    position:relative;z-index:2;width:100%;max-width:336px;padding:18px 15px 14px;border-radius:18px;
+    background:linear-gradient(168deg,#1E1710,#140F0A 58%,#0C0806);
+    border:1px solid rgba(255,205,150,.34);
+    box-shadow:0 30px 64px -26px rgba(0,0,0,.9),0 0 44px -18px rgba(232,139,42,.5),inset 0 1px 0 rgba(255,225,190,.14);
+    transform:translateY(18px) scale(.95);
+    transition:transform .42s cubic-bezier(.22,.9,.18,1);
+  }
+  #app.welcome-open .wg-card{transform:translateY(0) scale(1)}
+  .wg-card::before{
+    content:"";position:absolute;top:0;left:16px;right:16px;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,205,150,.75),transparent);
+  }
+  .wg-close{
+    position:absolute;top:9px;right:9px;width:26px;height:26px;border-radius:50%;
+    appearance:none;-webkit-appearance:none;cursor:pointer;display:grid;place-items:center;
+    color:#E7BE8C;background:rgba(255,228,200,.08);border:1px solid rgba(255,205,150,.3);
+    transition:background .3s,transform .3s,color .3s;
+  }
+  .wg-close:hover{background:rgba(255,228,200,.18);color:#FFE3C0;transform:rotate(90deg)}
+  .wg-brand{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .wg-seal{
+    width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+    color:#FFD9A8;font-size:14px;font-weight:900;
+    background:radial-gradient(circle at 32% 28%,#3A2A18,#171009 70%);
+    border:1px solid rgba(255,205,150,.45);
+    box-shadow:0 0 22px -6px rgba(232,139,42,.55),inset 0 1px 0 rgba(255,225,190,.25);
+  }
+  .wg-hello{margin-top:10px;text-align:center;font-size:19px;font-weight:900;letter-spacing:.05em;color:#FFE7CC;text-shadow:0 2px 14px rgba(232,139,42,.35)}
+  .wg-slogan{margin-top:5px;text-align:center;font-size:7.5px;letter-spacing:.2em;color:#C79A63}
+  .wg-slogan i{font-style:normal;color:rgba(255,205,150,.45);margin:0 5px}
+  .wg-divider{
+    height:1px;margin:14px 4px 0;
+    background:linear-gradient(90deg,transparent,rgba(255,205,150,.32),transparent);
+  }
+  .wg-title{
+    display:flex;align-items:center;justify-content:center;gap:6px;margin-top:13px;
+    font-size:16px;font-weight:900;letter-spacing:.01em;color:#FFD9A8;
+  }
+  .wg-title svg{flex:0 0 auto;filter:drop-shadow(0 3px 8px rgba(232,139,42,.5))}
+  .wg-desc{margin:8px 2px 0;text-align:center;font-size:9.5px;line-height:1.8;font-weight:600;color:rgba(255,229,203,.72)}
+  .wg-item{
+    display:flex;align-items:flex-start;gap:9px;margin-top:10px;padding:11px 2px 0;
+    border-top:1px dashed rgba(255,205,150,.2);cursor:pointer;
+  }
+  .wg-item input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+  .wg-box{
+    flex:0 0 17px;width:17px;height:17px;margin-top:1px;border-radius:50%;
+    display:grid;place-items:center;color:#241505;
+    background:transparent;border:1.5px solid rgba(255,205,150,.45);
+    transition:background .25s,border-color .25s,box-shadow .25s;
+  }
+  .wg-box svg{width:9px;height:9px;opacity:0;transform:scale(.4);transition:opacity .25s,transform .25s}
+  .wg-item input:checked + .wg-box{
+    background:linear-gradient(160deg,#F5C070,#D08A2A);border-color:rgba(255,214,150,.9);
+    box-shadow:0 0 14px -2px rgba(232,139,42,.75);
+  }
+  .wg-item input:checked + .wg-box svg{opacity:1;transform:scale(1)}
+  .wg-item-txt{min-width:0}
+  .wg-item-txt b{display:block;font-size:11px;font-weight:800;line-height:1.55;color:#FFE8D2}
+  .wg-item-txt em{display:block;margin-top:3px;font-size:8px;font-style:normal;line-height:1.6;color:rgba(255,214,178,.48)}
+  .wg-btn{
+    width:100%;margin-top:13px;padding:12px;border-radius:24px;border:1px solid rgba(255,225,185,.38);
+    appearance:none;-webkit-appearance:none;font-family:inherit;cursor:pointer;
+    font-size:13px;font-weight:900;letter-spacing:.2em;text-indent:.2em;color:#fff;
+    background:linear-gradient(160deg,#E88B2A,#B85408);
+    box-shadow:0 14px 28px -14px rgba(232,139,42,.8);
+    transition:transform .3s,box-shadow .3s,opacity .3s,filter .3s;
+  }
+  .wg-btn:disabled{opacity:.4;cursor:not-allowed;filter:grayscale(.3)}
+  .wg-btn:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(232,139,42,.55)}
+  .wg-foot{margin-top:8px;text-align:center;font-size:6.5px;letter-spacing:.16em;color:rgba(255,214,178,.4)}
+
   @media (max-width:360px){
     .od-head{padding:8px 14px 9px}
     .od-wrap,.co-wrap{padding:10px 14px 16px}
@@ -2707,6 +2899,12 @@
             </span>
           </div>
         </div>
+      </div>
+      <div class="plat-legend reveal">
+        <span class="lg-m">● 手游端 · 青蓝标识</span>
+        <span class="sep"></span>
+        <span class="lg-p">● 端游 · 钛金标识</span>
+        <span>两端口玩法与价格独立，请按自己的客户端选择分区</span>
       </div>
     </div>
 
@@ -3092,7 +3290,7 @@
   </section>
 
   <!-- ================= 手游端页面 ================= -->
-  <section class="screen" id="mobilePage">
+  <section class="screen plat-mobile" id="mobilePage">
     <div class="statusbar">
       <span>9:41</span>
       <div class="icons">
@@ -3106,7 +3304,7 @@
       <button type="button" class="mp-back" id="mobileBack" aria-label="返回">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
       </button>
-      <div class="mp-head-txt"><h2>手游端</h2><p>MOBILE · 保底套餐</p></div>
+      <div class="mp-head-txt"><h2>手游端<span class="plat-badge">手游 · MOBILE</span></h2><p>MOBILE · 保底套餐</p></div>
     </div>
 
     <div class="mp-hero">
@@ -3683,7 +3881,7 @@
   </section>
 
   <!-- ================= 端游页面 ================= -->
-  <section class="screen" id="pcPage">
+  <section class="screen plat-pc" id="pcPage">
     <div class="statusbar">
       <span>9:41</span>
       <div class="icons">
@@ -3697,7 +3895,7 @@
       <button type="button" class="mp-back" id="pcBack" aria-label="返回">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
       </button>
-      <div class="mp-head-txt"><h2>端游</h2><p>PC · 本周特惠</p></div>
+      <div class="mp-head-txt"><h2>端游<span class="plat-badge">端游 · PC</span></h2><p>PC · 本周特惠</p></div>
     </div>
 
     <div class="mp-hero">
@@ -4594,6 +4792,82 @@
   </nav>
 
   <div class="toast" id="toast">已向「别犹豫」发起咨询</div>
+
+  <!-- ================= 未成年提示弹窗 ================= -->
+  <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
+    <div class="age-mask"></div>
+    <div class="age-card">
+      <button type="button" class="age-close" id="ageClose" aria-label="关闭">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="age-brand">
+        <span class="age-brand-mark">大大怪电竞</span>
+        <span class="age-brand-sub">DADAGUAI ESPORTS</span>
+      </div>
+      <div class="age-title" id="ageGateTitle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3.2 22 20.4H2L12 3.2z" fill="#F5A623"/><path d="M12 9.2v5.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.4" r="1.15" fill="#fff"/></svg>
+        未满18周岁禁止使用
+      </div>
+      <p class="age-desc">本平台服务仅限年满18周岁成年人使用，未满18周岁禁止使用陪玩、下单、聊天及付费功能</p>
+      <label class="age-item">
+        <input type="checkbox" id="ageAdult">
+        <span class="age-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.6 4.6L19 7.5"/></svg></span>
+        <span class="age-item-txt">
+          <b>我已确认本人年满18周岁</b>
+          <em>请承诺您是成年人或在监护人的授权下使用</em>
+        </span>
+      </label>
+      <label class="age-item">
+        <input type="checkbox" id="ageAgree">
+        <span class="age-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.6 4.6L19 7.5"/></svg></span>
+        <span class="age-item-txt">
+          <b>阅读并同意协议政策信息并允许获取我的信息</b>
+          <em>请阅读并同意《隐私政策》与《用户协议》</em>
+        </span>
+      </label>
+      <button type="button" class="age-btn" id="ageConfirm" disabled>确认进入</button>
+      <div class="age-foot">大大怪电竞 · 三角洲行动陪玩代练</div>
+    </div>
+  </div>
+
+  <!-- ================= 进入小程序欢迎弹窗 ================= -->
+  <div class="welcome-gate" id="welcomeGate" role="dialog" aria-modal="true" aria-labelledby="wgHello">
+    <div class="wg-mask"></div>
+    <div class="wg-card">
+      <button type="button" class="wg-close" id="wgClose" aria-label="关闭">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="wg-brand">
+        <span class="wg-seal">怪</span>
+        <div class="wg-hello" id="wgHello">欢迎来到大大怪电竞</div>
+        <div class="wg-slogan">三角洲行动<i>|</i>专业陪玩代练<i>|</i>DADAGUAI</div>
+      </div>
+      <div class="wg-divider"></div>
+      <div class="wg-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3.2 22 20.4H2L12 3.2z" fill="#F5A623"/><path d="M12 9.2v5.2" stroke="#2B1B0C" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.4" r="1.15" fill="#2B1B0C"/></svg>
+        未满18周岁禁止使用
+      </div>
+      <p class="wg-desc">本平台服务仅限年满18周岁成年人使用，未满18周岁禁止使用陪玩、下单、聊天及付费功能</p>
+      <label class="wg-item">
+        <input type="checkbox" id="wgAdult">
+        <span class="wg-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.6 4.6L19 7.5"/></svg></span>
+        <span class="wg-item-txt">
+          <b>我已确认本人年满18周岁</b>
+          <em>请承诺您是成年人或在监护人的授权下使用</em>
+        </span>
+      </label>
+      <label class="wg-item">
+        <input type="checkbox" id="wgAgree">
+        <span class="wg-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.6 4.6L19 7.5"/></svg></span>
+        <span class="wg-item-txt">
+          <b>阅读并同意协议政策信息并允许获取我的信息</b>
+          <em>请阅读并同意《隐私政策》与《用户协议》</em>
+        </span>
+      </label>
+      <button type="button" class="wg-btn" id="wgConfirm" disabled>确认进入</button>
+      <div class="wg-foot">大大怪电竞 · 安全 · 高效 · 专业</div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -4619,6 +4893,8 @@
   document.getElementById('backBtn').addEventListener('click', closeDetail);
   document.addEventListener('keydown', e=>{
     if(e.key === 'Escape'){
+      if(app.classList.contains('welcome-open')){ closeWelcomeGate(); return; }
+      if(app.classList.contains('gate-open')){ closeAgeGate(); return; }
       if(app.classList.contains('checkout-open')){ app.classList.remove('checkout-open'); return; }
       if(app.classList.contains('order-open')){ app.classList.remove('order-open'); return; }
       if(app.classList.contains('sins-open')){ app.classList.remove('sins-open'); return; }
@@ -4645,6 +4921,65 @@
     e.stopPropagation();
     showToast('已向「别犹豫」发起咨询');
   });
+
+  /* 未成年提示弹窗 */
+  const ageGate = document.getElementById('ageGate');
+  const ageAdult = document.getElementById('ageAdult');
+  const ageAgree = document.getElementById('ageAgree');
+  const ageConfirm = document.getElementById('ageConfirm');
+  function syncAgeGate(){
+    ageConfirm.disabled = !(ageAdult.checked && ageAgree.checked);
+  }
+  function openAgeGate(){
+    ageAdult.checked = false;
+    ageAgree.checked = false;
+    syncAgeGate();
+    app.classList.add('gate-open');
+  }
+  function closeAgeGate(){
+    app.classList.remove('gate-open');
+  }
+  if(ageGate){
+    ageAdult.addEventListener('change', syncAgeGate);
+    ageAgree.addEventListener('change', syncAgeGate);
+    document.getElementById('ageClose').addEventListener('click', closeAgeGate);
+    ageGate.querySelector('.age-mask').addEventListener('click', closeAgeGate);
+    ageConfirm.addEventListener('click', ()=>{
+      if(ageConfirm.disabled) return;
+      closeAgeGate();
+      showToast('已确认年满18周岁，请核对订单信息');
+    });
+  }
+
+  /* 进入小程序欢迎弹窗 */
+  const welcomeGate = document.getElementById('welcomeGate');
+  const wgAdult = document.getElementById('wgAdult');
+  const wgAgree = document.getElementById('wgAgree');
+  const wgConfirm = document.getElementById('wgConfirm');
+  function syncWelcomeGate(){
+    wgConfirm.disabled = !(wgAdult.checked && wgAgree.checked);
+  }
+  function openWelcomeGate(){
+    wgAdult.checked = false;
+    wgAgree.checked = false;
+    syncWelcomeGate();
+    app.classList.add('welcome-open');
+  }
+  function closeWelcomeGate(){
+    app.classList.remove('welcome-open');
+  }
+  if(welcomeGate){
+    wgAdult.addEventListener('change', syncWelcomeGate);
+    wgAgree.addEventListener('change', syncWelcomeGate);
+    document.getElementById('wgClose').addEventListener('click', closeWelcomeGate);
+    welcomeGate.querySelector('.wg-mask').addEventListener('click', closeWelcomeGate);
+    wgConfirm.addEventListener('click', ()=>{
+      if(wgConfirm.disabled) return;
+      closeWelcomeGate();
+      showToast('欢迎回来，祝你上分顺利！');
+    });
+    setTimeout(openWelcomeGate, 600);
+  }
 
   /* 底部导航 */
   const tabs = Array.from(document.querySelectorAll('.tab'));
@@ -4687,7 +5022,7 @@
       btn.className = 'cat-tab' + (idx === 0 ? ' on' : '');
       btn.textContent = CAT_SHORT[full] || full || ('分区' + (idx + 1));
       const panel = document.createElement('div');
-      panel.className = 'cat-panel' + (idx === 0 ? ' on' : '');
+      panel.className = 'cat-panel plat-mobile' + (idx === 0 ? ' on' : '');
       const clone = sec.cloneNode(true);
       clone.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));
       panel.appendChild(clone);
@@ -5011,6 +5346,7 @@
     document.getElementById('odBuy').addEventListener('click', ()=>{
       app.classList.add('checkout-open');
       checkoutPage.scrollTop = 0;
+      openAgeGate();
     });
     document.getElementById('qtyMinus').addEventListener('click', ()=>setQty(currentOrder.qty - 1));
     document.getElementById('qtyPlus').addEventListener('click', ()=>setQty(currentOrder.qty + 1));
