@@ -3883,7 +3883,7 @@
         <div class="mp-note">大大怪电竞 · 2 档</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="端游·红色乘除单·除法单">
+        <button type="button" class="sf-card" data-pkg="端游·红色乘除单·除法单" data-notice="redcalc">
           <div class="sf-head">
             <span class="tier-price">788<i>R</i></span>
             <span class="tier-safe">保底 <b>1088W</b></span>
@@ -3897,7 +3897,7 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="端游·红色乘除单·乘法单">
+        <button type="button" class="sf-card" data-pkg="端游·红色乘除单·乘法单" data-notice="redcalc">
           <div class="sf-head">
             <span class="tier-price">788<i>R</i></span>
             <span class="tier-safe">保底 <b>100M</b></span>
@@ -3960,6 +3960,12 @@
           <li><span class="od-dot">3</span><span>按套餐保底结算，未达标<b>免费补打</b></span></li>
           <li><span class="od-dot">4</span><span>账号信息全程加密，<b>隐私保护</b></span></li>
         </ul>
+      </div>
+
+      <div class="od-sec" id="odCustomNotice" style="display:none">
+        <div class="od-sec-title">本单下单须知</div>
+        <div class="od-pack-tip">基础保底 <b>5000W</b> · 按玩法结单后若未打满，会继续补满基础保底才真正结单（咋玩都不亏!!）</div>
+        <ul class="od-rules" id="odCustomNoticeList"></ul>
       </div>
 
       <div class="od-sec">
@@ -4735,6 +4741,13 @@
     note: document.getElementById('coNote')
   };
   const currentOrder = { name:'', price:0, guarantee:'', qty:1, rate:1, tip:0, server:'微信区', booster:'自动安排' };
+  const orderNotices = {
+    redcalc: [
+      '只计算撤离成功的对局，出红优先放入安全箱。',
+      '板板不可以私藏红，否则会减少对应保底或直接结单。',
+      '撤离失败保险没塞够 70W 算炸单；打手双倒、老板兜底杀 2 个及 2 个以上算炸单；炸单一把 <b>+60W</b> 保底。'
+    ]
+  };
   const fmtMoney = n => Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/0+$/,'').replace(/\.$/,'');
   const boosters = Array.from(document.querySelectorAll('#boosterGrid [data-booster]'));
   const serverChips = Array.from(document.querySelectorAll('#serverChips [data-server]'));
@@ -4827,6 +4840,16 @@
       ruleLines[1].innerHTML = '真人打手全程护航，<b>不挂机 · 不掉线</b>';
       ruleLines[2].innerHTML = '按套餐保底结算，未达标<b>免费补打</b>';
       ruleLines[3].innerHTML = '账号信息全程加密，<b>隐私保护</b>';
+    }
+
+    const noticeBox = document.getElementById('odCustomNotice');
+    const noticeList = document.getElementById('odCustomNoticeList');
+    const notice = card.dataset.notice ? orderNotices[card.dataset.notice] : null;
+    if(notice && noticeBox && noticeList){
+      noticeList.innerHTML = notice.map((t, i)=>'<li><span class="od-dot">' + (i + 1) + '</span><span>' + t + '</span></li>').join('');
+      noticeBox.style.display = '';
+    } else if(noticeBox){
+      noticeBox.style.display = 'none';
     }
 
     co.img.src = img;
