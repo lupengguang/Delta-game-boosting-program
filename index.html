@@ -2547,6 +2547,141 @@
   .wg-btn:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(232,139,42,.55)}
   .wg-foot{margin-top:8px;text-align:center;font-size:6.5px;letter-spacing:.16em;color:rgba(255,214,178,.4)}
 
+  /* ================= 客服 / 权益 / 入驻 子页面 ================= */
+  .subpage{
+    z-index:33;opacity:0;transform:translateX(102%);padding-bottom:24px;
+    background:radial-gradient(55% 24% at 8% 5%,rgba(255,205,150,.24),transparent 70%),
+      radial-gradient(45% 22% at 96% 38%,rgba(255,205,150,.18),transparent 72%),#fff;
+  }
+  #app.svc-open #svcPage,#app.vip-open #vipPage,#app.join-open #joinPage,#app.after-open #afterPage{opacity:1;transform:translateX(0)}
+  #app.svc-open #home,#app.vip-open #home,#app.join-open #home,#app.after-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
+  #app.svc-open .tabbar,#app.vip-open .tabbar,#app.join-open .tabbar,#app.after-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
+  .subpage .statusbar{color:#2B1B0C;text-shadow:0 1px 0 rgba(255,255,255,.85)}
+  .sub-tag{
+    margin-left:auto;display:inline-flex;align-items:center;gap:4px;
+    font-size:7.5px;font-weight:800;letter-spacing:.08em;color:#086B7D;
+    background:rgba(14,147,171,.1);border:1px solid rgba(14,147,171,.32);padding:3px 8px;border-radius:9px;
+  }
+  .sub-tag i{width:4px;height:4px;border-radius:50%;background:#0E93AB;box-shadow:0 0 6px #0E93AB;animation:svcPulse 1.8s infinite}
+  @keyframes svcPulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+  /* 在线客服 */
+  .chat-wrap{display:flex;flex-direction:column;gap:10px;padding:12px 18px 18px;min-height:calc(100% - 118px)}
+  .chat-note{
+    padding:8px 10px;border-radius:10px;text-align:center;
+    font-size:8px;line-height:1.6;color:#452C0A;
+    background:rgba(255,205,150,.26);border:1px dashed rgba(210,97,14,.3);
+  }
+  .chat-list{display:flex;flex-direction:column;gap:10px;padding:2px 0}
+  .chat-row{display:flex;gap:8px;align-items:flex-start}
+  .chat-row.me{flex-direction:row-reverse}
+  .chat-ava{
+    flex:0 0 26px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+    font-size:10px;font-weight:900;color:#fff;background:linear-gradient(160deg,#E88B2A,#B85408);
+    box-shadow:0 6px 12px -6px rgba(156,71,6,.7);
+  }
+  .chat-row.me .chat-ava{background:linear-gradient(160deg,#5C5650,#2E2A26)}
+  .chat-msg{
+    max-width:78%;padding:9px 11px;border-radius:12px;
+    font-size:9px;line-height:1.7;color:#2B1B0C;
+    background:#fff;border:1px solid rgba(255,205,150,.75);
+    box-shadow:0 10px 20px -16px rgba(156,71,6,.5);
+  }
+  .chat-msg b{display:block;font-size:7.5px;color:#9C7A50;margin-bottom:3px;letter-spacing:.04em}
+  .chat-row.me .chat-msg{background:linear-gradient(160deg,#E88B2A,#C4690B);border-color:rgba(255,255,255,.4);color:#fff}
+  .chat-quick{display:flex;flex-wrap:wrap;gap:6px}
+  .chat-quick button{
+    appearance:none;-webkit-appearance:none;font-family:inherit;cursor:pointer;
+    font-size:8px;font-weight:700;color:#8A4512;padding:5px 9px;border-radius:12px;
+    border:1px solid rgba(210,97,14,.32);background:rgba(255,255,255,.88);
+    transition:background .25s,color .25s,transform .25s,border-color .25s;
+  }
+  .chat-quick button:hover{background:linear-gradient(160deg,#E88B2A,#B85408);color:#fff;border-color:transparent;transform:translateY(-1px)}
+  .chat-bar{
+    position:sticky;bottom:0;display:flex;gap:8px;margin-top:auto;padding:10px 0 2px;
+    background:linear-gradient(180deg,rgba(255,255,255,0),#fff 38%);
+  }
+  .chat-bar .co-input{flex:1;padding:10px 12px;border-radius:12px;font-size:9px}
+  .chat-send{
+    flex:0 0 auto;padding:0 18px;border-radius:12px;border:1px solid rgba(255,255,255,.5);
+    appearance:none;-webkit-appearance:none;font-family:inherit;cursor:pointer;
+    font-size:10px;font-weight:900;letter-spacing:.06em;color:#fff;
+    background:linear-gradient(160deg,#E88B2A,#B85408);
+    box-shadow:0 10px 20px -12px rgba(156,71,6,.75);
+    transition:transform .25s,box-shadow .25s;
+  }
+  .chat-send:hover{transform:translateY(-1px);box-shadow:0 0 18px rgba(210,97,14,.45)}
+
+  /* 老板权益 */
+  .vip-hero{
+    position:relative;overflow:hidden;padding:15px 14px 13px;border-radius:16px;color:#FFE7CC;
+    background:linear-gradient(150deg,#241C13,#120D08 58%,#1B1207);
+    border:1px solid rgba(255,205,150,.4);
+    box-shadow:0 22px 44px -26px rgba(0,0,0,.85);
+  }
+  .vip-hero::after{
+    content:"";position:absolute;top:-40%;right:-14%;width:60%;height:150%;
+    background:radial-gradient(closest-side,rgba(232,139,42,.35),transparent);
+    pointer-events:none;
+  }
+  .vh-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .vip-hero h3{margin:0;font-size:17px;font-weight:900;letter-spacing:.06em;color:#FFE7CC}
+  .vh-lv{font-size:7.5px;font-weight:800;letter-spacing:.14em;color:#F5C070;border:1px solid rgba(245,192,112,.5);padding:3px 8px;border-radius:10px}
+  .vip-hero p{margin:7px 0 0;font-size:8.5px;line-height:1.7;color:rgba(255,231,204,.72)}
+  .vip-prog{margin-top:12px;height:6px;border-radius:6px;background:rgba(255,231,204,.16);overflow:hidden}
+  .vip-prog i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#E88B2A,#F5C070);box-shadow:0 0 12px rgba(232,139,42,.6)}
+  .vip-prog-txt{margin-top:6px;display:flex;justify-content:space-between;font-size:7.5px;color:rgba(255,231,204,.6)}
+  .vip-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .vip-item{
+    padding:11px 10px;border-radius:12px;background:rgba(255,255,255,.92);
+    border:1px solid rgba(255,205,150,.7);
+    box-shadow:0 12px 24px -20px rgba(156,71,6,.5);
+  }
+  .vip-item .ic{
+    width:24px;height:24px;border-radius:8px;display:grid;place-items:center;margin-bottom:7px;
+    color:#B85408;background:rgba(255,205,150,.4);border:1px solid rgba(210,97,14,.2);
+  }
+  .vip-item b{display:block;font-size:10px;font-weight:900;color:#2B1B0C;letter-spacing:.01em}
+  .vip-item small{display:block;margin-top:3px;font-size:7.5px;line-height:1.55;color:#7A5A34}
+  .vip-tier{display:flex;flex-direction:column;gap:6px}
+  .vip-tier div{
+    display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:10px;
+    font-size:8.5px;color:#452C0A;background:rgba(255,255,255,.85);border:1px solid rgba(255,205,150,.55);
+  }
+  .vip-tier .tg{flex:0 0 auto;font-size:7.5px;font-weight:800;padding:3px 8px;border-radius:8px;color:#fff;letter-spacing:.04em}
+  .vip-tier .t1 .tg{background:linear-gradient(160deg,#B9C2C8,#7C878E)}
+  .vip-tier .t2 .tg{background:linear-gradient(160deg,#E7C067,#B98524)}
+  .vip-tier .t3 .tg{background:linear-gradient(160deg,#4A4038,#1C1611)}
+
+  /* 考核入驻 */
+  .join-steps{display:flex;gap:6px}
+  .join-steps div{
+    flex:1;padding:9px 6px;border-radius:10px;text-align:center;
+    background:rgba(255,255,255,.9);border:1px solid rgba(255,205,150,.6);
+  }
+  .join-steps b{display:block;font-size:8px;font-weight:900;color:#B85408;letter-spacing:.06em}
+  .join-steps span{display:block;margin-top:3px;font-size:7.5px;line-height:1.4;color:#5B4023}
+  .join-req{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+  .join-req li{position:relative;padding-left:15px;font-size:8.5px;line-height:1.7;color:#452C0A}
+  .join-req li::before{
+    content:"";position:absolute;left:2px;top:5px;width:5px;height:5px;border-radius:50%;
+    background:linear-gradient(160deg,#E88B2A,#B85408);box-shadow:0 0 6px rgba(232,139,42,.6);
+  }
+  textarea.co-input{resize:none;min-height:66px;line-height:1.7}
+
+  /* 售后客服 */
+  .as-flow{display:flex;flex-direction:column;margin-top:2px}
+  .as-step{position:relative;padding:0 0 14px 20px;font-size:8.5px;line-height:1.6;color:#452C0A}
+  .as-step::before{
+    content:"";position:absolute;left:4px;top:2px;width:8px;height:8px;border-radius:50%;
+    background:#fff;border:1.5px solid rgba(210,97,14,.5);
+  }
+  .as-step::after{content:"";position:absolute;left:8px;top:12px;bottom:0;width:1px;background:rgba(210,97,14,.22)}
+  .as-step:last-child{padding-bottom:0}
+  .as-step:last-child::after{display:none}
+  .as-step b{font-weight:900;color:#2B1B0C}
+  .as-step.done::before{background:linear-gradient(160deg,#E88B2A,#B85408);border-color:transparent;box-shadow:0 0 8px rgba(232,139,42,.55)}
+
   @media (max-width:360px){
     .od-head{padding:8px 14px 9px}
     .od-wrap,.co-wrap{padding:10px 14px 16px}
@@ -4438,6 +4573,258 @@
     </div>
   </section>
 
+  <!-- ================= 在线客服 ================= -->
+  <section class="screen subpage" id="svcPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="svcBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>在线客服</h2><p>ONLINE SERVICE</p></div>
+      <span class="sub-tag"><i></i>在线</span>
+    </div>
+
+    <div class="chat-wrap">
+      <div class="chat-note">大大怪电竞 · 7×24 小时在线，平均 30 秒内响应</div>
+      <div class="chat-list" id="chatList">
+        <div class="chat-row">
+          <div class="chat-ava">客</div>
+          <div class="chat-msg">
+            <b>大大怪客服 · 小怪</b>
+            <p>老板您好，欢迎来到大大怪电竞！我是您的专属客服小怪，请问需要咨询哪个玩法的价格、规则或售后问题？</p>
+          </div>
+        </div>
+      </div>
+      <div class="chat-quick" id="chatQuick">
+        <button type="button" data-q="手游端保底套餐怎么下单？">手游保底怎么下单</button>
+        <button type="button" data-q="端游本周特惠有哪些档位？">端游特惠档位</button>
+        <button type="button" data-q="金弹单的规则怎么算？">金弹单规则</button>
+        <button type="button" data-q="我想申请售后">申请售后</button>
+      </div>
+      <div class="chat-bar">
+        <input id="chatInput" class="co-input" type="text" placeholder="请输入要咨询的问题" autocomplete="off">
+        <button type="button" class="chat-send" id="chatSend">发送</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 老板权益 ================= -->
+  <section class="screen subpage" id="vipPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="vipBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>老板权益</h2><p>BOSS BENEFITS</p></div>
+    </div>
+
+    <div class="mp-sec">
+      <div class="vip-hero">
+        <div class="vh-top"><h3>黑金老板卡</h3><span class="vh-lv">BLACK GOLD</span></div>
+        <p>累计消费自动升级，等级权益长期有效，可叠加活动优惠使用。</p>
+        <div class="vip-prog"><i style="width:48%"></i></div>
+        <div class="vip-prog-txt"><span>当前累计 ¥2,860</span><span>距下一等级 ¥6,000</span></div>
+      </div>
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head"><div class="mp-sec-title">专属权益 <span class="chip">VIP</span></div></div>
+      <div class="vip-grid">
+        <div class="vip-item">
+          <span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9.4-9.4A6 6 0 0 1 12 4a6 6 0 0 1 8.6 9.4z"/><circle cx="12" cy="10" r="2.2"/></svg></span>
+          <b>专属折扣</b>
+          <small>全店套餐 95 折起，活动单同享</small>
+        </div>
+        <div class="vip-item">
+          <span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 12h6l-1 8 9-12h-6l1-8z"/></svg></span>
+          <b>优先派单</b>
+          <small>高峰时段优先匹配金牌打手</small>
+        </div>
+        <div class="vip-item">
+          <span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="2.6" y="13" width="4" height="7" rx="1.6"/><rect x="17.4" y="13" width="4" height="7" rx="1.6"/></svg></span>
+          <b>专属客服</b>
+          <small>1 对 1 客服，全程跟进每单</small>
+        </div>
+        <div class="vip-item">
+          <span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
+          <b>炸单先行赔付</b>
+          <small>核实炸单后 24 小时内补偿</small>
+        </div>
+        <div class="vip-item">
+          <span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 8h20v4H2z"/><path d="M12 8v13"/><path d="M12 8S9.5 3 7 4.5 8.5 8 12 8s7.5.5 5-3S12 8 12 8z"/></svg></span>
+          <b>生日礼包</b>
+          <small>生日当月领取专属红包与折扣</small>
+        </div>
+        <div class="vip-item">
+          <span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+          <b>新玩法抢先</b>
+          <small>新活动开放前优先体验名额</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head"><div class="mp-sec-title">等级说明 <span class="chip">TIER</span></div></div>
+      <div class="vip-tier">
+        <div class="t1"><span class="tg">白银老板</span><span>累计消费 ¥1,000 · 全店 98 折 + 优先派单</span></div>
+        <div class="t2"><span class="tg">黄金老板</span><span>累计消费 ¥3,000 · 全店 96 折 + 专属客服</span></div>
+        <div class="t3"><span class="tg">黑金老板</span><span>累计消费 ¥6,000 · 全店 95 折 + 炸单先行赔付</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 考核入驻 ================= -->
+  <section class="screen subpage" id="joinPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="joinBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>考核入驻</h2><p>JOIN US · 打手招募</p></div>
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head"><div class="mp-sec-title">入驻流程 <span class="chip">STEPS</span></div></div>
+      <div class="join-steps">
+        <div><b>01</b><span>填写资料</span></div>
+        <div><b>02</b><span>客服初审</span></div>
+        <div><b>03</b><span>实战考核</span></div>
+        <div><b>04</b><span>签约接单</span></div>
+      </div>
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head"><div class="mp-sec-title">考核要求 <span class="chip">RULE</span></div></div>
+      <ul class="join-req">
+        <li>手游端 / 端游均可报名，需自备常用账号与设备，账号状态正常。</li>
+        <li>手游需达到王牌以上段位，端游需有稳定带出千万物资的实战记录。</li>
+        <li>考核由俱乐部统一安排 3 局实战，重点看带出率、沟通与守时。</li>
+        <li>无外挂、无代练违规记录，需配合客服与老板拉群沟通。</li>
+      </ul>
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head"><div class="mp-sec-title">报名资料 <span class="chip">FORM</span></div></div>
+      <div class="co-group">
+        <label class="co-group-label" for="joinName">游戏昵称</label>
+        <input id="joinName" class="co-input" type="text" placeholder="请输入游戏内昵称" autocomplete="off">
+      </div>
+      <div class="co-group">
+        <label class="co-group-label" for="joinContact">联系方式</label>
+        <input id="joinContact" class="co-input" type="text" placeholder="微信号或 QQ 号，方便客服联系" autocomplete="off">
+      </div>
+      <div class="co-group">
+        <div class="co-group-label">报名端口</div>
+        <div class="co-chips" id="joinPlat">
+          <button type="button" class="co-chip on" data-plat="手游端">手游端</button>
+          <button type="button" class="co-chip" data-plat="端游">端游</button>
+        </div>
+      </div>
+      <div class="co-group">
+        <div class="co-group-label">擅长玩法</div>
+        <div class="co-chips" id="joinMode">
+          <button type="button" class="co-chip on" data-mode="保底带出">保底带出</button>
+          <button type="button" class="co-chip" data-mode="趣味单">趣味单</button>
+          <button type="button" class="co-chip" data-mode="堵桥单">堵桥单</button>
+          <button type="button" class="co-chip" data-mode="陪玩跑刀">陪玩跑刀</button>
+        </div>
+      </div>
+      <div class="co-group">
+        <label class="co-group-label" for="joinIntro">战绩说明</label>
+        <textarea id="joinIntro" class="co-input" placeholder="简单描述近期带出记录、常用地图与可接单时段"></textarea>
+      </div>
+      <div class="co-warn">提交后客服会在 24 小时内联系考核；请勿重复提交。</div>
+      <button type="button" class="od-buy-btn" id="joinSubmit" style="width:100%;margin-top:12px">提交入驻申请</button>
+    </div>
+  </section>
+
+  <!-- ================= 售后客服 ================= -->
+  <section class="screen subpage" id="afterPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="afterBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>售后客服</h2><p>AFTER-SALES · 极速处理</p></div>
+      <span class="sub-tag"><i></i>受理中</span>
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head"><div class="mp-sec-title">售后范围 <span class="chip">SERVICE</span></div></div>
+      <ul class="join-req">
+        <li>未按约定时间开单、打手态度问题，客服核实后重新安排或退款。</li>
+        <li>炸单按活动规则补偿；物资缺失可申请核查带出截图。</li>
+        <li>账号异常、误单等紧急问题，请直接在在线客服呼叫人工。</li>
+      </ul>
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head"><div class="mp-sec-title">提交售后工单 <span class="chip">TICKET</span></div></div>
+      <div class="co-group">
+        <label class="co-group-label" for="asOrder">订单号</label>
+        <input id="asOrder" class="co-input" type="text" placeholder="请输入订单号，可在「订单」中查看" autocomplete="off">
+      </div>
+      <div class="co-group">
+        <div class="co-group-label">问题类型</div>
+        <div class="co-chips" id="asType">
+          <button type="button" class="co-chip on" data-type="未按时服务">未按时服务</button>
+          <button type="button" class="co-chip" data-type="服务态度">服务态度</button>
+          <button type="button" class="co-chip" data-type="物资缺失">物资缺失</button>
+          <button type="button" class="co-chip" data-type="账号异常">账号异常</button>
+          <button type="button" class="co-chip" data-type="其他问题">其他问题</button>
+        </div>
+      </div>
+      <div class="co-group">
+        <label class="co-group-label" for="asDesc">问题描述</label>
+        <textarea id="asDesc" class="co-input" placeholder="请描述发生时间、对局情况与诉求，便于客服快速核实"></textarea>
+      </div>
+      <div class="co-warn">提交后客服会在 30 分钟内响应，7×24 小时在线处理。</div>
+      <button type="button" class="od-buy-btn" id="asSubmit" style="width:100%;margin-top:12px">提交售后工单</button>
+    </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head"><div class="mp-sec-title">处理进度 <span class="chip">TRACK</span></div><div class="mp-note">示例工单</div></div>
+      <div class="as-flow">
+        <div class="as-step done"><b>已提交工单</b><br>老板提交售后需求，系统生成工单编号</div>
+        <div class="as-step done"><b>客服核实中</b><br>调取订单记录与带出截图，联系双方确认</div>
+        <div class="as-step"><b>给出处理方案</b><br>补单 / 部分退款 / 全额退款，24 小时内答复</div>
+        <div class="as-step"><b>完成售后</b><br>老板确认结果，工单关闭并计入打手考核</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= 金弹单活动页 ================= -->
   <section class="screen" id="goldPage">
     <div class="statusbar">
@@ -4895,6 +5282,10 @@
     if(e.key === 'Escape'){
       if(app.classList.contains('welcome-open')){ closeWelcomeGate(); return; }
       if(app.classList.contains('gate-open')){ closeAgeGate(); return; }
+      if(app.classList.contains('svc-open')){ app.classList.remove('svc-open'); return; }
+      if(app.classList.contains('vip-open')){ app.classList.remove('vip-open'); return; }
+      if(app.classList.contains('join-open')){ app.classList.remove('join-open'); return; }
+      if(app.classList.contains('after-open')){ app.classList.remove('after-open'); return; }
       if(app.classList.contains('checkout-open')){ app.classList.remove('checkout-open'); return; }
       if(app.classList.contains('order-open')){ app.classList.remove('order-open'); return; }
       if(app.classList.contains('sins-open')){ app.classList.remove('sins-open'); return; }
@@ -5074,11 +5465,6 @@
   /* 我的页入口反馈 */
   document.querySelectorAll('[data-pf]').forEach(el=>{
     el.addEventListener('click', ()=>showToast('「' + el.dataset.pf + '」功能开发中'));
-  });
-
-  /* 首页服务入口反馈 */
-  document.querySelectorAll('[data-svc]').forEach(el=>{
-    el.addEventListener('click', ()=>showToast('「' + el.dataset.svc + '」功能开发中'));
   });
 
   /* 手游端 / 端游入口反馈 */
@@ -5389,6 +5775,110 @@
       if(!co.account.value.trim()){ showToast('请填写游戏ID'); co.account.focus(); return; }
       if(!co.contact.value.trim()){ showToast('请填写联系方式'); co.contact.focus(); return; }
       showToast('订单提交成功，客服将尽快联系你');
+    });
+  }
+
+  /* 客服 / 权益 / 入驻 / 售后 子页面 */
+  const subPages = [
+    {cls:'svc-open', back:'svcBack'},
+    {cls:'vip-open', back:'vipBack'},
+    {cls:'join-open', back:'joinBack'},
+    {cls:'after-open', back:'afterBack'}
+  ];
+  subPages.forEach(item=>{
+    const back = document.getElementById(item.back);
+    if(back) back.addEventListener('click', ()=> app.classList.remove(item.cls));
+  });
+  const svcEntryMap = {'在线客服':'svc-open','老板权益':'vip-open','考核入住':'join-open','售后客服':'after-open'};
+  document.querySelectorAll('[data-svc]').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const cls = svcEntryMap[el.dataset.svc];
+      if(!cls) return;
+      app.classList.add(cls);
+      const page = document.getElementById(cls.replace('-open', 'Page'));
+      if(page) page.scrollTop = 0;
+    });
+  });
+
+  /* 在线客服对话 */
+  const chatList = document.getElementById('chatList');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  function chatReply(text){
+    if(/售后|退款|投诉|赔偿/.test(text)) return '已为您转接售后专员：请提供订单号与问题截图，我们会按「售后处理流程」在 30 分钟内响应、24 小时内给出方案。';
+    if(/金弹/.test(text)) return '金弹单：398R 保底 2888W 带出 1000 发纯金弹，688R 保底 5888W 带出 2000 发；心/泪/复苏可抵 200 发，炸单 +50 发，具体见金弹单活动页。';
+    if(/姜饼/.test(text)) return '拯救姜饼人活动共三档：388R / 688R / 1488R，姜饼人达标可兑换额外保底，详情可在活动页查看。';
+    if(/端游|PC/i.test(text)) return '端游本周特惠 88R 起（688W 保底），航天一日游趣味单 688R - 2888R 共五档，可在首页「端游」专区直接点单。';
+    if(/手游/.test(text)) return '手游端保底套餐 78R 起，航天/巴克、监狱多档可选，点套餐即可下单，客服会全程跟进。';
+    if(/下单|价格|多少|优惠/.test(text)) return '您可以在首页选择「手游端 / 端游」专区查看全部档位，点套餐进入下单页即可；老板权益等级还能享受额外折扣哦。';
+    return '已经记下老板的问题啦，客服小怪马上为您核实～也可以直接留下联系方式，我们主动联系您。';
+  }
+  function pushChat(text, me){
+    if(!chatList) return;
+    const row = document.createElement('div');
+    row.className = 'chat-row' + (me ? ' me' : '');
+    const ava = document.createElement('div');
+    ava.className = 'chat-ava';
+    ava.textContent = me ? '我' : '客';
+    const msg = document.createElement('div');
+    msg.className = 'chat-msg';
+    if(!me){
+      const name = document.createElement('b');
+      name.textContent = '大大怪客服 · 小怪';
+      msg.appendChild(name);
+    }
+    const p = document.createElement('p');
+    p.textContent = text;
+    msg.appendChild(p);
+    row.appendChild(ava);
+    row.appendChild(msg);
+    chatList.appendChild(row);
+    row.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+  function sendChat(text){
+    if(!text || !text.trim()) return;
+    pushChat(text.trim(), true);
+    if(chatInput) chatInput.value = '';
+    setTimeout(()=>pushChat(chatReply(text), false), 600);
+  }
+  if(chatSend){
+    chatSend.addEventListener('click', ()=>sendChat(chatInput.value));
+    chatInput.addEventListener('keydown', e=>{
+      if(e.key === 'Enter') sendChat(chatInput.value);
+    });
+    document.querySelectorAll('#chatQuick button').forEach(btn=>{
+      btn.addEventListener('click', ()=>sendChat(btn.dataset.q));
+    });
+  }
+
+  /* 子页面选项与提交 */
+  function bindChipGroup(id){
+    const group = document.getElementById(id);
+    if(!group) return;
+    group.querySelectorAll('.co-chip').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        group.querySelectorAll('.co-chip').forEach(b=>b.classList.toggle('on', b === btn));
+      });
+    });
+  }
+  ['joinPlat','joinMode','asType'].forEach(bindChipGroup);
+
+  const joinSubmit = document.getElementById('joinSubmit');
+  if(joinSubmit){
+    joinSubmit.addEventListener('click', ()=>{
+      const name = document.getElementById('joinName');
+      const contact = document.getElementById('joinContact');
+      if(!name.value.trim()){ showToast('请填写游戏昵称'); name.focus(); return; }
+      if(!contact.value.trim()){ showToast('请填写联系方式'); contact.focus(); return; }
+      showToast('入驻申请已提交，客服将在 24 小时内联系你');
+    });
+  }
+  const asSubmit = document.getElementById('asSubmit');
+  if(asSubmit){
+    asSubmit.addEventListener('click', ()=>{
+      const order = document.getElementById('asOrder');
+      if(!order.value.trim()){ showToast('请填写订单号'); order.focus(); return; }
+      showToast('售后工单已提交，客服将在 30 分钟内响应');
     });
   }
 
