@@ -2410,13 +2410,6 @@
     transition:transform .38s cubic-bezier(.22,.9,.18,1);
   }
   #app.gate-open .age-card{transform:translateY(0) scale(1)}
-  .age-close{
-    position:absolute;top:9px;right:9px;width:26px;height:26px;border-radius:50%;
-    appearance:none;-webkit-appearance:none;cursor:pointer;display:grid;place-items:center;
-    color:#8A5A22;background:rgba(255,255,255,.72);border:1px solid rgba(210,97,14,.28);
-    transition:background .3s,transform .3s,color .3s;
-  }
-  .age-close:hover{background:#fff;color:#B85408;transform:rotate(90deg)}
   .age-brand{display:flex;flex-direction:column;align-items:center;gap:3px}
   .age-brand-mark{
     font-size:12px;font-weight:900;letter-spacing:.18em;color:#2B1B0C;
@@ -2487,13 +2480,6 @@
     content:"";position:absolute;top:0;left:16px;right:16px;height:1px;
     background:linear-gradient(90deg,transparent,rgba(255,205,150,.75),transparent);
   }
-  .wg-close{
-    position:absolute;top:9px;right:9px;width:26px;height:26px;border-radius:50%;
-    appearance:none;-webkit-appearance:none;cursor:pointer;display:grid;place-items:center;
-    color:#E7BE8C;background:rgba(255,228,200,.08);border:1px solid rgba(255,205,150,.3);
-    transition:background .3s,transform .3s,color .3s;
-  }
-  .wg-close:hover{background:rgba(255,228,200,.18);color:#FFE3C0;transform:rotate(90deg)}
   .wg-brand{display:flex;flex-direction:column;align-items:center;gap:4px}
   .wg-seal{
     width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
@@ -5184,9 +5170,6 @@
   <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
     <div class="age-mask"></div>
     <div class="age-card">
-      <button type="button" class="age-close" id="ageClose" aria-label="关闭">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
       <div class="age-brand">
         <span class="age-brand-mark">大大怪电竞</span>
         <span class="age-brand-sub">DADAGUAI ESPORTS</span>
@@ -5221,9 +5204,6 @@
   <div class="welcome-gate" id="welcomeGate" role="dialog" aria-modal="true" aria-labelledby="wgHello">
     <div class="wg-mask"></div>
     <div class="wg-card">
-      <button type="button" class="wg-close" id="wgClose" aria-label="关闭">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
       <div class="wg-brand">
         <span class="wg-seal">怪</span>
         <div class="wg-hello" id="wgHello">欢迎来到大大怪电竞</div>
@@ -5333,7 +5313,6 @@
   if(ageGate){
     ageAdult.addEventListener('change', syncAgeGate);
     ageAgree.addEventListener('change', syncAgeGate);
-    document.getElementById('ageClose').addEventListener('click', closeAgeGate);
     ageGate.querySelector('.age-mask').addEventListener('click', closeAgeGate);
     ageConfirm.addEventListener('click', ()=>{
       if(ageConfirm.disabled) return;
@@ -5362,7 +5341,6 @@
   if(welcomeGate){
     wgAdult.addEventListener('change', syncWelcomeGate);
     wgAgree.addEventListener('change', syncWelcomeGate);
-    document.getElementById('wgClose').addEventListener('click', closeWelcomeGate);
     welcomeGate.querySelector('.wg-mask').addEventListener('click', closeWelcomeGate);
     wgConfirm.addEventListener('click', ()=>{
       if(wgConfirm.disabled) return;
