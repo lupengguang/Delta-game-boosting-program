@@ -3995,6 +3995,49 @@
         </button>
       </div>
     </div>
+
+    <div class="mp-sec">
+      <div class="mp-sec-head">
+        <div class="mp-sec-title">趣味单 <span class="chip">FUN</span></div>
+        <div class="mp-note">双玩法 · 2 档</div>
+      </div>
+      <div class="fun-list">
+        <div class="fun-card" data-pkg="端游·咱俩练练">
+          <div class="fun-head">
+            <span class="fun-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.8-3.6 3-5.3 5.5-5.3s4.7 1.7 5.5 5.3"/><circle cx="17" cy="9" r="2.3"/><path d="M15.2 14.2c2.1.2 3.5 1.6 4.1 3.9"/></svg></span>
+            <div class="fun-title-wrap"><div class="fun-title">咱俩练练</div><div class="fun-sub">老板 VS 双打手</div></div>
+            <span class="fun-price">168R</span>
+          </div>
+          <ol class="fun-rules">
+            <li><span class="fr-no">1</span><span>老板和两位打手轮流 <strong>1V1</strong></span></li>
+            <li><span class="fr-no">2</span><span>一局 7 回合，两局共 14 回合，双方同武器装备子弹</span></li>
+            <li><span class="fr-no">3</span><span>老板赢一回合 <strong>+200W</strong> 保底，输一回合 <strong>-100W</strong> 保底</span></li>
+            <li><span class="fr-no">4</span><span>最终保底不得低于 <strong>1288W</strong></span></li>
+            <li><span class="fr-no">5</span><span>回合结束后去绝密地图打累计保底</span></li>
+          </ol>
+          <div class="fun-foot">
+            <span class="fun-safe">初始保底 <b>1688W</b></span>
+            <button type="button" class="fun-buy" data-fun="咱俩练练">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="fun-card" data-pkg="端游·你俩练练">
+          <div class="fun-head">
+            <span class="fun-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
+            <div class="fun-title-wrap"><div class="fun-title">你俩练练</div><div class="fun-sub">双打手 1V1</div></div>
+            <span class="fun-price">188R</span>
+          </div>
+          <ol class="fun-rules">
+            <li><span class="fr-no">1</span><span>两位打手进行 <strong>1V1</strong> 单挑</span></li>
+            <li><span class="fr-no">2</span><span>老板在游戏开始前与客服进行押宝</span></li>
+            <li><span class="fr-no">3</span><span>押对保底 <strong>+1000W</strong></span></li>
+          </ol>
+          <div class="fun-foot">
+            <span class="fun-safe">初始保底 <b>1888W</b></span>
+            <button type="button" class="fun-buy" data-fun="你俩练练">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ================= 订单详情页 ================= -->
@@ -4793,6 +4836,12 @@
     });
     pcPage.querySelectorAll('[data-pkg]').forEach(el=>{
       el.addEventListener('click', ()=>openOrder(el));
+    });
+    pcPage.querySelectorAll('[data-fun]').forEach(el=>{
+      el.addEventListener('click', e=>{
+        e.stopPropagation();
+        openOrder(el.closest('.fun-card') || el);
+      });
     });
   }
 
