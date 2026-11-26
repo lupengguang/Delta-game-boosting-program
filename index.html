@@ -965,13 +965,28 @@
   .tp-tip{color:#452C0A}
   .tp-tip b{color:var(--ink)}
 
-  /* 分类页：左侧分区导航 + 右侧内容 */
+  /* 分类页：平台切换 + 左侧分区导航 + 右侧内容 */
   .cat-body{
     position:absolute;left:0;right:0;top:120px;bottom:0;
-    display:none;overflow:hidden;
+    display:none;flex-direction:column;overflow:hidden;
   }
   #tabPage.cat-on .tp-body{display:none}
   #tabPage.cat-on .cat-body{display:flex}
+  .cat-plats{flex:0 0 auto;display:flex;gap:8px;padding:2px 14px 10px 12px}
+  .cat-plat{
+    flex:1;appearance:none;-webkit-appearance:none;font-family:inherit;cursor:pointer;
+    padding:9px 0;border-radius:10px;font-size:11px;font-weight:800;letter-spacing:.06em;
+    color:#452C0A;background:rgba(255,255,255,.66);border:1px solid rgba(232,139,42,.35);
+    box-shadow:0 6px 14px -12px rgba(156,71,6,.35);
+    transition:background .3s,color .3s,border-color .3s,box-shadow .3s;
+  }
+  .cat-plat:hover{color:var(--ink);border-color:rgba(210,97,14,.5)}
+  .cat-plat.on{
+    background:linear-gradient(160deg,#E88B2A,#B85408);
+    border-color:rgba(255,255,255,.4);color:#fff;
+    box-shadow:0 8px 16px -9px rgba(156,71,6,.6);
+  }
+  .cat-main{flex:1;min-height:0;display:flex;overflow:hidden}
   .cat-tabs{
     flex:0 0 86px;overflow-y:auto;scrollbar-width:none;
     padding:4px 0 100px 12px;display:flex;flex-direction:column;gap:8px;
@@ -1001,6 +1016,8 @@
   .cat-content .mp-sec{padding:0 0 16px}
   .cat-content .mp-sec:last-child{padding-bottom:0}
   @media (max-width:360px){
+    .cat-plats{padding:2px 10px 8px 8px;gap:6px}
+    .cat-plat{font-size:10px;padding:8px 0}
     .cat-tabs{flex-basis:76px;padding-left:10px;gap:6px}
     .cat-tab{font-size:9px;padding:9px 6px}
     .cat-content{padding:2px 10px 100px 8px}
@@ -3212,8 +3229,14 @@
       <div class="tp-tip">点击底部「<b>首页</b>」返回</div>
     </div>
     <div class="cat-body" id="categoryList">
-      <div class="cat-tabs" id="categoryTabs"></div>
-      <div class="cat-content" id="categoryContent"></div>
+      <div class="cat-plats" id="categoryPlats">
+        <button type="button" class="cat-plat on" data-plat-tab="mobile">手游</button>
+        <button type="button" class="cat-plat" data-plat-tab="pc">端游</button>
+      </div>
+      <div class="cat-main">
+        <div class="cat-tabs" id="categoryTabs"></div>
+        <div class="cat-content" id="categoryContent"></div>
+      </div>
     </div>
   </section>
 
@@ -5367,19 +5390,37 @@
     '保底套餐':'保底套餐',
     '普通订单':'普通订单',
     '机密清图':'机密清图',
+    '机密清图单':'机密清图',
     '堵桥单':'堵桥单',
     '三角洲环太平洋单':'环太平洋',
     '手游趣味单':'趣味单',
     '手游端趣味玩法系列':'趣味系列',
     '枪械单':'枪械单'
   };
-  function buildCategory(){
+  let catPlat = 'mobile';
+  function catLabel(full, note){
+    if(full === '本周特惠'){
+      if(/VIP/.test(note)) return '高保底';
+      if(/每日|限点/.test(note)) return '每日特惠';
+    }
+    if(full === '航天一日游') return '一日游';
+    if(full === '红色乘除单') return '红色乘除';
+    return CAT_SHORT[full] || full;
+  }
+  function buildCategory(platform){
     const tabsBox = document.getElementById('categoryTabs');
     const content = document.getElementById('categoryContent');
-    if(!tabsBox || !content || tabsBox.dataset.built === '1' || !mobilePage) return;
-    const secs = Array.from(mobilePage.querySelectorAll('.mp-sec')).filter(sec=>!sec.querySelector('.mp-reserve'));
+    if(!tabsBox || !content) return;
+    catPlat = platform || catPlat;
+    const source = catPlat === 'pc' ? pcPage : mobilePage;
+    if(!source) return;
+    tabsBox.innerHTML = '';
+    content.innerHTML = '';
+    const secs = Array.from(source.querySelectorAll('.mp-sec')).filter(sec=>!sec.querySelector('.mp-reserve'));
     secs.forEach((sec, idx)=>{
       const titleEl = sec.querySelector('.mp-sec-title');
+      const noteEl = sec.querySelector('.mp-note');
+      const note = noteEl ? noteEl.textContent : '';
       let full = '';
       if(titleEl){
         const t = titleEl.cloneNode(true);
@@ -5389,9 +5430,9 @@
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'cat-tab' + (idx === 0 ? ' on' : '');
-      btn.textContent = CAT_SHORT[full] || full || ('分区' + (idx + 1));
+      btn.textContent = catLabel(full, note) || ('分区' + (idx + 1));
       const panel = document.createElement('div');
-      panel.className = 'cat-panel plat-mobile' + (idx === 0 ? ' on' : '');
+      panel.className = 'cat-panel' + (idx === 0 ? ' on' : '');
       const clone = sec.cloneNode(true);
       clone.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));
       panel.appendChild(clone);
@@ -5412,8 +5453,15 @@
         openOrder(el.closest('.fun-card') || el);
       });
     });
-    tabsBox.dataset.built = '1';
+    document.querySelectorAll('#categoryPlats .cat-plat').forEach(b=>{
+      b.classList.toggle('on', b.dataset.platTab === catPlat);
+    });
+    content.scrollTop = 0;
+    tabsBox.scrollTop = 0;
   }
+  document.querySelectorAll('#categoryPlats .cat-plat').forEach(btn=>{
+    btn.addEventListener('click', ()=>buildCategory(btn.dataset.platTab));
+  });
   function setTab(name){
     tabs.forEach(t=>t.classList.toggle('active', t.dataset.tab === name));
     if(name === 'home'){
@@ -5429,7 +5477,7 @@
     app.classList.remove('profile-open');
     const isCategory = name === 'category';
     document.getElementById('tabPage').classList.toggle('cat-on', isCategory);
-    if(isCategory) buildCategory();
+    if(isCategory && !document.getElementById('categoryTabs').children.length) buildCategory();
     const meta = tabMeta[name];
     tpTitle.textContent = meta.name;
     tpEn.textContent = meta.en;
