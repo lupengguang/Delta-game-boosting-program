@@ -2556,9 +2556,9 @@
     background:radial-gradient(55% 24% at 8% 5%,rgba(255,205,150,.24),transparent 70%),
       radial-gradient(45% 22% at 96% 38%,rgba(255,205,150,.18),transparent 72%),#fff;
   }
-  #app.svc-open #svcPage,#app.vip-open #vipPage,#app.join-open #joinPage,#app.after-open #afterPage,#app.member-open #memberPage,#app.sign-open #signPage{opacity:1;transform:translateX(0)}
-  #app.svc-open #home,#app.vip-open #home,#app.join-open #home,#app.after-open #home,#app.member-open #home,#app.sign-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
-  #app.svc-open .tabbar,#app.vip-open .tabbar,#app.join-open .tabbar,#app.after-open .tabbar,#app.member-open .tabbar,#app.sign-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
+  #app.svc-open #svcPage,#app.vip-open #vipPage,#app.join-open #joinPage,#app.after-open #afterPage,#app.member-open #memberPage,#app.sign-open #signPage,#app.settings-open #settingsPage{opacity:1;transform:translateX(0)}
+  #app.svc-open #home,#app.vip-open #home,#app.join-open #home,#app.after-open #home,#app.member-open #home,#app.sign-open #home,#app.settings-open #home{opacity:.35;transform:translateX(-14%) scale(.95)}
+  #app.svc-open .tabbar,#app.vip-open .tabbar,#app.join-open .tabbar,#app.after-open .tabbar,#app.member-open .tabbar,#app.sign-open .tabbar,#app.settings-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
   .subpage .statusbar{color:#2B1B0C;text-shadow:0 1px 0 rgba(255,255,255,.85)}
   .sub-tag{
     margin-left:auto;display:inline-flex;align-items:center;gap:4px;
@@ -3290,6 +3290,90 @@
   .sign-go:hover{transform:translateY(-1px);filter:brightness(1.06)}
   .sign-note{margin:10px 18px 24px;font-size:7.5px;line-height:1.6;text-align:center;color:#a9a7ba}
 
+  /* ================= 设置 ================= */
+  #settingsPage{
+    z-index:46;
+    background:
+      radial-gradient(66% 28% at 50% 0%,#ffffff,transparent 72%),
+      radial-gradient(42% 22% at 96% 16%,rgba(198,180,255,.2),transparent 74%),
+      linear-gradient(180deg,#f8f7ff 0%,#f1f0fb 56%,#f7f6fd 100%);
+    color:#20202a;
+  }
+  #settingsPage .statusbar{color:#2a2a35;text-shadow:none}
+  #settingsPage .mp-head{
+    background:linear-gradient(180deg,rgba(252,251,255,.98),rgba(247,245,254,.95));
+    border-bottom:1px solid rgba(139,92,246,.12);
+  }
+  #settingsPage .mp-back{
+    background:linear-gradient(160deg,#9a7bf7,#6547cf);
+    box-shadow:0 8px 18px -10px rgba(95,69,201,.75);
+  }
+  #settingsPage .mp-back:hover{box-shadow:0 0 20px rgba(139,92,246,.45)}
+  #settingsPage .mp-head-txt h2{color:#20202a}
+  #settingsPage .mp-head-txt p{color:#a9a5c0}
+
+  .st-sec{margin-top:16px}
+  .st-sec-title{margin:0 20px 8px;font-size:9.5px;font-weight:800;letter-spacing:.06em;color:#918da6}
+  .st-card{
+    margin:0 16px;border-radius:16px;overflow:hidden;background:#fff;
+    box-shadow:0 16px 34px -30px rgba(30,30,70,.55);
+  }
+  .st-row{
+    width:100%;display:flex;align-items:center;gap:10px;padding:12px 14px;
+    appearance:none;border:0;background:none;font-family:inherit;text-align:left;cursor:pointer;
+    transition:background .25s;
+  }
+  .st-row + .st-row,.st-row + .st-seg,.st-seg + .st-row{border-top:1px solid #f5f3fa}
+  .st-row:hover{background:#faf9ff}
+  .st-row.static{cursor:default;background:none}
+  .st-ic{
+    width:30px;height:30px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;
+  }
+  .st-ic svg{width:16px;height:16px}
+  .st-ic img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+  .st-main{flex:1;min-width:0}
+  .st-main b{display:block;font-size:10.5px;font-weight:800;color:#2a2a35}
+  .st-main small{display:block;margin-top:2px;font-size:8px;color:#a4a1b5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .st-val{font-size:9px;color:#a4a1b5;white-space:nowrap}
+  .st-val.ok{color:#2FAF6A;font-weight:800}
+  .st-chev{flex:0 0 auto;color:#c6c3d4;display:grid;place-items:center}
+  .st-chev svg{width:9px;height:9px}
+
+  .st-sw{
+    flex:0 0 auto;width:36px;height:21px;border-radius:11px;border:0;padding:0;cursor:pointer;
+    appearance:none;background:#e7e5f0;position:relative;transition:background .3s;
+  }
+  .st-sw::after{
+    content:"";position:absolute;left:2px;top:2px;width:17px;height:17px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 3px rgba(30,30,70,.25);
+    transition:transform .3s cubic-bezier(.22,.9,.18,1);
+  }
+  .st-sw.on{background:linear-gradient(145deg,#8b6cf0,#6547cf)}
+  .st-sw.on::after{transform:translateX(15px)}
+
+  .st-seg{
+    display:flex;gap:3px;margin:0 14px 12px;padding:3px;border-radius:11px;background:#f5f4fb;
+  }
+  .st-seg button{
+    flex:1;appearance:none;border:0;background:none;font-family:inherit;cursor:pointer;
+    padding:6px 0;border-radius:9px;font-size:9.5px;color:#8a8799;
+    transition:background .25s,color .25s,box-shadow .25s;
+  }
+  .st-seg button.on{
+    background:#fff;color:#5f45c9;font-weight:800;
+    box-shadow:0 4px 10px -6px rgba(80,60,150,.35);
+  }
+
+  .st-logout{
+    display:block;width:calc(100% - 32px);margin:18px 16px 0;padding:12px;border-radius:14px;
+    appearance:none;font-family:inherit;font-size:11.5px;font-weight:900;letter-spacing:.04em;
+    color:#e45b5b;background:#fff;border:1px solid #ffe3e3;cursor:pointer;
+    box-shadow:0 14px 28px -26px rgba(200,60,60,.45);
+    transition:background .25s,transform .25s,box-shadow .25s;
+  }
+  .st-logout:hover{background:#fff6f6;transform:translateY(-1px);box-shadow:0 18px 30px -24px rgba(200,60,60,.5)}
+  .st-note{margin:12px 18px 26px;font-size:7.5px;line-height:1.6;text-align:center;color:#a9a7ba}
+
   @media (max-width:360px){
     .mem-hero{padding:14px 13px}
     .mem-hero-crown{width:52px;height:52px}
@@ -3300,6 +3384,10 @@
     .sign-week{gap:3px}
     .sign-reward{height:34px;font-size:10px;border-radius:9px}
     .sign-label{font-size:7.5px}
+    .st-card{margin-left:12px;margin-right:12px}
+    .st-sec-title{margin-left:16px;margin-right:16px}
+    .st-row{padding:11px 12px}
+    .st-logout{width:calc(100% - 24px);margin-left:12px;margin-right:12px}
   }
 
 </style>
@@ -3663,7 +3751,7 @@
       <button type="button" class="pf-tool" data-pf="扫一扫" aria-label="扫一扫">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V5.5A1.5 1.5 0 0 1 5.5 4h3M15.5 4h3A1.5 1.5 0 0 1 20 5.5v3M20 15.5v3a1.5 1.5 0 0 1-1.5 1.5h-3M8.5 20h-3A1.5 1.5 0 0 1 4 18.5v-3"/><path d="M8.5 12h7"/></svg>
       </button>
-      <button type="button" class="pf-tool" data-pf="设置" aria-label="设置">
+      <button type="button" class="pf-tool" data-svc="设置" aria-label="设置">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.2a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.2a1.6 1.6 0 0 0-1.4 1Z"/></svg>
       </button>
     </div>
@@ -5704,6 +5792,207 @@
     <p class="sign-note">签到与任务积分实时到账，最终解释权归大大怪电竞所有。</p>
   </section>
 
+  <!-- ================= 设置 ================= -->
+  <section class="screen subpage" id="settingsPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="settingsBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>设置</h2><p>SETTINGS</p></div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">账号与安全</div>
+      <div class="st-card">
+        <button type="button" class="st-row" data-pf="头像与昵称">
+          <span class="st-ic"><img src="assets/profile-avatar.jpg" alt="头像"></span>
+          <span class="st-main"><b>头像与昵称</b><small>哈夫克干员 · ID 82726165</small></span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="st-row" data-pf="手机号">
+          <span class="st-ic" style="background:#EAF3FF;color:#4C8DF6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h3l1.4 4-2 1.4a12 12 0 0 0 5.7 5.7l1.4-2 4 1.4v3A2.5 2.5 0 0 1 18 19.5C10.5 19.5 4.5 13.5 4.5 6A2.5 2.5 0 0 1 7 3.5Z"/></svg>
+          </span>
+          <span class="st-main"><b>手机号</b></span>
+          <span class="st-val">138****8888</span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="st-row" data-pf="实名认证">
+          <span class="st-ic" style="background:#E9F9F0;color:#2FAF6A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+          </span>
+          <span class="st-main"><b>实名认证</b></span>
+          <span class="st-val ok">已认证</span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="st-row" data-pf="修改密码">
+          <span class="st-ic" style="background:#FFF3E3;color:#F0A13A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.4"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
+          </span>
+          <span class="st-main"><b>修改密码</b></span>
+          <span class="st-val">未设置</span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">隐私设置</div>
+      <div class="st-card">
+        <div class="st-row static">
+          <span class="st-ic" style="background:#F4F0FF;color:#7A6AAE">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></svg>
+          </span>
+          <span class="st-main"><b>谁可以看我的动态</b><small>控制个人主页动态的可见范围</small></span>
+        </div>
+        <div class="st-seg" id="privacySeg">
+          <button type="button" class="on" data-val="所有人">所有人</button>
+          <button type="button" data-val="仅好友">仅好友</button>
+          <button type="button" data-val="仅自己">仅自己</button>
+        </div>
+        <div class="st-row static">
+          <span class="st-ic" style="background:#EAF3FF;color:#4C8DF6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.8A8 8 0 1 1 20.5 11.5Z"/></svg>
+          </span>
+          <span class="st-main"><b>允许陌生人私信</b><small>关闭后仅好友可与你聊天</small></span>
+          <button type="button" class="st-sw on" role="switch" aria-checked="true" aria-label="允许陌生人私信"></button>
+        </div>
+        <div class="st-row static">
+          <span class="st-ic" style="background:#FFF6DF;color:#F2A93B">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4.5h8v4.2a4 4 0 0 1-8 0V4.5Z"/><path d="M8 6H5.5v1.8A3 3 0 0 0 8 10.7M16 6h2.5v1.8a3 3 0 0 1-2.5 2.9"/><path d="M12 12.7v3.1M9 19.5h6"/></svg>
+          </span>
+          <span class="st-main"><b>展示我的战绩</b><small>在个人主页展示历史战绩</small></span>
+          <button type="button" class="st-sw on" role="switch" aria-checked="true" aria-label="展示我的战绩"></button>
+        </div>
+        <div class="st-row static">
+          <span class="st-ic" style="background:#FFF0F4;color:#EF6E95">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-5.6 6.5-10.4A6.5 6.5 0 0 0 5.5 10.6C5.5 15.4 12 21 12 21Z"/><circle cx="12" cy="10.6" r="2.4"/></svg>
+          </span>
+          <span class="st-main"><b>展示所在城市</b><small>向其他玩家展示城市信息</small></span>
+          <button type="button" class="st-sw" role="switch" aria-checked="false" aria-label="展示所在城市"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">消息通知</div>
+      <div class="st-card">
+        <div class="st-row static">
+          <span class="st-ic" style="background:#FFF6DF;color:#F2A93B">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 3.2 1 4.6 1.8 5.4H4.2C5 14.6 6 13.2 6 10Z"/><path d="M10 18.5a2 2 0 0 0 4 0"/></svg>
+          </span>
+          <span class="st-main"><b>订单消息通知</b><small>接单、进度与售后提醒</small></span>
+          <button type="button" class="st-sw on" role="switch" aria-checked="true" aria-label="订单消息通知"></button>
+        </div>
+        <div class="st-row static">
+          <span class="st-ic" style="background:#FFF0F4;color:#EF6E95">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 8h20v4H2z"/><path d="M12 8v13"/><path d="M12 8S9.5 3 7 4.5 8.5 8 12 8s7.5.5 5-3S12 8 12 8z"/></svg>
+          </span>
+          <span class="st-main"><b>活动与优惠</b><small>新玩法、折扣与福利提醒</small></span>
+          <button type="button" class="st-sw on" role="switch" aria-checked="true" aria-label="活动与优惠"></button>
+        </div>
+        <div class="st-row static">
+          <span class="st-ic" style="background:#EAF3FF;color:#4C8DF6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4l11 5V5L4 10Z"/><path d="M15 8.5a4 4 0 0 1 0 7"/><path d="M7.5 13v5"/></svg>
+          </span>
+          <span class="st-main"><b>系统公告</b><small>版本更新与平台公告</small></span>
+          <button type="button" class="st-sw" role="switch" aria-checked="false" aria-label="系统公告"></button>
+        </div>
+        <button type="button" class="st-row" data-pf="免打扰时段">
+          <span class="st-ic" style="background:#F4F0FF;color:#7A6AAE">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          </span>
+          <span class="st-main"><b>免打扰时段</b></span>
+          <span class="st-val">22:00 - 08:00</span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">通用</div>
+      <div class="st-card">
+        <button type="button" class="st-row" data-pf="清空缓存">
+          <span class="st-ic" style="background:#E7F8EE;color:#42B96A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5h16M9.5 4h5"/><path d="M6.5 6.5 7.6 20a1.6 1.6 0 0 0 1.6 1.4h5.6a1.6 1.6 0 0 0 1.6-1.4l1.1-13.5"/><path d="M10 10.5v6.5M14 10.5v6.5"/></svg>
+          </span>
+          <span class="st-main"><b>清空缓存</b></span>
+          <span class="st-val">12.6MB</span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="st-row" data-pf="检查更新">
+          <span class="st-ic" style="background:#EAF3FF;color:#4C8DF6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 6.3"/><path d="M20 5v6h-6"/></svg>
+          </span>
+          <span class="st-main"><b>检查更新</b></span>
+          <span class="st-val">v2.4.1 最新</span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="st-row" data-pf="语言">
+          <span class="st-ic" style="background:#E9F9F0;color:#2FAF6A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 4 5.3 4 8.5s-1.4 6.1-4 8.5c-2.6-2.4-4-5.3-4-8.5s1.4-6.1 4-8.5Z"/></svg>
+          </span>
+          <span class="st-main"><b>语言</b></span>
+          <span class="st-val">简体中文</span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <div class="st-row static">
+          <span class="st-ic" style="background:#F4F0FF;color:#7A6AAE">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          </span>
+          <span class="st-main"><b>深色模式</b><small>跟随系统或手动开启</small></span>
+          <button type="button" class="st-sw" role="switch" aria-checked="false" aria-label="深色模式"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">关于</div>
+      <div class="st-card">
+        <button type="button" class="st-row" data-pf="用户协议">
+          <span class="st-ic" style="background:#EAF3FF;color:#4C8DF6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8l4 4v13H6v-17Z"/><path d="M14 3.5v4h4"/></svg>
+          </span>
+          <span class="st-main"><b>用户协议</b></span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="st-row" data-pf="隐私政策">
+          <span class="st-ic" style="background:#E9F9F0;color:#2FAF6A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+          </span>
+          <span class="st-main"><b>隐私政策</b></span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <button type="button" class="st-row" data-pf="联系我们">
+          <span class="st-ic" style="background:#FFF3E3;color:#F0A13A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="2.6" y="13" width="4" height="7" rx="1.6"/><rect x="17.4" y="13" width="4" height="7" rx="1.6"/></svg>
+          </span>
+          <span class="st-main"><b>联系我们</b></span>
+          <span class="st-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+        <div class="st-row static">
+          <span class="st-ic" style="background:#F4F0FF;color:#7A6AAE">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8v.2"/></svg>
+          </span>
+          <span class="st-main"><b>当前版本</b></span>
+          <span class="st-val">v2.4.1</span>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="st-logout" id="stLogout">退出登录</button>
+    <p class="st-note">大大怪电竞 · 三角洲行动陪玩代练</p>
+  </section>
+
   <!-- ================= 考核入驻 ================= -->
   <section class="screen subpage" id="joinPage">
     <div class="statusbar">
@@ -6293,6 +6582,7 @@
       if(app.classList.contains('svc-open')){ app.classList.remove('svc-open'); return; }
       if(app.classList.contains('member-open')){ app.classList.remove('member-open'); return; }
       if(app.classList.contains('sign-open')){ app.classList.remove('sign-open'); return; }
+      if(app.classList.contains('settings-open')){ app.classList.remove('settings-open'); return; }
       if(app.classList.contains('vip-open')){ app.classList.remove('vip-open'); return; }
       if(app.classList.contains('join-open')){ app.classList.remove('join-open'); return; }
       if(app.classList.contains('after-open')){ app.classList.remove('after-open'); return; }
@@ -6882,6 +7172,7 @@
     {cls:'vip-open', back:'vipBack'},
     {cls:'member-open', back:'memberBack'},
     {cls:'sign-open', back:'signBack'},
+    {cls:'settings-open', back:'settingsBack'},
     {cls:'join-open', back:'joinBack'},
     {cls:'after-open', back:'afterBack'}
   ];
@@ -6889,7 +7180,7 @@
     const back = document.getElementById(item.back);
     if(back) back.addEventListener('click', ()=> app.classList.remove(item.cls));
   });
-  const svcEntryMap = {'在线客服':'svc-open','老板权益':'vip-open','会员权益中心':'member-open','签到':'sign-open','考核入住':'join-open','售后客服':'after-open'};
+  const svcEntryMap = {'在线客服':'svc-open','老板权益':'vip-open','会员权益中心':'member-open','签到':'sign-open','设置':'settings-open','考核入住':'join-open','售后客服':'after-open'};
   document.querySelectorAll('[data-svc]').forEach(el=>{
     el.addEventListener('click', ()=>{
       const cls = svcEntryMap[el.dataset.svc];
@@ -6948,6 +7239,28 @@
       signBtn.textContent = '今日已签到';
       showToast('签到成功，积分 +5');
     });
+  }
+
+  /* 设置页：开关 / 可见范围 / 退出登录 */
+  document.querySelectorAll('#settingsPage .st-sw').forEach(sw=>{
+    sw.addEventListener('click', ()=>{
+      const on = sw.classList.toggle('on');
+      sw.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+  });
+  const privacySeg = document.getElementById('privacySeg');
+  if(privacySeg){
+    privacySeg.querySelectorAll('button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        privacySeg.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+        btn.classList.add('on');
+        showToast('动态可见范围已设为「' + btn.dataset.val + '」');
+      });
+    });
+  }
+  const stLogout = document.getElementById('stLogout');
+  if(stLogout){
+    stLogout.addEventListener('click', ()=>{ showToast('已退出登录（演示）'); });
   }
 
   /* 在线客服对话 */
