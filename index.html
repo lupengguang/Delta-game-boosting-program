@@ -2983,18 +2983,6 @@
   .pfr-q b{display:block;font-size:11.5px;font-weight:800;color:#2a2a35;margin-top:8px}
   .pfr-q small{display:block;font-size:9px;color:#a4a3b4;margin-top:3px;white-space:nowrap}
 
-  .pfr-vip{margin:12px 16px 0;border-radius:18px;padding:14px;background:#fff;box-shadow:0 16px 34px -28px rgba(30,30,70,.55)}
-  .pfr-vip-top{display:flex;align-items:center;gap:9px}
-  .pfr-vip-ic{
-    width:40px;height:40px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
-    background:#f2f1f8;color:#b6b2c8;
-  }
-  .pfr-vip-top b{font-size:13.5px;font-weight:800;color:#2a2a35}
-  .pfr-vip-right{margin-left:auto;font-size:9.5px;color:#a9a7ba;white-space:nowrap}
-  .pfr-vip-bar{height:5px;border-radius:3px;background:#efeff6;margin-top:12px;overflow:hidden}
-  .pfr-vip-bar i{display:block;width:6%;height:100%;border-radius:3px;background:linear-gradient(90deg,#ddd7ff,#c0b3ff)}
-  .pfr-vip-note{font-size:9.5px;color:#a9a7ba;margin-top:8px;letter-spacing:.01em}
-
   .pfr-more{margin:12px 16px 0;border-radius:18px;padding:15px 8px 16px;background:#fff;box-shadow:0 16px 34px -28px rgba(30,30,70,.55)}
   .pfr-more-head{
     position:relative;display:flex;align-items:center;gap:6px;padding:0 8px 4px;
@@ -3025,7 +3013,10 @@
     .pfr-name{font-size:17px}
     .pfr-home{padding:7px 11px;font-size:10px}
     .pfr-stats{padding:14px 14px 2px}
-    .pfr-wallet,.pfr-quick,.pfr-vip,.pfr-more{margin-left:12px;margin-right:12px}
+    .pfr-wallet,.pfr-quick,.pfr-mc,.pfr-more{margin-left:12px;margin-right:12px}
+    .pfr-mc-lv{font-size:20px}
+    .pfr-mc-art{width:120px;height:92px}
+    .pfr-mc-rate{font-size:7px}
     .pfr-w-val{font-size:20px}
     .pfr-q b{font-size:10.5px}
     .pfr-q small{font-size:8px}
@@ -3035,42 +3026,46 @@
     .pfr-g-ic svg{width:19px;height:19px}
   }
 
-  /* ================= 会员等级卡片（个人主页） ================= */
-  .pfr-mem{
-    margin:12px 16px 0;padding:12px 0;border-radius:18px;overflow:hidden;
-    background:#fff;box-shadow:0 16px 34px -28px rgba(30,30,70,.55);
-    cursor:pointer;transition:transform .3s,box-shadow .3s;
+  /* ================= 会员卡片（个人主页 · 单等级展示） ================= */
+  .pfr-mc{
+    position:relative;margin:12px 16px 0;border-radius:18px;overflow:hidden;cursor:pointer;
+    background:linear-gradient(150deg,#eaf3ff 0%,#d3e6ff 46%,#b7d4ff 100%);
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 18px 36px -26px rgba(53,104,180,.65);
+    transition:transform .3s,box-shadow .3s;
   }
-  .pfr-mem:hover{transform:translateY(-1px);box-shadow:0 22px 38px -26px rgba(90,70,160,.45)}
-  .pfr-mem-head{display:flex;align-items:center;gap:6px;padding:0 14px 10px}
-  .pfr-mem-title{display:flex;align-items:baseline;gap:5px;font-size:13px;font-weight:900;color:#20202a}
-  .pfr-mem-title i{font-style:normal;font-size:7px;font-weight:800;letter-spacing:.16em;color:#bdbbcb}
-  .pfr-mem-more{
-    margin-left:auto;display:flex;align-items:center;gap:2px;appearance:none;background:none;border:0;
-    font-family:inherit;font-size:9.5px;color:#8f8ba3;cursor:pointer;padding:2px 0;transition:color .3s;
+  .pfr-mc:hover{transform:translateY(-2px);box-shadow:0 24px 42px -24px rgba(53,104,180,.6)}
+  .pfr-mc:focus-visible{outline:2px solid rgba(58,110,190,.5);outline-offset:2px}
+  .pfr-mc-top{position:relative;z-index:2;padding:13px 15px 9px}
+  .pfr-mc-valid{display:flex;align-items:center;gap:4px;font-size:8.5px;color:#6d8db8;letter-spacing:.02em}
+  .pfr-mc-q{
+    display:inline-grid;place-items:center;width:10px;height:10px;border-radius:50%;
+    border:1px solid rgba(109,141,184,.55);font-size:6.5px;line-height:1;color:#6d8db8;
   }
-  .pfr-mem-more:hover{color:#8b5cf6}
-  .pfr-mem-row{display:flex;gap:8px;overflow-x:auto;padding:2px 14px;scroll-snap-type:x mandatory;scrollbar-width:none}
-  .pfr-mem-row::-webkit-scrollbar{display:none}
-  .pfr-mem-card{
-    flex:0 0 84px;scroll-snap-align:start;appearance:none;font-family:inherit;cursor:pointer;
-    display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 3px 7px;
-    border:1px solid #efedf7;border-radius:14px;
-    background:linear-gradient(180deg,#fbfaff,#f6f4fd);
-    transition:transform .3s,box-shadow .3s,border-color .3s;
+  .pfr-mc-lv{margin-top:7px;font-size:23px;font-weight:900;letter-spacing:.02em;color:#1e4f8f;text-shadow:0 1px 0 rgba(255,255,255,.5)}
+  .pfr-mc-art{
+    position:absolute;right:-10px;top:-4px;width:136px;height:104px;pointer-events:none;
+    display:flex;align-items:center;justify-content:center;
   }
-  .pfr-mem-card:nth-child(1){background:linear-gradient(180deg,#f9fbff,#eef5ff);border-color:#e9f0fd}
-  .pfr-mem-card:nth-child(2){background:linear-gradient(180deg,#f5f9ff,#e7f0ff);border-color:#e4edfc}
-  .pfr-mem-card:nth-child(3){background:linear-gradient(180deg,#f8f6ff,#efeaff);border-color:#e9e3fa}
-  .pfr-mem-card:nth-child(4){background:linear-gradient(180deg,#faf5ff,#f2e9ff);border-color:#eee3fb}
-  .pfr-mem-card:nth-child(5){background:linear-gradient(180deg,#fffbf3,#f8ecff);border-color:#f5e7f2}
-  .pfr-mem-card:nth-child(6){background:linear-gradient(180deg,#fff9ec,#ffefcd);border-color:#f7e3bd}
-  .pfr-mem-card:hover{transform:translateY(-3px);box-shadow:0 12px 22px -16px rgba(80,60,150,.45);border-color:#ddd5f4}
-  .pfr-mem-crown{width:64px;height:44px;display:grid;place-items:center}
-  .pfr-mem-crown img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .3s}
-  .pfr-mem-card:hover .pfr-mem-crown img{transform:scale(1.07)}
-  .pfr-mem-card b{font-size:10px;font-weight:800;color:#33323d;letter-spacing:.02em}
-  .pfr-mem-card > span:last-child{font-size:7.5px;color:#a4a1b5;white-space:nowrap}
+  .pfr-mc-art::before{
+    content:"";position:absolute;inset:-16px;border-radius:50%;
+    background:radial-gradient(circle at 55% 50%,rgba(255,255,255,.72),rgba(255,255,255,0) 66%);
+  }
+  .pfr-mc-art img{position:relative;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .35s}
+  .pfr-mc:hover .pfr-mc-art img{transform:scale(1.05)}
+  .pfr-mc-panel{
+    position:relative;z-index:2;margin-top:2px;padding:10px 15px 12px;
+    background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.86));
+    border-top:1px solid rgba(255,255,255,.75);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  }
+  .pfr-mc-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .pfr-mc-score{display:flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:#2f62a8;white-space:nowrap}
+  .pfr-mc-score b{font-size:11.5px;font-weight:900;color:#1e4f8f}
+  .pfr-mc-score svg{color:#4d7dbb}
+  .pfr-mc-rate{font-size:7.5px;color:#7192bd;white-space:nowrap}
+  .pfr-mc-bar{height:5px;margin-top:9px;border-radius:3px;background:rgba(255,255,255,.78);overflow:hidden}
+  .pfr-mc-bar i{display:block;width:2%;height:100%;border-radius:3px;background:linear-gradient(90deg,#a9c8f5,#2f6fd0)}
 
   /* ================= 会员权益中心 ================= */
   #memberPage{
@@ -3143,6 +3138,12 @@
   .mem-tier:nth-child(5){background:linear-gradient(180deg,#fffbf3,#f8ecff);border-color:#f5e7f2}
   .mem-tier:nth-child(6){background:linear-gradient(180deg,#fff9ec,#ffefcd);border-color:#f7e3bd}
   .mem-tier:hover{transform:translateY(-3px);box-shadow:0 12px 22px -16px rgba(80,60,150,.4)}
+  .mem-tier{position:relative}
+  .mem-tier.current{border-color:#9db8ef;box-shadow:0 0 0 1.5px rgba(111,143,245,.45),0 12px 22px -16px rgba(80,60,150,.35)}
+  .mem-tier-tag{
+    position:absolute;top:6px;right:6px;font-size:6.5px;font-weight:800;letter-spacing:.04em;
+    color:#fff;background:linear-gradient(145deg,#7d9bf5,#4a6fd6);padding:1.5px 5px;border-radius:6px;
+  }
   .mem-tier-crown{width:100%;height:42px;display:flex;align-items:center;justify-content:center;overflow:hidden}
   .mem-tier-crown img{width:auto;height:42px;max-width:100%;object-fit:contain;mix-blend-mode:multiply}
   .mem-tier b{font-size:9.5px;font-weight:800;color:#33323d;margin-top:3px}
@@ -3178,9 +3179,6 @@
   .mem-note{margin-top:8px;font-size:7.5px;line-height:1.6;text-align:center;color:#a9a7ba;padding-bottom:8px}
 
   @media (max-width:360px){
-    .pfr-mem{margin-left:12px;margin-right:12px}
-    .pfr-mem-card{flex:0 0 78px}
-    .pfr-mem-crown{width:58px;height:40px}
     .mem-hero{padding:14px 13px}
     .mem-hero-crown{width:100px}
     .mem-ben-item small{font-size:7.5px}
@@ -3568,39 +3566,21 @@
       <div class="pfr-stat"><b>0</b><span>粉丝</span></div>
     </div>
 
-    <!-- 会员等级卡片（参考六款皇冠） -->
-    <section class="pfr-mem" id="profileMember">
-      <div class="pfr-mem-head">
-        <span class="pfr-mem-title">会员等级 <i>MEMBER</i></span>
-        <button type="button" class="pfr-mem-more" id="memberMore">权益中心
-          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
-        </button>
+    <!-- 会员卡片（单等级展示，参考图二排版） -->
+    <section class="pfr-mc" id="profileMember" role="button" tabindex="0" aria-label="查看会员权益中心">
+      <div class="pfr-mc-top">
+        <div class="pfr-mc-valid">有效期至 2026.12.31 <span class="pfr-mc-q">?</span></div>
+        <div class="pfr-mc-lv">坚韧白银</div>
       </div>
-      <div class="pfr-mem-row">
-        <button type="button" class="pfr-mem-card" data-member="1">
-          <span class="pfr-mem-crown"><img src="assets/member-crown-1.png" alt="坚韧白银"></span>
-          <b>坚韧白银</b><span>2万活跃值</span>
-        </button>
-        <button type="button" class="pfr-mem-card" data-member="2">
-          <span class="pfr-mem-crown"><img src="assets/member-crown-2.png" alt="荣耀黄金"></span>
-          <b>荣耀黄金</b><span>8万活跃值</span>
-        </button>
-        <button type="button" class="pfr-mem-card" data-member="3">
-          <span class="pfr-mem-crown"><img src="assets/member-crown-3.png" alt="尊贵铂金"></span>
-          <b>尊贵铂金</b><span>20万活跃值</span>
-        </button>
-        <button type="button" class="pfr-mem-card" data-member="4">
-          <span class="pfr-mem-crown"><img src="assets/member-crown-4.png" alt="璀璨钻石"></span>
-          <b>璀璨钻石</b><span>50万活跃值</span>
-        </button>
-        <button type="button" class="pfr-mem-card" data-member="5">
-          <span class="pfr-mem-crown"><img src="assets/member-crown-5.png" alt="至尊星耀"></span>
-          <b>至尊星耀</b><span>100万活跃值</span>
-        </button>
-        <button type="button" class="pfr-mem-card" data-member="6">
-          <span class="pfr-mem-crown"><img src="assets/member-crown-6.png" alt="荣耀王者"></span>
-          <b>荣耀王者</b><span>300万活跃值</span>
-        </button>
+      <div class="pfr-mc-art"><img src="assets/member-crown-1.png" alt="坚韧白银"></div>
+      <div class="pfr-mc-panel">
+        <div class="pfr-mc-row">
+          <span class="pfr-mc-score"><b>0</b>/1600 消费积分
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+          </span>
+          <span class="pfr-mc-rate">每消费1元，加1-2.0消费分</span>
+        </div>
+        <div class="pfr-mc-bar"><i></i></div>
       </div>
     </section>
 
@@ -3659,19 +3639,6 @@
         </span>
         <b>VIP权益中心</b><small>专属权益服务</small>
       </button>
-    </div>
-
-    <!-- 会员成长 -->
-    <div class="pfr-vip">
-      <div class="pfr-vip-top">
-        <span class="pfr-vip-ic">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2.8 20 6v6.2c0 4.6-3.3 7.9-8 9-4.7-1.1-8-4.4-8-9V6l8-3.2Z"/><path d="m9 12 2 2 4-4" stroke-linecap="round"/></svg>
-        </span>
-        <b>普通用户</b>
-        <span class="pfr-vip-right">专享权益：0/24</span>
-      </div>
-      <div class="pfr-vip-bar"><i></i></div>
-      <div class="pfr-vip-note">还差 20000 活跃值可获得坚韧白银</div>
     </div>
 
     <!-- 更多服务 -->
@@ -5359,44 +5326,45 @@
       <div class="mem-hero">
         <div class="mem-hero-crown"><img src="assets/member-crown-1.png" alt="坚韧白银"></div>
         <div class="mem-hero-top">
-          <span class="mem-hero-badge">LV.0</span>
-          <span class="mem-hero-lv">普通用户</span>
+          <span class="mem-hero-badge">LV.1</span>
+          <span class="mem-hero-lv">坚韧白银</span>
         </div>
         <div class="mem-prog"><i></i></div>
-        <div class="mem-prog-txt"><span>活跃值 0 / 20000</span><span>距坚韧白银还差 20000</span></div>
-        <button type="button" class="mem-hero-btn" data-pf="做任务赚活跃值">做任务赚活跃值</button>
+        <div class="mem-prog-txt"><span>消费积分 0 / 1600</span><span>距荣耀黄金还差 1600</span></div>
+        <button type="button" class="mem-hero-btn" data-pf="去下单赚积分">去下单赚积分</button>
       </div>
     </div>
 
     <div class="mp-sec">
       <div class="mp-sec-head"><div class="mp-sec-title">会员等级 <span class="chip">TIER</span></div></div>
       <div class="mem-tiers">
-        <div class="mem-tier">
+        <div class="mem-tier current">
+          <span class="mem-tier-tag">当前</span>
           <span class="mem-tier-crown"><img src="assets/member-crown-1.png" alt="坚韧白银"></span>
-          <b>坚韧白银</b><span>2万活跃值</span>
+          <b>坚韧白银</b><span>0 消费积分</span>
         </div>
         <div class="mem-tier">
           <span class="mem-tier-crown"><img src="assets/member-crown-2.png" alt="荣耀黄金"></span>
-          <b>荣耀黄金</b><span>8万活跃值</span>
+          <b>荣耀黄金</b><span>1600 消费积分</span>
         </div>
         <div class="mem-tier">
           <span class="mem-tier-crown"><img src="assets/member-crown-3.png" alt="尊贵铂金"></span>
-          <b>尊贵铂金</b><span>20万活跃值</span>
+          <b>尊贵铂金</b><span>6000 消费积分</span>
         </div>
         <div class="mem-tier">
           <span class="mem-tier-crown"><img src="assets/member-crown-4.png" alt="璀璨钻石"></span>
-          <b>璀璨钻石</b><span>50万活跃值</span>
+          <b>璀璨钻石</b><span>2万消费积分</span>
         </div>
         <div class="mem-tier">
           <span class="mem-tier-crown"><img src="assets/member-crown-5.png" alt="至尊星耀"></span>
-          <b>至尊星耀</b><span>100万活跃值</span>
+          <b>至尊星耀</b><span>6万消费积分</span>
         </div>
         <div class="mem-tier">
           <span class="mem-tier-crown"><img src="assets/member-crown-6.png" alt="荣耀王者"></span>
-          <b>荣耀王者</b><span>300万活跃值</span>
+          <b>荣耀王者</b><span>15万消费积分</span>
         </div>
       </div>
-      <p class="mem-tip">达到对应活跃值自动升级，等级权益长期有效，可叠加活动优惠使用。</p>
+      <p class="mem-tip">消费积分达到对应档位自动升级，等级权益长期有效，可叠加活动优惠使用。</p>
     </div>
 
     <div class="mp-sec">
@@ -5436,36 +5404,36 @@
           <span class="mem-ben-ic" style="background:#F3EDFF;color:#8B5CF6">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 14.4 9l6 .6-4.5 4 1.3 5.9L12 16.4 6.8 19.5 8.1 13.6 3.6 9.6l6-.6L12 3.5Z"/></svg>
           </span>
-          <span><b>活跃值加成</b><small>会员下单额外 +10% 活跃值</small></span>
+          <span><b>积分加速</b><small>会员下单额外 +10% 消费积分</small></span>
         </div>
       </div>
     </div>
 
     <div class="mp-sec">
-      <div class="mp-sec-head"><div class="mp-sec-title">如何获取活跃值 <span class="chip">TASK</span></div></div>
+      <div class="mp-sec-head"><div class="mp-sec-title">如何获取消费积分 <span class="chip">POINT</span></div></div>
       <div class="mem-task">
         <span class="mem-task-ic" style="background:#FFF6DF;color:#F2A93B">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3.5" width="15" height="17" rx="2.4"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4.5"/></svg>
         </span>
-        <span><b>完成下单</b><small>每完成一笔订单</small></span>
-        <em>+500</em>
+        <span><b>下单消费</b><small>每消费 1 元，加 1-2.0 消费分</small></span>
+        <em>1-2.0/元</em>
       </div>
       <div class="mem-task">
         <span class="mem-task-ic" style="background:#EAF3FF;color:#4C8DF6">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.4"/><path d="M8 3v4M16 3v4M3.5 10h17"/><path d="m9 14.6 2 2 4-4"/></svg>
         </span>
-        <span><b>每日签到</b><small>连续签到额外加成</small></span>
-        <em>+100</em>
+        <span><b>连续下单</b><small>每周连续下单额外奖励</small></span>
+        <em>+200</em>
       </div>
       <div class="mem-task">
         <span class="mem-task-ic" style="background:#FFF0F4;color:#EF6E95">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 20v-1.6a3.4 3.4 0 0 0-3.4-3.4H6.4A3.4 3.4 0 0 0 3 18.4V20"/><circle cx="9" cy="8" r="3.4"/><path d="M18.5 8v6M15.5 11h6"/></svg>
         </span>
         <span><b>邀请好友</b><small>好友完成首单后到账</small></span>
-        <em>+2000</em>
+        <em>+500</em>
       </div>
-      <button type="button" class="mem-cta" data-pf="立即赚活跃值">立即赚活跃值</button>
-      <p class="mem-note">活跃值以实际到账为准，相同手机号的账号活跃值合并计算，最终解释权归大大怪电竞所有。</p>
+      <button type="button" class="mem-cta" data-pf="去下单赚积分">去下单赚积分</button>
+      <p class="mem-note">消费积分以实际到账为准，相同手机号的账号积分合并计算，最终解释权归大大怪电竞所有。</p>
     </div>
   </section>
 
@@ -6666,10 +6634,14 @@
   /* 我的页 · 会员等级卡片 → 会员权益中心 */
   const profileMember = document.getElementById('profileMember');
   if(profileMember){
-    profileMember.addEventListener('click', ()=>{
+    const openMemberPage = ()=>{
       app.classList.add('member-open');
       const page = document.getElementById('memberPage');
       if(page) page.scrollTop = 0;
+    };
+    profileMember.addEventListener('click', openMemberPage);
+    profileMember.addEventListener('keydown', e=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openMemberPage(); }
     });
   }
 
