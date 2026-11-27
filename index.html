@@ -4153,7 +4153,7 @@
 
     <!-- 快捷入口 -->
     <div class="pfr-quick">
-      <button type="button" class="pfr-q" data-pf="我的订单">
+      <button type="button" class="pfr-q" data-jump-tab="orders">
         <span class="pfr-q-ic" style="background:#FFF6DF;color:#F2A93B">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3.5" width="15" height="17" rx="2.4"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4.5"/></svg>
         </span>
@@ -7665,6 +7665,14 @@
   let savedLogin = false;
   try{ savedLogin = localStorage.getItem('df_login') === '1'; }catch(e){}
   setLoggedIn(savedLogin);
+
+  /* 快捷入口跳转底部导航 */
+  document.querySelectorAll('[data-jump-tab]').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const target = document.querySelector('.tab[data-tab="' + el.dataset.jumpTab + '"]');
+      if(target) target.click();
+    });
+  });
 
   /* 设置页：开关 / 可见范围 / 退出登录 */
   const darkSwitch = document.getElementById('darkSwitch');
