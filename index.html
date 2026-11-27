@@ -2894,6 +2894,147 @@
     box-shadow:0 6px 16px -8px rgba(88,42,6,.75);
   }
 
+  /* ================= 我的页（参考图重构） ================= */
+  .profile-page{
+    padding-bottom:104px;
+    background:
+      radial-gradient(70% 30% at 50% 0%,#ffffff,transparent 72%),
+      radial-gradient(46% 26% at 94% 18%,rgba(198,180,255,.22),transparent 74%),
+      linear-gradient(180deg,#fbfaff 0%,#f3f2fc 44%,#f8f7fe 100%);
+    color:#20202a;
+  }
+  .profile-page .statusbar{color:#2a2a35;text-shadow:none}
+
+  .pf-tools{display:flex;justify-content:flex-end;gap:10px;padding:6px 18px 0}
+  .pf-tool{
+    width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    appearance:none;background:rgba(255,255,255,.92);border:1px solid rgba(30,30,50,.06);
+    color:#3b3b48;box-shadow:0 6px 16px -11px rgba(40,40,80,.5);cursor:pointer;
+    transition:transform .3s,color .3s,box-shadow .3s,border-color .3s;
+  }
+  .pf-tool:hover{transform:translateY(-2px);color:#8b5cf6;border-color:rgba(139,92,246,.3);box-shadow:0 10px 20px -12px rgba(139,92,246,.55)}
+
+  .pfr-head{display:flex;align-items:center;gap:12px;padding:10px 18px 0}
+  .pfr-ava{
+    width:66px;height:66px;flex:0 0 auto;border-radius:50%;overflow:hidden;background:#e9e9f2;
+    box-shadow:0 10px 22px -14px rgba(30,30,60,.55);
+  }
+  .pfr-ava img{width:100%;height:100%;display:block;object-fit:cover}
+  .pfr-meta{flex:1;min-width:0}
+  .pfr-name{font-size:19px;font-weight:900;letter-spacing:.01em;color:#20202a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pfr-id{font-size:10.5px;color:#8a8a99;margin-top:4px;letter-spacing:.03em}
+  .pfr-tag{font-size:10px;color:#b3b1c4;margin-top:2px}
+  .pfr-home{
+    flex:0 0 auto;appearance:none;font-family:inherit;cursor:pointer;
+    padding:8px 13px;border-radius:999px;border:1px solid rgba(30,30,60,.08);
+    background:#fff;color:#3b3b48;font-size:11px;font-weight:700;
+    box-shadow:0 8px 18px -13px rgba(30,30,60,.55);transition:transform .3s,color .3s,border-color .3s;
+  }
+  .pfr-home:hover{transform:translateY(-2px);color:#8b5cf6;border-color:rgba(139,92,246,.35)}
+
+  .pfr-stats{display:grid;grid-template-columns:repeat(3,1fr);padding:16px 18px 2px;text-align:center}
+  .pfr-stat b{display:block;font-size:17px;font-weight:900;line-height:1.15;color:#20202a}
+  .pfr-stat span{display:block;font-size:10px;color:#8a8a99;margin-top:4px}
+
+  .pfr-wallet{
+    position:relative;overflow:hidden;margin:12px 16px 0;border-radius:18px;padding:14px 12px 0;
+    background:linear-gradient(158deg,#292932,#15151b 72%);
+    box-shadow:0 20px 40px -24px rgba(12,12,22,.85);color:#fff;
+  }
+  .pfr-wallet::after{
+    content:"";position:absolute;right:-52px;top:-74px;width:180px;height:180px;pointer-events:none;
+    background:radial-gradient(circle,rgba(255,255,255,.09),transparent 68%);
+  }
+  .pfr-w-head{position:relative;z-index:2;display:flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:#f1f0f7}
+  .pfr-w-head svg{color:#c8b8ff}
+  .pfr-w-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;margin-top:11px}
+  .pfr-w-col{padding:2px 12px 12px}
+  .pfr-w-col:first-child{padding-left:4px}
+  .pfr-w-col + .pfr-w-col{border-left:1px solid rgba(255,255,255,.12)}
+  .pfr-w-lab{display:flex;align-items:center;gap:4px;font-size:10px;color:#bcbccb}
+  .pfr-w-lab svg{opacity:.9;flex:0 0 auto}
+  .pfr-w-lab i{font-style:normal;color:#7f7f90;font-size:11px}
+  .pfr-w-val{font-size:22px;font-weight:900;letter-spacing:-.02em;margin-top:6px;line-height:1.1}
+  .pfr-w-bar{
+    position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;
+    padding:9px 2px;border-radius:12px;background:rgba(255,255,255,.08);margin:0 -2px 12px;
+  }
+  .pfr-w-item{
+    appearance:none;background:none;border:0;font-family:inherit;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:2px;padding:2px 0;
+    font-size:9.5px;color:#dedee8;white-space:nowrap;transition:color .3s;
+  }
+  .pfr-w-item b{font-weight:800;color:#fff}
+  .pfr-w-item svg{color:#9d9dae;flex:0 0 auto}
+  .pfr-w-item:hover{color:#d9c9ff}
+
+  .pfr-quick{
+    margin:12px 16px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+    background:#fff;border-radius:18px;padding:14px 5px;
+    box-shadow:0 16px 34px -28px rgba(30,30,70,.55);
+  }
+  .pfr-q{
+    appearance:none;background:none;border:0;font-family:inherit;cursor:pointer;
+    padding:4px 2px 2px;border-radius:12px;transition:background .3s,transform .3s;
+  }
+  .pfr-q:hover{background:#faf9ff;transform:translateY(-3px)}
+  .pfr-q-ic{width:44px;height:44px;margin:0 auto;border-radius:14px;display:grid;place-items:center}
+  .pfr-q-ic svg{width:22px;height:22px}
+  .pfr-q b{display:block;font-size:11.5px;font-weight:800;color:#2a2a35;margin-top:8px}
+  .pfr-q small{display:block;font-size:9px;color:#a4a3b4;margin-top:3px;white-space:nowrap}
+
+  .pfr-vip{margin:12px 16px 0;border-radius:18px;padding:14px;background:#fff;box-shadow:0 16px 34px -28px rgba(30,30,70,.55)}
+  .pfr-vip-top{display:flex;align-items:center;gap:9px}
+  .pfr-vip-ic{
+    width:40px;height:40px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+    background:#f2f1f8;color:#b6b2c8;
+  }
+  .pfr-vip-top b{font-size:13.5px;font-weight:800;color:#2a2a35}
+  .pfr-vip-right{margin-left:auto;font-size:9.5px;color:#a9a7ba;white-space:nowrap}
+  .pfr-vip-bar{height:5px;border-radius:3px;background:#efeff6;margin-top:12px;overflow:hidden}
+  .pfr-vip-bar i{display:block;width:6%;height:100%;border-radius:3px;background:linear-gradient(90deg,#ddd7ff,#c0b3ff)}
+  .pfr-vip-note{font-size:9.5px;color:#a9a7ba;margin-top:8px;letter-spacing:.01em}
+
+  .pfr-more{margin:12px 16px 0;border-radius:18px;padding:15px 8px 16px;background:#fff;box-shadow:0 16px 34px -28px rgba(30,30,70,.55)}
+  .pfr-more-head{
+    position:relative;display:flex;align-items:center;gap:6px;padding:0 8px 4px;
+    font-size:14px;font-weight:900;color:#20202a;
+  }
+  .pfr-dots{position:relative;width:16px;height:14px;flex:0 0 auto}
+  .pfr-dots i{position:absolute;border-radius:1px;background:#F06277}
+  .pfr-dots i:nth-child(1){width:3px;height:3px;left:2px;top:1px}
+  .pfr-dots i:nth-child(2){width:3px;height:3px;left:8px;top:4px;background:#F2A93B}
+  .pfr-dots i:nth-child(3){width:3px;height:3px;left:3px;top:8px;background:#9B6BFF}
+  .pfr-dots i:nth-child(4){width:4px;height:4px;left:9px;top:9px;background:#F06277;opacity:.7}
+  .pfr-grid{display:grid;grid-template-columns:repeat(4,1fr);row-gap:16px;margin-top:12px}
+  .pfr-g{
+    appearance:none;background:none;border:0;font-family:inherit;cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;gap:7px;
+    font-size:9.5px;color:#4a4a58;letter-spacing:.01em;transition:transform .3s;
+  }
+  .pfr-g-ic{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;transition:transform .3s,box-shadow .3s}
+  .pfr-g-ic svg{width:21px;height:21px}
+  .pfr-g:hover{transform:translateY(-3px);color:#20202a}
+  .pfr-g:hover .pfr-g-ic{transform:scale(1.06);box-shadow:0 10px 18px -12px rgba(30,30,70,.4)}
+
+  @media (max-width:360px){
+    .pf-tools{padding:4px 14px 0;gap:8px}
+    .pf-tool{width:31px;height:31px}
+    .pfr-head{padding:9px 14px 0;gap:10px}
+    .pfr-ava{width:58px;height:58px}
+    .pfr-name{font-size:17px}
+    .pfr-home{padding:7px 11px;font-size:10px}
+    .pfr-stats{padding:14px 14px 2px}
+    .pfr-wallet,.pfr-quick,.pfr-vip,.pfr-more{margin-left:12px;margin-right:12px}
+    .pfr-w-val{font-size:20px}
+    .pfr-q b{font-size:10.5px}
+    .pfr-q small{font-size:8px}
+    .pfr-q-ic{width:40px;height:40px}
+    .pfr-g{font-size:8.5px;gap:6px}
+    .pfr-g-ic{width:38px;height:38px}
+    .pfr-g-ic svg{width:19px;height:19px}
+  }
+
 </style>
 
 
@@ -3251,188 +3392,158 @@
       </div>
     </div>
 
-    <div class="pf-top">
-      <div class="brand">
-        <svg class="mark" viewBox="0 0 32 32" fill="none">
-          <path d="M16 2.6 30.2 28.6H1.8L16 2.6Z" stroke="#FFC178" stroke-width="1.6" stroke-linejoin="round"/>
-          <path d="M16 7.4 24.9 25.2H7.1L16 7.4Z" stroke="#F28C28" stroke-width="1.1" stroke-linejoin="round" opacity=".55"/>
-          <path d="M16 12.4 19.7 24h-7.4L16 12.4Z" fill="#F28C28" opacity=".85"/>
-        </svg>
-        <div class="name">三角洲<em>行动</em></div>
-      </div>
-      <button type="button" class="icon-btn pf-bell" aria-label="消息通知">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8.5a6 6 0 1 0-12 0c0 6.6-2.6 6.6-2.6 8.5h17.2C20.6 15.1 18 15.1 18 8.5Z"/><path d="M10.2 20.6a2 2 0 0 0 3.6 0"/></svg>
-        <span class="dot"></span>
+    <div class="pf-tools">
+      <button type="button" class="pf-tool" data-pf="扫一扫" aria-label="扫一扫">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V5.5A1.5 1.5 0 0 1 5.5 4h3M15.5 4h3A1.5 1.5 0 0 1 20 5.5v3M20 15.5v3a1.5 1.5 0 0 1-1.5 1.5h-3M8.5 20h-3A1.5 1.5 0 0 1 4 18.5v-3"/><path d="M8.5 12h7"/></svg>
+      </button>
+      <button type="button" class="pf-tool" data-pf="设置" aria-label="设置">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.2a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.2a1.6 1.6 0 0 0-1.4 1Z"/></svg>
       </button>
     </div>
 
-    <!-- 个人资料 -->
-    <div class="pf-card">
-      <div class="pf-user" data-pf="个人资料">
-        <div class="pf-avatar"><img src="assets/profile-avatar.jpg" alt="哈夫克干员"></div>
-        <div class="pf-info">
-          <div class="pf-name">哈夫克干员 <span class="lv-badge">LV.32</span></div>
-          <div class="pf-sign">热爱游戏 · 热爱生活</div>
-        </div>
-        <div class="pf-chev">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
-        </div>
+    <div class="pfr-head">
+      <div class="pfr-ava"><img src="assets/profile-avatar.jpg" alt="哈夫克干员"></div>
+      <div class="pfr-meta">
+        <div class="pfr-name">哈夫克干员</div>
+        <div class="pfr-id">ID 82726165</div>
+        <div class="pfr-tag">单身</div>
       </div>
-      <div class="pf-stats">
-        <div class="pf-stat">
-          <div class="pf-lab">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
-            本周游戏时长
-          </div>
-          <div class="pf-val">24.6<small>小时</small>
-            <span class="pf-bars"><i style="height:5px"></i><i style="height:9px"></i><i style="height:7px"></i><i style="height:12px"></i><i style="height:8px"></i><i style="height:15px"></i><i style="height:11px"></i></span>
-          </div>
-        </div>
-        <div class="pf-stat">
-          <div class="pf-lab">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7.5" width="19" height="9.5" rx="4.5"/><path d="M7.2 10.6v3M5.7 12.1h3"/><circle cx="16.2" cy="11" r=".9" fill="currentColor" stroke="none"/><circle cx="18.4" cy="13.2" r=".9" fill="currentColor" stroke="none"/></svg>
-            最近在玩
-          </div>
-          <div class="pf-covers">
-            <img src="assets/card-knife.jpg" alt="最近在玩">
-            <img src="assets/op-redwolf.jpg" alt="最近在玩">
-            <img src="assets/detail-bg.jpg" alt="最近在玩">
-            <span class="chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
-          </div>
-        </div>
-        <div class="pf-stat">
-          <div class="pf-lab">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.8L12 3.5Z"/></svg>
-            我的收藏
-          </div>
-          <div class="pf-fav">
-            <b>12</b>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="7.5" y="3.5" width="12" height="15" rx="2"/><path d="M4.5 7v13h12"/></svg>
-          </div>
-        </div>
-      </div>
+      <button type="button" class="pfr-home" data-pf="个人主页">个人主页</button>
     </div>
 
-    <!-- 战绩库 -->
-    <button type="button" class="pf-lib" data-pf="我的战绩库">
-      <div class="lib-left">
-        <div class="lib-title">我的战绩库</div>
-        <div class="lib-num"><b>68</b>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+    <div class="pfr-stats">
+      <div class="pfr-stat"><b>0</b><span>动态</span></div>
+      <div class="pfr-stat"><b>0</b><span>关注</span></div>
+      <div class="pfr-stat"><b>0</b><span>粉丝</span></div>
+    </div>
+
+    <!-- 我的钱包 -->
+    <div class="pfr-wallet">
+      <div class="pfr-w-head">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 7.5 4.5v9L12 21l-7.5-4.5v-9L12 3Z"/><path d="m7.5 9.6 4.5 2.7 4.5-2.7M12 12.3V16"/></svg>
+        我的钱包
+      </div>
+      <div class="pfr-w-grid">
+        <div class="pfr-w-col">
+          <div class="pfr-w-lab">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 4.5h10L20 9l-8 10.5L4 9l3-4.5Z"/><path d="M4 9h16M9.2 9 12 19.5 14.8 9M7 4.5 9.2 9M17 4.5 14.8 9"/></svg>
+            钻石
+          </div>
+          <div class="pfr-w-val">0.00</div>
         </div>
-        <div class="lib-sub">管理你的高光战绩</div>
+        <div class="pfr-w-col">
+          <div class="pfr-w-lab">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="8" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="7" r="1.1" fill="currentColor" stroke="none"/><circle cx="16" cy="9" r="1.1" fill="currentColor" stroke="none"/><path d="M12 12.5c-2.8 0-5 1.6-5 3.2 0 1.6 2.2 2.8 5 2.8s5-1.2 5-2.8c0-1.6-2.2-3.2-5-3.2Z"/></svg>
+            积分 <i>›</i>
+          </div>
+          <div class="pfr-w-val">0.00</div>
+        </div>
       </div>
-      <div class="lib-thumbs">
-        <img src="assets/op-redwolf.jpg" alt="战绩">
-        <img src="assets/op-nomad.jpg" alt="战绩">
-        <img src="assets/card-task.jpg" alt="战绩">
-        <img src="assets/card-assault.jpg" alt="战绩">
-        <img src="assets/card-knife.jpg" alt="战绩">
-        <span class="lib-more">···</span>
+      <div class="pfr-w-bar">
+        <button type="button" class="pfr-w-item" data-pf="尊享卡">尊享卡 <b>0张</b>
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <button type="button" class="pfr-w-item" data-pf="优惠券">优惠券 <b>0张</b>
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <button type="button" class="pfr-w-item" data-pf="存单卡">存单卡 <b>0张</b>
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
       </div>
-    </button>
+    </div>
 
     <!-- 快捷入口 -->
-    <div class="pf-acts">
-      <button type="button" class="pf-act" data-pf="我的发布">
-        <span class="ic">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7.5" width="19" height="9.5" rx="4.5"/><path d="M7.2 10.6v3M5.7 12.1h3"/><circle cx="16.2" cy="11" r=".9" fill="currentColor" stroke="none"/><circle cx="18.4" cy="13.2" r=".9" fill="currentColor" stroke="none"/></svg>
+    <div class="pfr-quick">
+      <button type="button" class="pfr-q" data-pf="我的订单">
+        <span class="pfr-q-ic" style="background:#FFF6DF;color:#F2A93B">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3.5" width="15" height="17" rx="2.4"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4.5"/></svg>
         </span>
-        我的发布
+        <b>我的订单</b><small>查看订单信息</small>
       </button>
-      <button type="button" class="pf-act" data-pf="我的关注">
-        <span class="ic">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.1 4 5 5.8 5 9a5 5 0 0 1-10 0c0-2 1-3.4 2.3-4.6.3 1.4 1 2.2 1.9 2.6C11.6 7.9 11.9 5.4 12 3Z"/></svg>
+      <button type="button" class="pfr-q" data-pf="我的战绩">
+        <span class="pfr-q-ic" style="background:#EAF3FF;color:#4C8DF6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8.5Z"/><path d="M9.5 20.5v-6h5v6"/></svg>
         </span>
-        我的关注
+        <b>我的战绩</b><small>管理你的战绩</small>
       </button>
-      <button type="button" class="pf-act" data-pf="我的收藏">
-        <span class="ic">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 8 3.6 3.2L12 5l4.4 6.2L20 8l-1.6 9H5.6L4 8Z"/></svg>
+      <button type="button" class="pfr-q" data-pf="VIP权益中心">
+        <span class="pfr-q-ic" style="background:#F3EDFF;color:#9B6BFF">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3.5 8.5 8 12l4-6 4 6 4.5-3.5-1.8 9.5H5.3L3.5 8.5Z"/><path d="M6.2 18h11.6" stroke-linecap="round"/></svg>
         </span>
-        我的收藏
-      </button>
-      <button type="button" class="pf-act" data-pf="我的订单">
-        <span class="ic">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 10h18"/><path d="M7 15h4"/></svg>
-        </span>
-        我的订单
+        <b>VIP权益中心</b><small>专属权益服务</small>
       </button>
     </div>
 
-    <!-- 我的服务 -->
-    <div class="pf-svc-card">
-      <div class="pf-svc-head">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7.5" width="19" height="9.5" rx="4.5"/><path d="M7.2 10.6v3M5.7 12.1h3"/><circle cx="16.2" cy="11" r=".9" fill="currentColor" stroke="none"/><circle cx="18.4" cy="13.2" r=".9" fill="currentColor" stroke="none"/></svg>
-        我的服务
+    <!-- 会员成长 -->
+    <div class="pfr-vip">
+      <div class="pfr-vip-top">
+        <span class="pfr-vip-ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2.8 20 6v6.2c0 4.6-3.3 7.9-8 9-4.7-1.1-8-4.4-8-9V6l8-3.2Z"/><path d="m9 12 2 2 4-4" stroke-linecap="round"/></svg>
+        </span>
+        <b>普通用户</b>
+        <span class="pfr-vip-right">专享权益：0/24</span>
       </div>
-      <div class="pf-svc-grid">
-        <button type="button" class="pf-svc" data-pf="我的战绩">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2.2v2.6M12 19.2v2.6M2.2 12h2.6M19.2 12h2.6"/></svg></span>
-          我的战绩
-        </button>
-        <button type="button" class="pf-svc" data-pf="我的社区">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.8a8 8 0 0 1-11.8 7.1L4 20.5l1.7-4.9A8 8 0 1 1 21 11.8Z"/></svg></span>
-          我的社区
-        </button>
-        <button type="button" class="pf-svc" data-pf="我的活动">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="m12 3 2.2 5.6 5.8.5-4.4 3.9 1.3 5.8L12 15.6l-4.9 3.2 1.3-5.8L4 9.1l5.8-.5L12 3Z"/></svg></span>
-          我的活动
-        </button>
-        <button type="button" class="pf-svc" data-pf="我的收藏">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="m4 8 3.6 3.2L12 5l4.4 6.2L20 8l-1.6 9H5.6L4 8Z"/></svg></span>
-          我的收藏
-        </button>
-        <button type="button" class="pf-svc" data-pf="我的订单">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8.5h6M9 12.5h6M9 16.5h3.5"/></svg></span>
-          我的订单
-        </button>
-        <button type="button" class="pf-svc" data-pf="我的钱包">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18"/><circle cx="17" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>
-          我的钱包
-        </button>
-        <button type="button" class="pf-svc" data-pf="战绩截图">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.7"/><path d="m4 18 5-4.6 4 3.4 3-2.6 4 3.8"/></svg></span>
-          战绩截图
-        </button>
-        <button type="button" class="pf-svc" data-pf="我的视频">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3V9Z"/></svg></span>
-          我的视频
-        </button>
-        <button type="button" class="pf-svc" data-pf="账号安全">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4.5 5.6v5.6c0 4.8 3.2 8.3 7.5 10.1 4.3-1.8 7.5-5.3 7.5-10.1V5.6L12 2.5Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          账号安全
-        </button>
-        <button type="button" class="pf-svc" data-pf="设置中心">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8v2M12 18.2v2M3.8 12h2M18.2 12h2"/></svg></span>
-          设置中心
-        </button>
-      </div>
+      <div class="pfr-vip-bar"><i></i></div>
+      <div class="pfr-vip-note">还差 20000 活跃值可获得坚韧白银</div>
     </div>
 
-    <!-- 福利与社区 -->
-    <div class="pf-welfare">
-      <button type="button" class="pf-welf-main" data-pf="陪玩福利中心">
-        <div class="title">陪玩福利中心</div>
-        <div class="sub">每日签到 · 限时领取</div>
-        <span class="tag">S3 赛季 · 限定</span>
-        <img class="cube" src="assets/welfare-cube.jpg" alt="福利宝箱">
-      </button>
-      <div class="pf-side">
-        <button type="button" class="pf-side-card" data-pf="今日活动">
-          <h4>今日活动</h4>
-          <p>超多福利放送中</p>
-          <img src="assets/mascot-activity.jpg" alt="">
+    <!-- 更多服务 -->
+    <div class="pfr-more">
+      <div class="pfr-more-head">更多服务
+        <span class="pfr-dots"><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="pfr-grid">
+        <button type="button" class="pfr-g" data-pf="我的俱乐部">
+          <span class="pfr-g-ic" style="background:#E7F8EE;color:#2FB86B">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.8L12 3.5Z"/></svg>
+          </span>
+          我的俱乐部
         </button>
-        <button type="button" class="pf-side-card" data-pf="三角洲社区">
-          <h4>三角洲社区</h4>
-          <p>发现同好一起玩</p>
-          <img src="assets/mascot-community.jpg" alt="">
+        <button type="button" class="pfr-g" data-pf="存单配置">
+          <span class="pfr-g-ic" style="background:#FFF3E3;color:#F0A13A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3.5 7.5A1.8 1.8 0 0 1 5.3 5.7h3.3l1.9 2.2h8.2a1.8 1.8 0 0 1 1.8 1.8v7.8a1.8 1.8 0 0 1-1.8 1.8H5.3a1.8 1.8 0 0 1-1.8-1.8V7.5Z"/></svg>
+          </span>
+          存单配置
+        </button>
+        <button type="button" class="pfr-g" data-pf="背包">
+          <span class="pfr-g-ic" style="background:#E8F8EC;color:#42B96A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8.5h14l-1.1 10.2a1.8 1.8 0 0 1-1.8 1.6H7.9a1.8 1.8 0 0 1-1.8-1.6L5 8.5Z"/><path d="M8.8 8.5V7a3.2 3.2 0 0 1 6.4 0v1.5"/></svg>
+          </span>
+          背包
+        </button>
+        <button type="button" class="pfr-g" data-pf="进房记录">
+          <span class="pfr-g-ic" style="background:#FFECEF;color:#F06277">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v8.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5V11Z"/><path d="M9.5 21v-5.5h5V21"/></svg>
+          </span>
+          进房记录
+        </button>
+        <button type="button" class="pfr-g" data-pf="挑战榜订单">
+          <span class="pfr-g-ic" style="background:#FFEDEC;color:#EF5B5B">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="m9 13.5-1.5 7L12 18l4.5 2.5-1.5-7"/><path d="m10.6 9 1 1 2-2"/></svg>
+          </span>
+          挑战榜订单
+        </button>
+        <button type="button" class="pfr-g" data-pf="签到">
+          <span class="pfr-g-ic" style="background:#EAF2FF;color:#4C8DF6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.8" y="5.5" width="16.4" height="15" rx="2.2"/><path d="M8 3.5v4M16 3.5v4M3.8 10.2h16.4"/><path d="m9.4 15.3 1.7 1.7 3.5-3.5"/></svg>
+          </span>
+          签到
+        </button>
+        <button type="button" class="pfr-g" data-pf="商城">
+          <span class="pfr-g-ic" style="background:#F2ECFF;color:#9B6BFF">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 8h15l-1.2 11.2a1.6 1.6 0 0 1-1.6 1.4H7.3a1.6 1.6 0 0 1-1.6-1.4L4.5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+          </span>
+          商城
+        </button>
+        <button type="button" class="pfr-g" data-pf="亲密关系">
+          <span class="pfr-g-ic" style="background:#FFECF2;color:#F06A94">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.4-7.5-9.3A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.7C19.5 15.6 12 20 12 20Z"/><path d="M8.6 6.4 12 8l3.4-1.6"/></svg>
+          </span>
+          亲密关系
         </button>
       </div>
     </div>
   </section>
-
   <!-- ================= 手游端页面 ================= -->
   <section class="screen plat-mobile" id="mobilePage">
     <div class="statusbar">
