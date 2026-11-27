@@ -3101,10 +3101,13 @@
     background:radial-gradient(circle,rgba(139,92,246,.28),transparent 68%);
   }
   .mem-hero-crown{
-    position:absolute;right:-4px;top:-10px;width:116px;pointer-events:none;z-index:1;
-    filter:drop-shadow(0 14px 22px rgba(110,80,255,.35));
+    margin-left:auto;flex:0 0 auto;width:58px;height:58px;border-radius:50%;overflow:hidden;
+    display:grid;place-items:center;pointer-events:none;
+    background:radial-gradient(circle at 50% 36%,#eaf3ff,#a9c8fb 82%);
+    border:1px solid rgba(255,255,255,.8);
+    box-shadow:0 10px 20px -12px rgba(0,0,0,.8),inset 0 0 16px rgba(70,125,225,.35);
   }
-  .mem-hero-crown img{width:100%;height:auto;mix-blend-mode:screen}
+  .mem-hero-crown img{width:90%;height:auto;mix-blend-mode:multiply;filter:contrast(1.12) saturate(1.18) brightness(.97)}
   .mem-hero-top{position:relative;z-index:2;display:flex;align-items:center;gap:7px}
   .mem-hero-badge{
     font-size:7.5px;font-weight:900;letter-spacing:.12em;padding:3px 7px;border-radius:8px;
@@ -3193,7 +3196,7 @@
 
   @media (max-width:360px){
     .mem-hero{padding:14px 13px}
-    .mem-hero-crown{width:100px}
+    .mem-hero-crown{width:52px;height:52px}
     .mem-ben-item small{font-size:7.5px}
   }
 
@@ -5337,10 +5340,10 @@
 
     <div class="mp-sec">
       <div class="mem-hero">
-        <div class="mem-hero-crown"><img src="assets/member-crown-1.png" alt="坚韧白银"></div>
         <div class="mem-hero-top">
           <span class="mem-hero-badge">LV.1</span>
           <span class="mem-hero-lv">坚韧白银</span>
+          <span class="mem-hero-crown"><img src="assets/member-crown-1.png" alt="坚韧白银"></span>
         </div>
         <div class="mem-prog"><i></i></div>
         <div class="mem-prog-txt"><span>消费积分 0 / 1600</span><span>距荣耀黄金还差 1600</span></div>
