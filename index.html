@@ -2791,6 +2791,16 @@
     content:"";position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(30,12,0,.02) 42%,rgba(30,12,0,.35) 100%);
   }
+  /* 封面在右侧：左文右图 */
+  .sf-card.sf-pic{
+    display:grid;grid-template-columns:minmax(0,1fr) 96px;
+    grid-template-areas:"head cover" "lines cover" "foot cover";
+    column-gap:10px;align-items:start;
+  }
+  .sf-card.sf-pic .sf-head{grid-area:head}
+  .sf-card.sf-pic .sf-lines{grid-area:lines}
+  .sf-card.sf-pic .sf-foot{grid-area:foot;justify-content:flex-start}
+  .sf-card.sf-pic .sf-cover{grid-area:cover;align-self:stretch;height:auto;min-height:90px;margin-bottom:0}
   .sf-head{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;border-bottom:1px dashed rgba(210,97,14,.3)}
   .sf-head .tier-price{font-size:22px;font-weight:900;color:var(--ink);line-height:1;letter-spacing:-.02em}
   .sf-head .tier-price i{font-size:12px;font-style:normal}
@@ -3526,6 +3536,8 @@
     .st-sec-title{margin-left:16px;margin-right:16px}
     .st-row{padding:11px 12px}
     .st-logout{width:calc(100% - 24px);margin-left:12px;margin-right:12px}
+    .sf-card.sf-pic{grid-template-columns:minmax(0,1fr) 84px;column-gap:8px}
+    .sf-card.sf-pic .sf-cover{min-height:84px}
   }
 
   /* ================= 深色模式 ================= */
@@ -4366,7 +4378,7 @@
         <div class="mp-note">大大怪电竞陪玩 · 3 项可选</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="陪玩跑刀·55跑1000W" data-flag="陪玩跑刀" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单55R.png" data-desc="55 元跑 1000W · 物资全部归老板">
+        <button type="button" class="sf-card sf-pic" data-pkg="陪玩跑刀·55跑1000W" data-flag="陪玩跑刀" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单55R.png" data-desc="55 元跑 1000W · 物资全部归老板">
           <span class="sf-cover"><img src="assets/跑刀单55R.png" alt="陪玩跑刀·55跑1000W" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">55<i>R</i></span>
@@ -4377,7 +4389,7 @@
           </div>
           <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
-        <button type="button" class="sf-card" data-pkg="陪玩跑刀·娱乐陪玩48/1h" data-flag="娱乐陪玩" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单48R.png" data-desc="娱乐陪玩 48 元 / 1 小时 · 陪陪必须注重老板体验" data-safe="服务时长 <b>1 小时</b>">
+        <button type="button" class="sf-card sf-pic" data-pkg="陪玩跑刀·娱乐陪玩48/1h" data-flag="娱乐陪玩" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单48R.png" data-desc="娱乐陪玩 48 元 / 1 小时 · 陪陪必须注重老板体验" data-safe="服务时长 <b>1 小时</b>">
           <span class="sf-cover"><img src="assets/跑刀单48R.png" alt="陪玩跑刀·娱乐陪玩48/1h" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">48<i>R</i></span>
@@ -4388,7 +4400,7 @@
           </div>
           <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
-        <button type="button" class="sf-card" data-pkg="陪玩跑刀·技术陪玩68/1h" data-flag="技术陪玩" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单68R.png" data-desc="技术陪玩 68 元 / 1 小时 · 1 小时内最少击杀七名敌方干员" data-safe="服务时长 <b>1 小时</b>">
+        <button type="button" class="sf-card sf-pic" data-pkg="陪玩跑刀·技术陪玩68/1h" data-flag="技术陪玩" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单68R.png" data-desc="技术陪玩 68 元 / 1 小时 · 1 小时内最少击杀七名敌方干员" data-safe="服务时长 <b>1 小时</b>">
           <span class="sf-cover"><img src="assets/跑刀单68R.png" alt="陪玩跑刀·技术陪玩68/1h" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">68<i>R</i></span>
@@ -6839,7 +6851,7 @@
         <div class="sn-sec-note">3 项可选</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="陪玩跑刀·55跑1000W" data-img="assets/跑刀单55R.png">
+        <button type="button" class="sf-card sf-pic" data-pkg="陪玩跑刀·55跑1000W" data-img="assets/跑刀单55R.png">
           <span class="sf-cover"><img src="assets/跑刀单55R.png" alt="陪玩跑刀·55跑1000W" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">55<i>R</i></span>
@@ -6852,7 +6864,7 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="陪玩跑刀·娱乐陪玩48/1h" data-img="assets/跑刀单48R.png">
+        <button type="button" class="sf-card sf-pic" data-pkg="陪玩跑刀·娱乐陪玩48/1h" data-img="assets/跑刀单48R.png">
           <span class="sf-cover"><img src="assets/跑刀单48R.png" alt="陪玩跑刀·娱乐陪玩48/1h" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">48<i>R</i></span>
@@ -6865,7 +6877,7 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="陪玩跑刀·技术陪玩68/1h" data-img="assets/跑刀单68R.png">
+        <button type="button" class="sf-card sf-pic" data-pkg="陪玩跑刀·技术陪玩68/1h" data-img="assets/跑刀单68R.png">
           <span class="sf-cover"><img src="assets/跑刀单68R.png" alt="陪玩跑刀·技术陪玩68/1h" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">68<i>R</i></span>
