@@ -3628,7 +3628,7 @@
       linear-gradient(180deg,#f8f7ff 0%,#f1f0fb 56%,#f7f6fd 100%);
     color:#20202a;
   }
-  #app.phone-open #phonePage,#app.verify-open #verifyPage,#app.pwd-open #pwdPage{opacity:1;transform:translateX(0)}
+  #app.phone-open #phonePage,#app.verify-open #verifyPage,#app.pwd-open #pwdPage,#app.lang-open #langPage{opacity:1;transform:translateX(0)}
   .ac-page .statusbar{color:#2a2a35;text-shadow:none}
   .ac-page .mp-head{
     background:linear-gradient(180deg,rgba(252,251,255,.98),rgba(247,245,254,.95));
@@ -3664,6 +3664,17 @@
   .ac-info-row span{color:#a4a1b5}
   .ac-info-row b{font-weight:800;color:#2a2a35;text-align:right}
   .ac-note{padding:10px 14px 13px;border-top:1px solid #f5f3fa;font-size:8px;line-height:1.6;color:#a4a1b5}
+
+  /* ================= 语言 ================= */
+  .lang-list{margin:0 16px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 16px 34px -30px rgba(30,30,70,.55)}
+  .lang-item{width:100%;display:flex;align-items:center;gap:10px;padding:12px 14px;border:0;background:none;font-family:inherit;text-align:left;cursor:pointer;transition:background .25s}
+  .lang-item + .lang-item{border-top:1px solid #f5f3fa}
+  .lang-item:hover{background:#faf9ff}
+  .lang-native{flex:1;min-width:0;font-size:11px;font-weight:800;color:#2a2a35}
+  .lang-sub{font-size:8.5px;color:#a4a1b5;white-space:nowrap}
+  .lang-check{width:16px;height:16px;flex:0 0 auto;color:#8b6cf0;opacity:0;transition:opacity .2s}
+  .lang-item.on .lang-check{opacity:1}
+  .lang-item.on .lang-native{color:#6547cf}
 
   /* ================= 深色模式 ================= */
   #app.dark{background:#07090e}
@@ -3898,6 +3909,11 @@
   #app.dark .ac-field + .ac-field,#app.dark .ac-info-row + .ac-info-row,#app.dark .ac-note{border-top-color:rgba(255,255,255,.06)}
   #app.dark .ac-field > span,#app.dark .ac-field input,#app.dark .ac-info-row b{color:#e8e6f2}
   #app.dark .ac-note{color:#8d8a9c}
+  #app.dark .lang-list{background:#171a24;box-shadow:0 16px 34px -30px rgba(0,0,0,.9)}
+  #app.dark .lang-item + .lang-item{border-top-color:rgba(255,255,255,.06)}
+  #app.dark .lang-item:hover{background:#1d2130}
+  #app.dark .lang-native{color:#e8e6f2}
+  #app.dark .lang-item.on .lang-native{color:#c9bbff}
 
   /* 订单详情 / 下单页 */
   #app.dark #orderDetail,#app.dark #checkout{
@@ -6801,6 +6817,29 @@
     <p class="st-note">大大怪电竞 · 三角洲行动陪玩代练</p>
   </section>
 
+  <!-- ================= 语言 ================= -->
+  <section class="screen subpage ac-page" id="langPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="langBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>语言</h2><p>LANGUAGE</p></div>
+    </div>
+
+    <div class="st-sec">
+      <div class="lang-list" id="langList"></div>
+    </div>
+    <p class="st-note" style="margin:12px 16px 0">选择后立即在小程序内生效</p>
+  </section>
+
   <!-- ================= 考核入驻 ================= -->
   <section class="screen subpage" id="joinPage">
     <div class="statusbar">
@@ -7468,6 +7507,7 @@
       if(app.classList.contains('phone-open')){ app.classList.remove('phone-open'); return; }
       if(app.classList.contains('verify-open')){ app.classList.remove('verify-open'); return; }
       if(app.classList.contains('pwd-open')){ app.classList.remove('pwd-open'); return; }
+      if(app.classList.contains('lang-open')){ app.classList.remove('lang-open'); return; }
       if(app.classList.contains('pe-open')){ app.classList.remove('pe-open'); return; }
       if(app.classList.contains('member-open')){ app.classList.remove('member-open'); return; }
       if(app.classList.contains('sign-open')){ app.classList.remove('sign-open'); return; }
@@ -7669,9 +7709,10 @@
     document.getElementById('tabPage').classList.toggle('cat-on', isCategory);
     if(isCategory && !document.getElementById('categoryTabs').children.length) buildCategory();
     const meta = tabMeta[name];
-    tpTitle.textContent = meta.name;
+    const metaName = tr(meta.name);
+    tpTitle.textContent = metaName;
     tpEn.textContent = meta.en;
-    tpName.textContent = meta.name;
+    tpName.textContent = metaName;
     tpDesc.innerHTML = meta.desc;
     tpIcon.innerHTML = document.querySelector('.tab[data-tab="' + name + '"] svg').outerHTML;
     app.classList.add('tab-open');
@@ -7686,6 +7727,7 @@
       if(pf === '手机号'){ openAcPage('phone'); return; }
       if(pf === '实名认证'){ openAcPage('verify'); return; }
       if(pf === '修改密码'){ openAcPage('pwd'); return; }
+      if(pf === '语言'){ openLangPage(); return; }
       showToast('「' + pf + '」功能开发中');
     });
   });
@@ -8249,6 +8291,7 @@
   function openProfileEdit(){
     peAvatarDraft = profAvatar;
     syncPePage();
+    app.classList.remove('phone-open','verify-open','pwd-open','lang-open');
     app.classList.add('pe-open');
     if(pePage) pePage.scrollTop = 0;
   }
@@ -8300,7 +8343,7 @@
 
   /* 账号与安全子页面 */
   function openAcPage(kind){
-    app.classList.remove('pe-open','phone-open','verify-open','pwd-open');
+    app.classList.remove('pe-open','phone-open','verify-open','pwd-open','lang-open');
     app.classList.add(kind + '-open');
     const page = document.getElementById(kind + 'Page');
     if(page) page.scrollTop = 0;
@@ -8374,13 +8417,149 @@
       if(p !== c){ showToast('两次输入的密码不一致'); return; }
       if(pwdNew) pwdNew.value = '';
       if(pwdConfirm) pwdConfirm.value = '';
-      if(pwdStatus){ pwdStatus.textContent = '已设置'; pwdStatus.classList.remove('warn'); }
+      if(pwdStatus){ pwdStatus.textContent = tr('已设置'); pwdStatus.classList.remove('warn'); }
       const row = document.querySelector('#settingsPage [data-pf="修改密码"] .st-val');
-      if(row){ row.textContent = '已设置'; row.classList.add('ok'); }
+      if(row){ row.textContent = tr('已设置'); row.classList.add('ok'); }
       app.classList.remove('pwd-open');
       showToast('密码已更新');
     });
   }
+
+  /* ================= 语言（26 种） ================= */
+  const LANGS = [
+    {code:'zh-CN',native:'简体中文'},
+    {code:'zh-TW',native:'繁體中文'},
+    {code:'en',native:'English'},
+    {code:'ja',native:'日本語'},
+    {code:'ko',native:'한국어'},
+    {code:'ru',native:'Русский'},
+    {code:'fr',native:'Français'},
+    {code:'de',native:'Deutsch'},
+    {code:'es',native:'Español'},
+    {code:'pt',native:'Português'},
+    {code:'it',native:'Italiano'},
+    {code:'ar',native:'العربية'},
+    {code:'tr',native:'Türkçe'},
+    {code:'th',native:'ไทย'},
+    {code:'vi',native:'Tiếng Việt'},
+    {code:'id',native:'Bahasa Indonesia'},
+    {code:'ms',native:'Bahasa Melayu'},
+    {code:'hi',native:'हिन्दी'},
+    {code:'pl',native:'Polski'},
+    {code:'nl',native:'Nederlands'},
+    {code:'sv',native:'Svenska'},
+    {code:'da',native:'Dansk'},
+    {code:'fi',native:'Suomi'},
+    {code:'no',native:'Norsk'},
+    {code:'cs',native:'Čeština'},
+    {code:'el',native:'Ελληνικά'}
+  ];
+  const I18N_SRC = {
+    '首页':'h','分类':'cat','打手':'bst','订单':'ord','我的':'me',
+    '设置':'set','账号与安全':'secAcc','隐私设置':'secPri','消息通知':'secMsg','通用':'secGen','关于':'secAbt',
+    '头像与昵称':'avatar','手机号':'phone','实名认证':'verify','修改密码':'pwd',
+    '清空缓存':'cache','检查更新':'update','语言':'lang','用户协议':'terms','隐私政策':'policy',
+    '联系我们':'contact','当前版本':'version','退出登录':'logout',
+    '已认证':'ok','未设置':'unset','已设置':'seted',
+    '保存修改':'btnSave','确认更换':'btnChange','申请重新认证':'btnReverify','保存密码':'btnSavePwd',
+    '获取验证码':'btnCode','从相册选择':'btnAlbum','选择后立即在小程序内生效':'langNote'
+  };
+  const I18N = {
+    'zh-CN':{h:'首页',cat:'分类',bst:'打手',ord:'订单',me:'我的',set:'设置',secAcc:'账号与安全',secPri:'隐私设置',secMsg:'消息通知',secGen:'通用',secAbt:'关于',avatar:'头像与昵称',phone:'手机号',verify:'实名认证',pwd:'修改密码',cache:'清空缓存',update:'检查更新',lang:'语言',terms:'用户协议',policy:'隐私政策',contact:'联系我们',version:'当前版本',logout:'退出登录',ok:'已认证',unset:'未设置',seted:'已设置',btnSave:'保存修改',btnChange:'确认更换',btnReverify:'申请重新认证',btnSavePwd:'保存密码',btnCode:'获取验证码',btnAlbum:'从相册选择',langNote:'选择后立即在小程序内生效'},
+    'zh-TW':{h:'首頁',cat:'分類',bst:'打手',ord:'訂單',me:'我的',set:'設定',secAcc:'帳號與安全',secPri:'隱私設定',secMsg:'訊息通知',secGen:'一般',secAbt:'關於',avatar:'頭像與暱稱',phone:'手機號碼',verify:'實名認證',pwd:'修改密碼',cache:'清除快取',update:'檢查更新',lang:'語言',terms:'使用者協議',policy:'隱私政策',contact:'聯絡我們',version:'目前版本',logout:'登出',ok:'已認證',unset:'未設定',seted:'已設定',btnSave:'儲存修改',btnChange:'確認更換',btnReverify:'申請重新認證',btnSavePwd:'儲存密碼',btnCode:'取得驗證碼',btnAlbum:'從相簿選擇',langNote:'選擇後立即在小程式內生效'},
+    en:{h:'Home',cat:'Categories',bst:'Boosters',ord:'Orders',me:'Me',set:'Settings',secAcc:'Account & Security',secPri:'Privacy',secMsg:'Notifications',secGen:'General',secAbt:'About',avatar:'Profile & Nickname',phone:'Phone Number',verify:'Verification',pwd:'Change Password',cache:'Clear Cache',update:'Check Updates',lang:'Language',terms:'Terms of Service',policy:'Privacy Policy',contact:'Contact Us',version:'Current Version',logout:'Log Out',ok:'Verified',unset:'Not Set',seted:'Set',btnSave:'Save Changes',btnChange:'Confirm Change',btnReverify:'Request Re-verification',btnSavePwd:'Save Password',btnCode:'Get Code',btnAlbum:'Choose from Album',langNote:'Applies immediately after selection'},
+    ja:{h:'ホーム',cat:'カテゴリ',bst:'ブースター',ord:'注文',me:'マイページ',set:'設定',secAcc:'アカウントとセキュリティ',secPri:'プライバシー',secMsg:'通知',secGen:'一般',secAbt:'情報',avatar:'アイコンとニックネーム',phone:'電話番号',verify:'本人確認',pwd:'パスワード変更',cache:'キャッシュを削除',update:'アップデートを確認',lang:'言語',terms:'利用規約',policy:'プライバシーポリシー',contact:'お問い合わせ',version:'現在のバージョン',logout:'ログアウト',ok:'認証済み',unset:'未設定',seted:'設定済み',btnSave:'変更を保存',btnChange:'変更を確認',btnReverify:'再認証を申請',btnSavePwd:'パスワードを保存',btnCode:'認証コードを取得',btnAlbum:'アルバムから選択',langNote:'選択後すぐにアプリ内で有効になります'},
+    ko:{h:'홈',cat:'카테고리',bst:'부스터',ord:'주문',me:'마이',set:'설정',secAcc:'계정 및 보안',secPri:'개인정보',secMsg:'알림',secGen:'일반',secAbt:'정보',avatar:'프로필 및 닉네임',phone:'전화번호',verify:'실명 인증',pwd:'비밀번호 변경',cache:'캐시 삭제',update:'업데이트 확인',lang:'언어',terms:'이용약관',policy:'개인정보 처리방침',contact:'문의하기',version:'현재 버전',logout:'로그아웃',ok:'인증됨',unset:'미설정',seted:'설정됨',btnSave:'변경 저장',btnChange:'변경 확인',btnReverify:'재인증 신청',btnSavePwd:'비밀번호 저장',btnCode:'인증번호 받기',btnAlbum:'앨범에서 선택',langNote:'선택 후 앱 내에서 즉시 적용됩니다'},
+    ru:{h:'Главная',cat:'Категории',bst:'Бустеры',ord:'Заказы',me:'Профиль',set:'Настройки',secAcc:'Аккаунт и безопасность',secPri:'Приватность',secMsg:'Уведомления',secGen:'Общие',secAbt:'О приложении',avatar:'Аватар и никнейм',phone:'Номер телефона',verify:'Верификация',pwd:'Смена пароля',cache:'Очистить кэш',update:'Проверить обновления',lang:'Язык',terms:'Пользовательское соглашение',policy:'Политика конфиденциальности',contact:'Связаться с нами',version:'Текущая версия',logout:'Выйти',ok:'Подтверждено',unset:'Не задано',seted:'Задано',btnSave:'Сохранить изменения',btnChange:'Подтвердить изменение',btnReverify:'Запросить повторную верификацию',btnSavePwd:'Сохранить пароль',btnCode:'Получить код',btnAlbum:'Выбрать из альбома',langNote:'Применяется сразу после выбора'},
+    fr:{h:'Accueil',cat:'Catégories',bst:'Boosters',ord:'Commandes',me:'Moi',set:'Paramètres',secAcc:'Compte et sécurité',secPri:'Confidentialité',secMsg:'Notifications',secGen:'Général',secAbt:'À propos',avatar:'Profil et pseudo',phone:'Numéro de téléphone',verify:'Vérification',pwd:'Modifier le mot de passe',cache:'Vider le cache',update:'Vérifier les mises à jour',lang:'Langue',terms:'Conditions générales',policy:'Politique de confidentialité',contact:'Nous contacter',version:'Version actuelle',logout:'Se déconnecter',ok:'Vérifié',unset:'Non défini',seted:'Défini',btnSave:'Enregistrer les modifications',btnChange:'Confirmer le changement',btnReverify:'Demander une re-vérification',btnSavePwd:'Enregistrer le mot de passe',btnCode:'Obtenir le code',btnAlbum:'Choisir dans l album',langNote:'Appliqué immédiatement après sélection'},
+    de:{h:'Start',cat:'Kategorien',bst:'Booster',ord:'Bestellungen',me:'Ich',set:'Einstellungen',secAcc:'Konto und Sicherheit',secPri:'Datenschutz',secMsg:'Benachrichtigungen',secGen:'Allgemein',secAbt:'Info',avatar:'Profil und Spitzname',phone:'Telefonnummer',verify:'Verifizierung',pwd:'Passwort ändern',cache:'Cache leeren',update:'Auf Updates prüfen',lang:'Sprache',terms:'Nutzungsbedingungen',policy:'Datenschutzrichtlinie',contact:'Kontakt',version:'Aktuelle Version',logout:'Abmelden',ok:'Verifiziert',unset:'Nicht gesetzt',seted:'Gesetzt',btnSave:'Änderungen speichern',btnChange:'Änderung bestätigen',btnReverify:'Erneut verifizieren',btnSavePwd:'Passwort speichern',btnCode:'Code erhalten',btnAlbum:'Aus Album wählen',langNote:'Sofort nach Auswahl angewendet'},
+    es:{h:'Inicio',cat:'Categorías',bst:'Boosters',ord:'Pedidos',me:'Yo',set:'Ajustes',secAcc:'Cuenta y seguridad',secPri:'Privacidad',secMsg:'Notificaciones',secGen:'General',secAbt:'Acerca de',avatar:'Perfil y apodo',phone:'Número de teléfono',verify:'Verificación',pwd:'Cambiar contraseña',cache:'Borrar caché',update:'Buscar actualizaciones',lang:'Idioma',terms:'Términos del servicio',policy:'Política de privacidad',contact:'Contáctanos',version:'Versión actual',logout:'Cerrar sesión',ok:'Verificado',unset:'No definido',seted:'Definido',btnSave:'Guardar cambios',btnChange:'Confirmar cambio',btnReverify:'Solicitar reverificación',btnSavePwd:'Guardar contraseña',btnCode:'Obtener código',btnAlbum:'Elegir del álbum',langNote:'Se aplica al instante tras seleccionar'},
+    pt:{h:'Início',cat:'Categorias',bst:'Boosters',ord:'Pedidos',me:'Eu',set:'Configurações',secAcc:'Conta e segurança',secPri:'Privacidade',secMsg:'Notificações',secGen:'Geral',secAbt:'Sobre',avatar:'Perfil e apelido',phone:'Número de telefone',verify:'Verificação',pwd:'Alterar senha',cache:'Limpar cache',update:'Verificar atualizações',lang:'Idioma',terms:'Termos de serviço',policy:'Política de privacidade',contact:'Fale conosco',version:'Versão atual',logout:'Sair',ok:'Verificado',unset:'Não definido',seted:'Definido',btnSave:'Salvar alterações',btnChange:'Confirmar alteração',btnReverify:'Solicitar reverificação',btnSavePwd:'Salvar senha',btnCode:'Obter código',btnAlbum:'Escolher do álbum',langNote:'Aplicado imediatamente após a seleção'},
+    it:{h:'Home',cat:'Categorie',bst:'Booster',ord:'Ordini',me:'Io',set:'Impostazioni',secAcc:'Account e sicurezza',secPri:'Privacy',secMsg:'Notifiche',secGen:'Generale',secAbt:'Informazioni',avatar:'Profilo e nickname',phone:'Numero di telefono',verify:'Verifica',pwd:'Cambia password',cache:'Svuota cache',update:'Controlla aggiornamenti',lang:'Lingua',terms:'Termini di servizio',policy:'Informativa sulla privacy',contact:'Contattaci',version:'Versione attuale',logout:'Esci',ok:'Verificato',unset:'Non impostato',seted:'Impostato',btnSave:'Salva modifiche',btnChange:'Conferma modifica',btnReverify:'Richiedi nuova verifica',btnSavePwd:'Salva password',btnCode:'Ottieni codice',btnAlbum:'Scegli dall album',langNote:'Applicato subito dopo la selezione'},
+    ar:{h:'الرئيسية',cat:'الفئات',bst:'المعززون',ord:'الطلبات',me:'أنا',set:'الإعدادات',secAcc:'الحساب والأمان',secPri:'الخصوصية',secMsg:'الإشعارات',secGen:'عام',secAbt:'حول',avatar:'الملف واللقب',phone:'رقم الهاتف',verify:'التحقق',pwd:'تغيير كلمة المرور',cache:'مسح الذاكرة المؤقتة',update:'التحقق من التحديثات',lang:'اللغة',terms:'شروط الخدمة',policy:'سياسة الخصوصية',contact:'اتصل بنا',version:'الإصدار الحالي',logout:'تسجيل الخروج',ok:'موثّق',unset:'غير محدد',seted:'محدد',btnSave:'حفظ التغييرات',btnChange:'تأكيد التغيير',btnReverify:'طلب إعادة التحقق',btnSavePwd:'حفظ كلمة المرور',btnCode:'الحصول على الرمز',btnAlbum:'اختيار من الألبوم',langNote:'يُطبق فورًا بعد الاختيار'},
+    tr:{h:'Ana Sayfa',cat:'Kategoriler',bst:'Güçlendiriciler',ord:'Siparişler',me:'Ben',set:'Ayarlar',secAcc:'Hesap ve Güvenlik',secPri:'Gizlilik',secMsg:'Bildirimler',secGen:'Genel',secAbt:'Hakkında',avatar:'Profil ve Takma Ad',phone:'Telefon Numarası',verify:'Doğrulama',pwd:'Şifre Değiştir',cache:'Önbelleği Temizle',update:'Güncellemeleri Kontrol Et',lang:'Dil',terms:'Hizmet Şartları',policy:'Gizlilik Politikası',contact:'Bize Ulaşın',version:'Geçerli Sürüm',logout:'Çıkış Yap',ok:'Doğrulandı',unset:'Ayarlanmadı',seted:'Ayarlı',btnSave:'Değişiklikleri Kaydet',btnChange:'Değişikliği Onayla',btnReverify:'Yeniden Doğrulama İste',btnSavePwd:'Şifreyi Kaydet',btnCode:'Kod Al',btnAlbum:'Albümden Seç',langNote:'Seçimden hemen sonra uygulanır'},
+    th:{h:'หน้าแรก',cat:'หมวดหมู่',bst:'บูสเตอร์',ord:'คำสั่งซื้อ',me:'ฉัน',set:'การตั้งค่า',secAcc:'บัญชีและความปลอดภัย',secPri:'ความเป็นส่วนตัว',secMsg:'การแจ้งเตือน',secGen:'ทั่วไป',secAbt:'เกี่ยวกับ',avatar:'โปรไฟล์และชื่อเล่น',phone:'หมายเลขโทรศัพท์',verify:'การยืนยันตัวตน',pwd:'เปลี่ยนรหัสผ่าน',cache:'ล้างแคช',update:'ตรวจสอบอัปเดต',lang:'ภาษา',terms:'ข้อกำหนดการให้บริการ',policy:'นโยบายความเป็นส่วนตัว',contact:'ติดต่อเรา',version:'เวอร์ชันปัจจุบัน',logout:'ออกจากระบบ',ok:'ยืนยันแล้ว',unset:'ยังไม่ได้ตั้ง',seted:'ตั้งแล้ว',btnSave:'บันทึกการเปลี่ยนแปลง',btnChange:'ยืนยันการเปลี่ยน',btnReverify:'ขอตรวจสอบใหม่',btnSavePwd:'บันทึกรหัสผ่าน',btnCode:'รับรหัส',btnAlbum:'เลือกจากอัลบั้ม',langNote:'มีผลทันทีหลังเลือก'},
+    vi:{h:'Trang chủ',cat:'Danh mục',bst:'Booster',ord:'Đơn hàng',me:'Tôi',set:'Cài đặt',secAcc:'Tài khoản và bảo mật',secPri:'Quyền riêng tư',secMsg:'Thông báo',secGen:'Chung',secAbt:'Giới thiệu',avatar:'Hồ sơ và biệt danh',phone:'Số điện thoại',verify:'Xác minh',pwd:'Đổi mật khẩu',cache:'Xóa bộ nhớ đệm',update:'Kiểm tra cập nhật',lang:'Ngôn ngữ',terms:'Điều khoản dịch vụ',policy:'Chính sách bảo mật',contact:'Liên hệ',version:'Phiên bản hiện tại',logout:'Đăng xuất',ok:'Đã xác minh',unset:'Chưa đặt',seted:'Đã đặt',btnSave:'Lưu thay đổi',btnChange:'Xác nhận thay đổi',btnReverify:'Yêu cầu xác minh lại',btnSavePwd:'Lưu mật khẩu',btnCode:'Nhận mã',btnAlbum:'Chọn từ album',langNote:'Áp dụng ngay sau khi chọn'},
+    id:{h:'Beranda',cat:'Kategori',bst:'Booster',ord:'Pesanan',me:'Saya',set:'Pengaturan',secAcc:'Akun dan Keamanan',secPri:'Privasi',secMsg:'Notifikasi',secGen:'Umum',secAbt:'Tentang',avatar:'Profil dan Nama Panggilan',phone:'Nomor Telepon',verify:'Verifikasi',pwd:'Ubah Kata Sandi',cache:'Hapus Cache',update:'Periksa Pembaruan',lang:'Bahasa',terms:'Ketentuan Layanan',policy:'Kebijakan Privasi',contact:'Hubungi Kami',version:'Versi Saat Ini',logout:'Keluar',ok:'Terverifikasi',unset:'Belum Diatur',seted:'Sudah Diatur',btnSave:'Simpan Perubahan',btnChange:'Konfirmasi Perubahan',btnReverify:'Minta Verifikasi Ulang',btnSavePwd:'Simpan Kata Sandi',btnCode:'Dapatkan Kode',btnAlbum:'Pilih dari Album',langNote:'Berlaku langsung setelah dipilih'},
+    ms:{h:'Laman Utama',cat:'Kategori',bst:'Booster',ord:'Pesanan',me:'Saya',set:'Tetapan',secAcc:'Akaun dan Keselamatan',secPri:'Privasi',secMsg:'Pemberitahuan',secGen:'Umum',secAbt:'Perihal',avatar:'Profil dan Nama Samaran',phone:'Nombor Telefon',verify:'Pengesahan',pwd:'Tukar Kata Laluan',cache:'Kosongkan Cache',update:'Semak Kemas Kini',lang:'Bahasa',terms:'Terma Perkhidmatan',policy:'Dasar Privasi',contact:'Hubungi Kami',version:'Versi Semasa',logout:'Log Keluar',ok:'Disahkan',unset:'Belum Ditetapkan',seted:'Ditetapkan',btnSave:'Simpan Perubahan',btnChange:'Sahkan Perubahan',btnReverify:'Minta Pengesahan Semula',btnSavePwd:'Simpan Kata Laluan',btnCode:'Dapatkan Kod',btnAlbum:'Pilih dari Album',langNote:'Digunakan sejurus selepas dipilih'},
+    hi:{h:'होम',cat:'श्रेणियाँ',bst:'बूस्टर',ord:'ऑर्डर',me:'मैं',set:'सेटिंग्स',secAcc:'खाता और सुरक्षा',secPri:'गोपनीयता',secMsg:'सूचनाएं',secGen:'सामान्य',secAbt:'परिचय',avatar:'प्रोफ़ाइल और उपनाम',phone:'फ़ोन नंबर',verify:'सत्यापन',pwd:'पासवर्ड बदलें',cache:'कैश साफ़ करें',update:'अपडेट जांचें',lang:'भाषा',terms:'सेवा की शर्तें',policy:'गोपनीयता नीति',contact:'हमसे संपर्क करें',version:'वर्तमान संस्करण',logout:'लॉग आउट',ok:'सत्यापित',unset:'सेट नहीं',seted:'सेट है',btnSave:'परिवर्तन सहेजें',btnChange:'परिवर्तन की पुष्टि करें',btnReverify:'पुनः सत्यापन अनुरोध',btnSavePwd:'पासवर्ड सहेजें',btnCode:'कोड प्राप्त करें',btnAlbum:'एल्बम से चुनें',langNote:'चयन के तुरंत बाद लागू'},
+    pl:{h:'Start',cat:'Kategorie',bst:'Boosterzy',ord:'Zamówienia',me:'Ja',set:'Ustawienia',secAcc:'Konto i bezpieczeństwo',secPri:'Prywatność',secMsg:'Powiadomienia',secGen:'Ogólne',secAbt:'Informacje',avatar:'Profil i pseudonim',phone:'Numer telefonu',verify:'Weryfikacja',pwd:'Zmień hasło',cache:'Wyczyść pamięć',update:'Sprawdź aktualizacje',lang:'Język',terms:'Warunki usługi',policy:'Polityka prywatności',contact:'Kontakt',version:'Bieżąca wersja',logout:'Wyloguj',ok:'Zweryfikowano',unset:'Nie ustawiono',seted:'Ustawiono',btnSave:'Zapisz zmiany',btnChange:'Potwierdź zmianę',btnReverify:'Poproś o ponowną weryfikację',btnSavePwd:'Zapisz hasło',btnCode:'Pobierz kod',btnAlbum:'Wybierz z albumu',langNote:'Stosowane od razu po wyborze'},
+    nl:{h:'Home',cat:'Categorieën',bst:'Boosters',ord:'Bestellingen',me:'Ik',set:'Instellingen',secAcc:'Account en beveiliging',secPri:'Privacy',secMsg:'Meldingen',secGen:'Algemeen',secAbt:'Over',avatar:'Profiel en bijnaam',phone:'Telefoonnummer',verify:'Verificatie',pwd:'Wachtwoord wijzigen',cache:'Cache wissen',update:'Controleren op updates',lang:'Taal',terms:'Servicevoorwaarden',policy:'Privacybeleid',contact:'Contact',version:'Huidige versie',logout:'Uitloggen',ok:'Geverifieerd',unset:'Niet ingesteld',seted:'Ingesteld',btnSave:'Wijzigingen opslaan',btnChange:'Wijziging bevestigen',btnReverify:'Opnieuw verifiëren',btnSavePwd:'Wachtwoord opslaan',btnCode:'Code ophalen',btnAlbum:'Kies uit album',langNote:'Direct toegepast na selectie'},
+    sv:{h:'Hem',cat:'Kategorier',bst:'Boosters',ord:'Beställningar',me:'Jag',set:'Inställningar',secAcc:'Konto och säkerhet',secPri:'Integritet',secMsg:'Aviseringar',secGen:'Allmänt',secAbt:'Om',avatar:'Profil och smeknamn',phone:'Telefonnummer',verify:'Verifiering',pwd:'Byt lösenord',cache:'Rensa cache',update:'Sök efter uppdateringar',lang:'Språk',terms:'Användarvillkor',policy:'Integritetspolicy',contact:'Kontakta oss',version:'Aktuell version',logout:'Logga ut',ok:'Verifierad',unset:'Ej inställt',seted:'Inställt',btnSave:'Spara ändringar',btnChange:'Bekräfta ändring',btnReverify:'Begär ny verifiering',btnSavePwd:'Spara lösenord',btnCode:'Hämta kod',btnAlbum:'Välj från album',langNote:'Tillämpas direkt efter val'},
+    da:{h:'Hjem',cat:'Kategorier',bst:'Boosters',ord:'Ordrer',me:'Mig',set:'Indstillinger',secAcc:'Konto og sikkerhed',secPri:'Privatliv',secMsg:'Notifikationer',secGen:'Generelt',secAbt:'Om',avatar:'Profil og kaldenavn',phone:'Telefonnummer',verify:'Verificering',pwd:'Skift adgangskode',cache:'Ryd cache',update:'Søg efter opdateringer',lang:'Sprog',terms:'Servicevilkår',policy:'Privatlivspolitik',contact:'Kontakt os',version:'Nuværende version',logout:'Log ud',ok:'Verificeret',unset:'Ikke angivet',seted:'Angivet',btnSave:'Gem ændringer',btnChange:'Bekræft ændring',btnReverify:'Anmod om ny verifikation',btnSavePwd:'Gem adgangskode',btnCode:'Hent kode',btnAlbum:'Vælg fra album',langNote:'Anvendes straks efter valg'},
+    fi:{h:'Koti',cat:'Kategoriat',bst:'Boostaukset',ord:'Tilaukset',me:'Minä',set:'Asetukset',secAcc:'Tili ja turvallisuus',secPri:'Yksityisyys',secMsg:'Ilmoitukset',secGen:'Yleiset',secAbt:'Tietoja',avatar:'Profiili ja lempinimi',phone:'Puhelinnumero',verify:'Vahvistus',pwd:'Vaihda salasana',cache:'Tyhjennä välimuisti',update:'Tarkista päivitykset',lang:'Kieli',terms:'Käyttöehdot',policy:'Tietosuojakäytäntö',contact:'Ota yhteyttä',version:'Nykyinen versio',logout:'Kirjaudu ulos',ok:'Vahvistettu',unset:'Ei asetettu',seted:'Asetettu',btnSave:'Tallenna muutokset',btnChange:'Vahvista muutos',btnReverify:'Pyydä uudelleenvahvistus',btnSavePwd:'Tallenna salasana',btnCode:'Hanki koodi',btnAlbum:'Valitse albumista',langNote:'Otetaan käyttöön heti valinnan jälkeen'},
+    no:{h:'Hjem',cat:'Kategorier',bst:'Boostere',ord:'Bestillinger',me:'Meg',set:'Innstillinger',secAcc:'Konto og sikkerhet',secPri:'Personvern',secMsg:'Varsler',secGen:'Generelt',secAbt:'Om',avatar:'Profil og kallenavn',phone:'Telefonnummer',verify:'Verifisering',pwd:'Endre passord',cache:'Tøm buffer',update:'Se etter oppdateringer',lang:'Språk',terms:'Tjenestevilkår',policy:'Personvernpolicy',contact:'Kontakt oss',version:'Gjeldende versjon',logout:'Logg ut',ok:'Verifisert',unset:'Ikke angitt',seted:'Angitt',btnSave:'Lagre endringer',btnChange:'Bekreft endring',btnReverify:'Be om ny verifisering',btnSavePwd:'Lagre passord',btnCode:'Hent kode',btnAlbum:'Velg fra album',langNote:'Brukes umiddelbart etter valg'},
+    cs:{h:'Domů',cat:'Kategorie',bst:'Boostery',ord:'Objednávky',me:'Já',set:'Nastavení',secAcc:'Účet a zabezpečení',secPri:'Soukromí',secMsg:'Oznámení',secGen:'Obecné',secAbt:'O aplikaci',avatar:'Profil a přezdívka',phone:'Telefonní číslo',verify:'Ověření',pwd:'Změnit heslo',cache:'Vymazat mezipaměť',update:'Zkontrolovat aktualizace',lang:'Jazyk',terms:'Podmínky služby',policy:'Zásady ochrany osobních údajů',contact:'Kontaktujte nás',version:'Aktuální verze',logout:'Odhlásit se',ok:'Ověřeno',unset:'Nenastaveno',seted:'Nastaveno',btnSave:'Uložit změny',btnChange:'Potvrdit změnu',btnReverify:'Požádat o opětovné ověření',btnSavePwd:'Uložit heslo',btnCode:'Získat kód',btnAlbum:'Vybrat z alba',langNote:'Použije se ihned po výběru'},
+    el:{h:'Αρχική',cat:'Κατηγορίες',bst:'Boosters',ord:'Παραγγελίες',me:'Εγώ',set:'Ρυθμίσεις',secAcc:'Λογαριασμός και ασφάλεια',secPri:'Απόρρητο',secMsg:'Ειδοποιήσεις',secGen:'Γενικά',secAbt:'Σχετικά',avatar:'Προφίλ και ψευδώνυμο',phone:'Αριθμός τηλεφώνου',verify:'Επαλήθευση',pwd:'Αλλαγή κωδικού',cache:'Εκκαθάριση cache',update:'Έλεγχος ενημερώσεων',lang:'Γλώσσα',terms:'Όροι υπηρεσίας',policy:'Πολιτική απορρήτου',contact:'Επικοινωνία',version:'Τρέχουσα έκδοση',logout:'Αποσύνδεση',ok:'Επαληθεύτηκε',unset:'Μη ορισμένο',seted:'Ορισμένο',btnSave:'Αποθήκευση αλλαγών',btnChange:'Επιβεβαίωση αλλαγής',btnReverify:'Αίτημα επανεπαλήθευσης',btnSavePwd:'Αποθήκευση κωδικού',btnCode:'Λήψη κωδικού',btnAlbum:'Επιλογή από άλμπουμ',langNote:'Εφαρμόζεται αμέσως μετά την επιλογή'}
+  };
+  let currentLang = 'zh-CN';
+  try{
+    const savedLang = localStorage.getItem('df_lang');
+    if(savedLang && LANGS.some(l=>l.code === savedLang)) currentLang = savedLang;
+  }catch(e){}
+
+  function tr(zh){
+    const key = I18N_SRC[zh];
+    if(!key) return zh;
+    const d = I18N[currentLang] || I18N['zh-CN'];
+    return (d && d[key]) || I18N['zh-CN'][key] || zh;
+  }
+
+  function buildLangList(){
+    const box = document.getElementById('langList');
+    if(!box) return;
+    box.innerHTML = '';
+    LANGS.forEach(l=>{
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'lang-item' + (l.code === currentLang ? ' on' : '');
+      b.dataset.code = l.code;
+      b.innerHTML = '<span class="lang-native"></span><span class="lang-sub"></span><span class="lang-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.6 4.6L19 7.5"/></svg></span>';
+      b.querySelector('.lang-native').textContent = l.native;
+      b.querySelector('.lang-sub').textContent = l.code;
+      b.addEventListener('click', ()=>{
+        if(l.code === currentLang) return;
+        applyLanguage(l.code);
+        showToast(l.native);
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function applyLanguage(code){
+    const lang = LANGS.find(l=>l.code === code) || LANGS[0];
+    currentLang = lang.code;
+    const dict = I18N[currentLang] || I18N['zh-CN'];
+    const root = document.getElementById('app');
+    if(root){
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+      let node;
+      while((node = walker.nextNode())){
+        if(node.__zh === undefined) node.__zh = node.nodeValue;
+        const raw = node.__zh;
+        const key = I18N_SRC[raw.trim()];
+        if(key && dict[key]) node.nodeValue = raw.replace(raw.trim(), dict[key]);
+        else node.nodeValue = raw;
+      }
+    }
+    const rowVal = document.querySelector('#settingsPage [data-pf="语言"] .st-val');
+    if(rowVal) rowVal.textContent = lang.native;
+    document.querySelectorAll('#langList .lang-item').forEach(b=>b.classList.toggle('on', b.dataset.code === currentLang));
+    document.documentElement.lang = currentLang;
+    try{ localStorage.setItem('df_lang', currentLang); }catch(e){}
+  }
+
+  function openLangPage(){
+    app.classList.remove('pe-open','phone-open','verify-open','pwd-open');
+    app.classList.add('lang-open');
+    const page = document.getElementById('langPage');
+    if(page) page.scrollTop = 0;
+  }
+  const langBack = document.getElementById('langBack');
+  if(langBack) langBack.addEventListener('click', ()=>app.classList.remove('lang-open'));
+
+  buildLangList();
+  applyLanguage(currentLang);
 
   function setLoggedIn(on){
     isLoggedIn = on;
