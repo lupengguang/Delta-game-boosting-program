@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>三角洲行动 · 陪玩代练</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2.6 30.2 28.6H1.8L16 2.6Z' fill='none' stroke='%232ff08c' stroke-width='2'/%3E%3Cpath d='M16 12.4 19.7 24h-7.4z' fill='%232ff08c'/%3E%3C/svg%3E">
+<link rel="icon" href="assets/LOGO.jpg">
 <style>
   :root{
     --bg:#050807;
@@ -100,7 +100,7 @@
 
   .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 18px 0}
   .brand{display:flex;align-items:center;gap:8px}
-  .brand .mark{width:27px;height:27px;filter:drop-shadow(0 0 8px rgba(232,139,42,.6))}
+  .brand .mark{width:29px;height:29px;flex:none;border-radius:50%;background:#0d0b0f url("assets/LOGO.jpg") 50% 8%/160% no-repeat;box-shadow:0 0 0 1px rgba(242,140,40,.55),0 0 10px -2px rgba(232,139,42,.65)}
   .brand .name{font-size:14.5px;font-weight:800;letter-spacing:.06em;text-shadow:0 2px 12px rgba(0,0,0,.6)}
   .brand .name em{font-style:normal;color:var(--mint)}
   .top-icons{display:flex;gap:9px}
@@ -2523,9 +2523,8 @@
   }
   .wg-brand{display:flex;flex-direction:column;align-items:center;gap:4px}
   .wg-seal{
-    width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
-    color:#FFD9A8;font-size:14px;font-weight:900;
-    background:radial-gradient(circle at 32% 28%,#3A2A18,#171009 70%);
+    width:44px;height:44px;border-radius:50%;
+    background:#0d0b0f url("assets/LOGO.jpg") 50% 8%/160% no-repeat;
     border:1px solid rgba(255,205,150,.45);
     box-shadow:0 0 22px -6px rgba(232,139,42,.55),inset 0 1px 0 rgba(255,225,190,.25);
   }
@@ -3883,11 +3882,7 @@
       <!-- 顶栏 -->
       <div class="topbar">
         <div class="brand">
-          <svg class="mark" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2.6 30.2 28.6H1.8L16 2.6Z" stroke="#FFC178" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M16 7.4 24.9 25.2H7.1L16 7.4Z" stroke="#F28C28" stroke-width="1.1" stroke-linejoin="round" opacity=".55"/>
-            <path d="M16 12.4 19.7 24h-7.4L16 12.4Z" fill="#F28C28" opacity=".85"/>
-          </svg>
+          <span class="mark" role="img" aria-label="大大怪电竞"></span>
           <div class="name">三角洲<em>行动</em></div>
         </div>
         <div class="top-icons">
@@ -7083,7 +7078,7 @@
     <div class="wg-mask"></div>
     <div class="wg-card">
       <div class="wg-brand">
-        <span class="wg-seal">怪</span>
+        <span class="wg-seal" role="img" aria-label="大大怪电竞"></span>
         <div class="wg-hello" id="wgHello">欢迎来到大大怪电竞</div>
         <div class="wg-slogan">三角洲行动<i>|</i>专业陪玩代练<i>|</i>DADAGUAI</div>
       </div>
