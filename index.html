@@ -3619,6 +3619,52 @@
   }
   .pe-save:hover{transform:translateY(-1px);box-shadow:0 22px 34px -18px rgba(95,69,201,.85)}
 
+  /* ================= 账号与安全子页面 ================= */
+  .ac-page{
+    z-index:47;
+    background:
+      radial-gradient(66% 28% at 50% 0%,#ffffff,transparent 72%),
+      radial-gradient(42% 22% at 96% 16%,rgba(198,180,255,.2),transparent 74%),
+      linear-gradient(180deg,#f8f7ff 0%,#f1f0fb 56%,#f7f6fd 100%);
+    color:#20202a;
+  }
+  #app.phone-open #phonePage,#app.verify-open #verifyPage,#app.pwd-open #pwdPage{opacity:1;transform:translateX(0)}
+  .ac-page .statusbar{color:#2a2a35;text-shadow:none}
+  .ac-page .mp-head{
+    background:linear-gradient(180deg,rgba(252,251,255,.98),rgba(247,245,254,.95));
+    border-bottom:1px solid rgba(139,92,246,.12);
+  }
+  .ac-page .mp-back{background:linear-gradient(160deg,#9a7bf7,#6547cf);box-shadow:0 8px 18px -10px rgba(95,69,201,.75)}
+  .ac-page .mp-back:hover{box-shadow:0 0 20px rgba(139,92,246,.45)}
+  .ac-page .mp-head-txt h2{color:#20202a}
+  .ac-page .mp-head-txt p{color:#a9a5c0}
+
+  .ac-status{display:flex;align-items:center;gap:12px;padding:16px 14px}
+  .ac-status-ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto}
+  .ac-status-ic svg{width:21px;height:21px}
+  .ac-status-main{flex:1;min-width:0}
+  .ac-status-main b{display:block;font-size:11.5px;font-weight:900;color:#20202a}
+  .ac-status-main small{display:block;margin-top:3px;font-size:8.5px;color:#a4a1b5;line-height:1.5}
+  .ac-tag{flex:0 0 auto;font-size:8px;font-weight:800;padding:5px 9px;border-radius:9px;background:rgba(47,175,106,.12);color:#2FAF6A;white-space:nowrap}
+  .ac-tag.warn{background:rgba(240,161,58,.14);color:#D98A1E}
+
+  .ac-field{display:flex;align-items:center;gap:10px;padding:13px 14px}
+  .ac-field + .ac-field{border-top:1px solid #f5f3fa}
+  .ac-field > span{flex:0 0 60px;font-size:10px;font-weight:800;color:#2a2a35}
+  .ac-field input{flex:1;min-width:0;border:0;background:none;outline:none;font-family:inherit;font-size:10.5px;color:#20202a}
+  .ac-field input::placeholder{color:#b8b5c7}
+  .ac-code-btn{
+    flex:0 0 auto;border:0;background:rgba(139,92,246,.1);color:#6547cf;font-family:inherit;
+    font-size:9px;font-weight:800;padding:7px 10px;border-radius:9px;cursor:pointer;transition:background .25s;
+  }
+  .ac-code-btn:hover{background:rgba(139,92,246,.18)}
+  .ac-code-btn:disabled{opacity:.5;cursor:default}
+  .ac-info-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;font-size:9.5px}
+  .ac-info-row + .ac-info-row{border-top:1px solid #f5f3fa}
+  .ac-info-row span{color:#a4a1b5}
+  .ac-info-row b{font-weight:800;color:#2a2a35;text-align:right}
+  .ac-note{padding:10px 14px 13px;border-top:1px solid #f5f3fa;font-size:8px;line-height:1.6;color:#a4a1b5}
+
   /* ================= 深色模式 ================= */
   #app.dark{background:#07090e}
   #app.dark .screen{background-color:#0d1017}
@@ -3835,6 +3881,23 @@
   #app.dark .pe-ava-tip{color:#8d8a9c}
   #app.dark .pe-field > span,#app.dark .pe-field input{color:#e8e6f2}
   #app.dark .pe-nick-tip{border-top-color:rgba(255,255,255,.06);color:#8d8a9c}
+  #app.dark .ac-page{
+    background:
+      radial-gradient(62% 26% at 50% 0%,rgba(120,100,220,.16),transparent 70%),
+      linear-gradient(180deg,#0d1017 0%,#0a0c12 58%,#0c0e15 100%);
+  }
+  #app.dark .ac-page .statusbar{color:#e8e5f2;text-shadow:none}
+  #app.dark .ac-page .mp-head{
+    background:linear-gradient(180deg,rgba(16,18,26,.98),rgba(13,16,23,.95));
+    border-bottom-color:rgba(255,255,255,.07);
+  }
+  #app.dark .ac-page .mp-head-txt h2{color:#eceaf4}
+  #app.dark .ac-page .mp-head-txt p{color:#9b97a8}
+  #app.dark .ac-status-main b{color:#e8e6f2}
+  #app.dark .ac-status-main small{color:#9a97a8}
+  #app.dark .ac-field + .ac-field,#app.dark .ac-info-row + .ac-info-row,#app.dark .ac-note{border-top-color:rgba(255,255,255,.06)}
+  #app.dark .ac-field > span,#app.dark .ac-field input,#app.dark .ac-info-row b{color:#e8e6f2}
+  #app.dark .ac-note{color:#8d8a9c}
 
   /* 订单详情 / 下单页 */
   #app.dark #orderDetail,#app.dark #checkout{
@@ -6600,6 +6663,144 @@
     <p class="st-note">大大怪电竞 · 三角洲行动陪玩代练</p>
   </section>
 
+  <!-- ================= 手机号 ================= -->
+  <section class="screen subpage ac-page" id="phonePage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="phoneBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>手机号</h2><p>PHONE</p></div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">当前绑定</div>
+      <div class="st-card">
+        <div class="ac-status">
+          <span class="ac-status-ic" style="background:#EAF3FF;color:#4C8DF6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h3l1.4 4-2 1.4a12 12 0 0 0 5.7 5.7l1.4-2 4 1.4v3A2.5 2.5 0 0 1 18 19.5C10.5 19.5 4.5 13.5 4.5 6A2.5 2.5 0 0 1 7 3.5Z"/></svg>
+          </span>
+          <span class="ac-status-main"><b id="phoneCurrent">138****8888</b><small>当前账号已绑定该手机号</small></span>
+          <span class="ac-tag">已绑定</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">更换手机号</div>
+      <div class="st-card">
+        <label class="ac-field">
+          <span>新手机号</span>
+          <input type="tel" id="phoneNew" maxlength="11" placeholder="请输入 11 位手机号" inputmode="numeric">
+        </label>
+        <label class="ac-field">
+          <span>验证码</span>
+          <input type="tel" id="phoneCode" maxlength="6" placeholder="请输入 6 位验证码" inputmode="numeric">
+          <button type="button" class="ac-code-btn" id="phoneCodeBtn">获取验证码</button>
+        </label>
+        <div class="ac-note">更换后原手机号将解除绑定，新手机号可用于登录与找回密码。</div>
+      </div>
+    </div>
+
+    <button type="button" class="pe-save" id="phoneSave">确认更换</button>
+    <p class="st-note">大大怪电竞 · 三角洲行动陪玩代练</p>
+  </section>
+
+  <!-- ================= 实名认证 ================= -->
+  <section class="screen subpage ac-page" id="verifyPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="verifyBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>实名认证</h2><p>VERIFY</p></div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">认证状态</div>
+      <div class="st-card">
+        <div class="ac-status">
+          <span class="ac-status-ic" style="background:#E9F9F0;color:#2FAF6A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+          </span>
+          <span class="ac-status-main"><b>已完成实名认证</b><small>身份信息已通过公安系统核验</small></span>
+          <span class="ac-tag">已认证</span>
+        </div>
+        <div class="ac-info-row"><span>姓名</span><b>哈**</b></div>
+        <div class="ac-info-row"><span>证件号</span><b>110***********1234</b></div>
+        <div class="ac-info-row"><span>认证方式</span><b>身份证实名</b></div>
+        <div class="ac-info-row"><span>认证时间</span><b>2025-08-12</b></div>
+        <div class="ac-note">实名信息仅用于账号安全核验，平台不会对外展示完整证件信息。</div>
+      </div>
+    </div>
+
+    <button type="button" class="pe-save" id="verifyAgain">申请重新认证</button>
+    <p class="st-note">大大怪电竞 · 三角洲行动陪玩代练</p>
+  </section>
+
+  <!-- ================= 修改密码 ================= -->
+  <section class="screen subpage ac-page" id="pwdPage">
+    <div class="statusbar">
+      <span>9:41</span>
+      <div class="icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1 4.2a10.5 10.5 0 0 1 14 0"/><path d="M3.6 6.9a6.8 6.8 0 0 1 8.8 0"/><path d="M6.2 9.4a3.1 3.1 0 0 1 3.6 0"/><circle cx="8" cy="11" r=".8" fill="currentColor" stroke="none"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".6" y=".6" width="19" height="10.8" rx="3" stroke-opacity=".55"/><rect x="2.4" y="2.4" width="14.5" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M21.4 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
+      </div>
+    </div>
+    <div class="mp-head">
+      <button type="button" class="mp-back" id="pwdBack" aria-label="返回">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="mp-head-txt"><h2>修改密码</h2><p>PASSWORD</p></div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">账号密码</div>
+      <div class="st-card">
+        <div class="ac-status">
+          <span class="ac-status-ic" style="background:#FFF3E3;color:#F0A13A">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.4"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
+          </span>
+          <span class="ac-status-main"><b>设置登录密码</b><small>密码长度 6-20 位，建议包含字母与数字</small></span>
+          <span class="ac-tag warn" id="pwdStatus">未设置</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-sec">
+      <div class="st-sec-title">修改密码</div>
+      <div class="st-card">
+        <label class="ac-field">
+          <span>新密码</span>
+          <input type="password" id="pwdNew" maxlength="20" placeholder="请输入 6-20 位新密码">
+        </label>
+        <label class="ac-field">
+          <span>确认密码</span>
+          <input type="password" id="pwdConfirm" maxlength="20" placeholder="请再次输入新密码">
+        </label>
+        <div class="ac-note">修改密码后请妥善保管，避免与其他平台使用相同密码。</div>
+      </div>
+    </div>
+
+    <button type="button" class="pe-save" id="pwdSave">保存密码</button>
+    <p class="st-note">大大怪电竞 · 三角洲行动陪玩代练</p>
+  </section>
+
   <!-- ================= 考核入驻 ================= -->
   <section class="screen subpage" id="joinPage">
     <div class="statusbar">
@@ -7264,6 +7465,9 @@
       if(ls && ls.classList.contains('show')){ ls.classList.remove('show'); ls.setAttribute('aria-hidden','true'); return; }
       if(app.classList.contains('welcome-open') || app.classList.contains('gate-open')) return;
       if(app.classList.contains('svc-open')){ app.classList.remove('svc-open'); return; }
+      if(app.classList.contains('phone-open')){ app.classList.remove('phone-open'); return; }
+      if(app.classList.contains('verify-open')){ app.classList.remove('verify-open'); return; }
+      if(app.classList.contains('pwd-open')){ app.classList.remove('pwd-open'); return; }
       if(app.classList.contains('pe-open')){ app.classList.remove('pe-open'); return; }
       if(app.classList.contains('member-open')){ app.classList.remove('member-open'); return; }
       if(app.classList.contains('sign-open')){ app.classList.remove('sign-open'); return; }
@@ -7477,8 +7681,12 @@
   /* 我的页入口反馈 */
   document.querySelectorAll('[data-pf]').forEach(el=>{
     el.addEventListener('click', ()=>{
-      if(el.dataset.pf === '头像与昵称'){ openProfileEdit(); return; }
-      showToast('「' + el.dataset.pf + '」功能开发中');
+      const pf = el.dataset.pf;
+      if(pf === '头像与昵称'){ openProfileEdit(); return; }
+      if(pf === '手机号'){ openAcPage('phone'); return; }
+      if(pf === '实名认证'){ openAcPage('verify'); return; }
+      if(pf === '修改密码'){ openAcPage('pwd'); return; }
+      showToast('「' + pf + '」功能开发中');
     });
   });
 
@@ -8087,6 +8295,90 @@
       applyProfile();
       app.classList.remove('pe-open');
       showToast('头像与昵称已更新');
+    });
+  }
+
+  /* 账号与安全子页面 */
+  function openAcPage(kind){
+    app.classList.remove('pe-open','phone-open','verify-open','pwd-open');
+    app.classList.add(kind + '-open');
+    const page = document.getElementById(kind + 'Page');
+    if(page) page.scrollTop = 0;
+  }
+  [['phoneBack','phone-open'],['verifyBack','verify-open'],['pwdBack','pwd-open']].forEach(([btnId, cls])=>{
+    const btn = document.getElementById(btnId);
+    if(btn) btn.addEventListener('click', ()=>app.classList.remove(cls));
+  });
+
+  /* 手机号 */
+  const phoneNew = document.getElementById('phoneNew');
+  const phoneCode = document.getElementById('phoneCode');
+  const phoneCodeBtn = document.getElementById('phoneCodeBtn');
+  const phoneCurrent = document.getElementById('phoneCurrent');
+  let phoneTimer = null;
+  if(phoneCodeBtn){
+    phoneCodeBtn.addEventListener('click', ()=>{
+      const num = phoneNew ? phoneNew.value.trim() : '';
+      if(!/^1\d{10}$/.test(num)){ showToast('请输入正确的 11 位手机号'); if(phoneNew) phoneNew.focus(); return; }
+      let s = 60;
+      phoneCodeBtn.disabled = true;
+      phoneCodeBtn.textContent = s + 's';
+      showToast('验证码已发送');
+      clearInterval(phoneTimer);
+      phoneTimer = setInterval(()=>{
+        s--;
+        if(s <= 0){
+          clearInterval(phoneTimer);
+          phoneCodeBtn.disabled = false;
+          phoneCodeBtn.textContent = '获取验证码';
+        }else{
+          phoneCodeBtn.textContent = s + 's';
+        }
+      }, 1000);
+    });
+  }
+  const phoneSave = document.getElementById('phoneSave');
+  if(phoneSave){
+    phoneSave.addEventListener('click', ()=>{
+      const num = phoneNew ? phoneNew.value.trim() : '';
+      const code = phoneCode ? phoneCode.value.trim() : '';
+      if(!/^1\d{10}$/.test(num)){ showToast('请输入正确的 11 位手机号'); return; }
+      if(!/^\d{6}$/.test(code)){ showToast('请输入 6 位验证码'); return; }
+      const masked = num.slice(0,3) + '****' + num.slice(7);
+      if(phoneCurrent) phoneCurrent.textContent = masked;
+      const row = document.querySelector('#settingsPage [data-pf="手机号"] .st-val');
+      if(row) row.textContent = masked;
+      if(phoneNew) phoneNew.value = '';
+      if(phoneCode) phoneCode.value = '';
+      app.classList.remove('phone-open');
+      showToast('手机号已更换');
+    });
+  }
+
+  /* 实名认证 */
+  const verifyAgain = document.getElementById('verifyAgain');
+  if(verifyAgain){
+    verifyAgain.addEventListener('click', ()=>showToast('已提交重新认证申请，等待审核'));
+  }
+
+  /* 修改密码 */
+  const pwdNew = document.getElementById('pwdNew');
+  const pwdConfirm = document.getElementById('pwdConfirm');
+  const pwdSave = document.getElementById('pwdSave');
+  const pwdStatus = document.getElementById('pwdStatus');
+  if(pwdSave){
+    pwdSave.addEventListener('click', ()=>{
+      const p = pwdNew ? pwdNew.value : '';
+      const c = pwdConfirm ? pwdConfirm.value : '';
+      if(p.length < 6 || p.length > 20){ showToast('密码长度需为 6-20 位'); return; }
+      if(p !== c){ showToast('两次输入的密码不一致'); return; }
+      if(pwdNew) pwdNew.value = '';
+      if(pwdConfirm) pwdConfirm.value = '';
+      if(pwdStatus){ pwdStatus.textContent = '已设置'; pwdStatus.classList.remove('warn'); }
+      const row = document.querySelector('#settingsPage [data-pf="修改密码"] .st-val');
+      if(row){ row.textContent = '已设置'; row.classList.add('ok'); }
+      app.classList.remove('pwd-open');
+      showToast('密码已更新');
     });
   }
 
