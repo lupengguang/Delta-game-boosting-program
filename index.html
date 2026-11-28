@@ -2777,6 +2777,20 @@
     transition:transform .35s,border-color .3s,box-shadow .35s;
   }
   .sf-card:hover{transform:translateY(-3px);border-color:rgba(210,97,14,.55);box-shadow:0 20px 34px -18px rgba(184,84,8,.45)}
+  .sf-cover{
+    position:relative;display:block;height:88px;border-radius:10px;overflow:hidden;
+    margin-bottom:10px;background:#3a1d05;
+  }
+  .sf-cover img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    filter:saturate(.98) brightness(.94);
+    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .sf-card:hover .sf-cover img{transform:scale(1.04)}
+  .sf-cover::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(30,12,0,.02) 42%,rgba(30,12,0,.35) 100%);
+  }
   .sf-head{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;border-bottom:1px dashed rgba(210,97,14,.3)}
   .sf-head .tier-price{font-size:22px;font-weight:900;color:var(--ink);line-height:1;letter-spacing:-.02em}
   .sf-head .tier-price i{font-size:12px;font-style:normal}
@@ -4353,6 +4367,7 @@
       </div>
       <div class="sf-list">
         <button type="button" class="sf-card" data-pkg="陪玩跑刀·55跑1000W" data-flag="陪玩跑刀" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单55R.png" data-desc="55 元跑 1000W · 物资全部归老板">
+          <span class="sf-cover"><img src="assets/跑刀单55R.png" alt="陪玩跑刀·55跑1000W" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">55<i>R</i></span>
             <span class="tier-safe">跑刀目标 <b>1000W</b></span>
@@ -4363,6 +4378,7 @@
           <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
         <button type="button" class="sf-card" data-pkg="陪玩跑刀·娱乐陪玩48/1h" data-flag="娱乐陪玩" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单48R.png" data-desc="娱乐陪玩 48 元 / 1 小时 · 陪陪必须注重老板体验" data-safe="服务时长 <b>1 小时</b>">
+          <span class="sf-cover"><img src="assets/跑刀单48R.png" alt="陪玩跑刀·娱乐陪玩48/1h" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">48<i>R</i></span>
             <span class="tier-safe">娱乐陪玩 · 48 / 1h</span>
@@ -4373,6 +4389,7 @@
           <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
         <button type="button" class="sf-card" data-pkg="陪玩跑刀·技术陪玩68/1h" data-flag="技术陪玩" data-world="手游端 · 陪玩跑刀" data-img="assets/跑刀单68R.png" data-desc="技术陪玩 68 元 / 1 小时 · 1 小时内最少击杀七名敌方干员" data-safe="服务时长 <b>1 小时</b>">
+          <span class="sf-cover"><img src="assets/跑刀单68R.png" alt="陪玩跑刀·技术陪玩68/1h" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">68<i>R</i></span>
             <span class="tier-safe">技术陪玩 · 68 / 1h</span>
@@ -6823,6 +6840,7 @@
       </div>
       <div class="sf-list">
         <button type="button" class="sf-card" data-pkg="陪玩跑刀·55跑1000W" data-img="assets/跑刀单55R.png">
+          <span class="sf-cover"><img src="assets/跑刀单55R.png" alt="陪玩跑刀·55跑1000W" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">55<i>R</i></span>
             <span class="tier-safe">跑刀目标 <b>1000W</b></span>
@@ -6835,6 +6853,7 @@
           </div>
         </button>
         <button type="button" class="sf-card" data-pkg="陪玩跑刀·娱乐陪玩48/1h" data-img="assets/跑刀单48R.png">
+          <span class="sf-cover"><img src="assets/跑刀单48R.png" alt="陪玩跑刀·娱乐陪玩48/1h" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">48<i>R</i></span>
             <span class="tier-safe">娱乐陪玩 · 48 / 1h</span>
@@ -6847,6 +6866,7 @@
           </div>
         </button>
         <button type="button" class="sf-card" data-pkg="陪玩跑刀·技术陪玩68/1h" data-img="assets/跑刀单68R.png">
+          <span class="sf-cover"><img src="assets/跑刀单68R.png" alt="陪玩跑刀·技术陪玩68/1h" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">68<i>R</i></span>
             <span class="tier-safe">技术陪玩 · 68 / 1h</span>
