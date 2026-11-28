@@ -1966,6 +1966,16 @@
     transition:transform .35s,border-color .3s,box-shadow .35s;
   }
   .fun-card:hover{transform:translateY(-3px);border-color:rgba(210,97,14,.5);box-shadow:0 20px 34px -18px rgba(184,84,8,.45)}
+  /* 趣味单配图：左文右图 */
+  .fun-card.fun-pic{
+    display:grid;grid-template-columns:minmax(0,1fr) 88px;
+    grid-template-areas:"head cover" "rules cover" "foot cover";
+    column-gap:10px;align-items:start;
+  }
+  .fun-card.fun-pic .fun-head{grid-area:head}
+  .fun-card.fun-pic .fun-rules{grid-area:rules}
+  .fun-card.fun-pic .fun-foot{grid-area:foot}
+  .fun-card.fun-pic .sf-cover{grid-area:cover;align-self:stretch;height:auto;min-height:88px;margin-bottom:0}
   .fun-head{display:flex;align-items:center;gap:10px}
   .fun-ic{
     width:38px;height:38px;border-radius:11px;flex:0 0 auto;
@@ -2778,6 +2788,27 @@
   .sn-no{font-size:9px;font-weight:900;color:var(--ink);letter-spacing:.08em}
   .sn-name{font-size:13px;font-weight:900;color:#241708;letter-spacing:.03em}
   .sn-desc{font-size:8.5px;line-height:1.6;color:#452C0A;margin-top:5px}
+  .sn-intro{
+    padding:12px 13px;border-radius:14px;border:1px solid rgba(232,139,42,.4);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,205,150,.9));
+    font-size:9px;line-height:1.65;color:#452C0A;
+    box-shadow:0 12px 24px -20px rgba(156,71,6,.4);
+  }
+  .sn-intro b{color:#241708;font-weight:900}
+  .sn-notice{
+    padding:12px 13px;border-radius:14px;border:1px solid rgba(232,139,42,.4);
+    background:linear-gradient(160deg,rgba(255,251,246,.97),rgba(255,205,150,.9));
+    box-shadow:0 12px 24px -20px rgba(156,71,6,.4);
+  }
+  .sn-notice ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .sn-notice li{display:flex;gap:7px;font-size:8.5px;line-height:1.6;color:#452C0A}
+  .sn-notice li > span:last-child{flex:1;min-width:0}
+  .sn-notice li b{color:#241708;font-weight:800}
+  .sn-notice .sn-n{
+    flex:0 0 auto;width:15px;height:15px;border-radius:50%;margin-top:1px;
+    display:grid;place-items:center;font-size:7.5px;font-weight:900;color:var(--ink);
+    background:rgba(210,97,14,.1);border:1px solid rgba(210,97,14,.24);
+  }
   .sn-desc b{color:#241708;font-weight:800}
   .sn-example{display:block;margin-top:5px;font-size:8px;color:#452C0A;line-height:1.55}
 
@@ -3561,6 +3592,8 @@
     .st-logout{width:calc(100% - 24px);margin-left:12px;margin-right:12px}
     .sf-card.sf-pic{grid-template-columns:minmax(0,1fr) 84px;column-gap:8px}
     .sf-card.sf-pic .sf-cover{min-height:84px}
+    .fun-card.fun-pic{grid-template-columns:minmax(0,1fr) 78px;column-gap:8px}
+    .fun-card.fun-pic .sf-cover{min-height:78px}
     .cat-content .ord-card.ord-pic{grid-template-columns:56px minmax(0,1fr) 66px;gap:6px}
     .cat-content .ord-cover{min-height:68px}
   }
@@ -4212,7 +4245,7 @@
           <span class="act-go"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
         </div>
         <div class="act-card" data-open-robot>
-          <img src="assets/mascot-community.png" alt="大大怪电竞邪恶机器人" loading="lazy">
+          <img src="assets/邪恶机器人.jpg" alt="大大怪电竞邪恶机器人" loading="lazy">
           <span class="act-shine"></span>
           <span class="act-tag">大大怪电竞</span>
           <div class="act-info">
@@ -4933,17 +4966,20 @@
         <div class="mp-note">指定地图特产 · 3 档</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="特产单·巴克什688R" data-flag="巴克什" data-world="手游端 · 巴克什" data-desc="万金泪冠 / 天圆地方 / 测距仪 · 最高保底 1.1 亿" data-target="万金泪冠 / 天圆地方 / 测距仪" data-require="以上三出一才可以结单，保险带出不算" data-extract="5000W" data-max="1.1亿" data-notice="specialty">
+        <button type="button" class="sf-card sf-pic" data-pkg="特产单·巴克什688R" data-flag="巴克什" data-world="手游端 · 巴克什" data-desc="万金泪冠 / 天圆地方 / 测距仪 · 最高保底 1.1 亿" data-target="万金泪冠 / 天圆地方 / 测距仪" data-require="以上三出一才可以结单，保险带出不算" data-extract="5000W" data-max="1.1亿" data-notice="specialty" data-img="assets/特产单巴克什688R.jpg">
+          <span class="sf-cover"><img src="assets/特产单巴克什688R.jpg" alt="特产单·巴克什688R" loading="lazy"></span>
           <div class="sf-head"><span class="tier-price">688<i>R</i></span><span class="tier-safe">最高保底 <b>1.1亿</b></span></div>
           <div class="sf-lines"><div class="sf-line"><b>巴克什</b> · 万金泪冠 / 天圆地方 / 测距仪</div><div class="sf-line">以上三出一才可结单，保险带出不算</div></div>
           <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
-        <button type="button" class="sf-card" data-pkg="特产单·潮汐监狱999R" data-flag="潮汐监狱" data-world="手游端 · 潮汐监狱" data-desc="必出雷明顿打字机 · 最高保底 1.5 亿" data-target="雷明顿打字机" data-require="必出打字机（当局撤离不得低于 500W）" data-extract="7000W" data-max="1.5亿" data-notice="specialty">
+        <button type="button" class="sf-card sf-pic" data-pkg="特产单·潮汐监狱999R" data-flag="潮汐监狱" data-world="手游端 · 潮汐监狱" data-desc="必出雷明顿打字机 · 最高保底 1.5 亿" data-target="雷明顿打字机" data-require="必出打字机（当局撤离不得低于 500W）" data-extract="7000W" data-max="1.5亿" data-notice="specialty" data-img="assets/特产单潮汐监狱999R.jpg">
+          <span class="sf-cover"><img src="assets/特产单潮汐监狱999R.jpg" alt="特产单·潮汐监狱999R" loading="lazy"></span>
           <div class="sf-head"><span class="tier-price">999<i>R</i></span><span class="tier-safe">最高保底 <b>1.5亿</b></span></div>
           <div class="sf-lines"><div class="sf-line"><b>潮汐监狱</b> · 必出雷明顿打字机</div><div class="sf-line">当局撤离不得低于 500W</div></div>
           <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
-        <button type="button" class="sf-card" data-pkg="特产单·航天基地666R" data-flag="航天基地" data-world="手游端 · 航天基地" data-desc="必出火箭燃料 + 卫星锅 · 最高保底 1.2 亿" data-target="火箭燃料 + 卫星锅" data-require="必出火箭燃料 + 卫星锅（累计带出），保险带出不算" data-extract="5000W" data-max="1.2亿" data-notice="specialty">
+        <button type="button" class="sf-card sf-pic" data-pkg="特产单·航天基地666R" data-flag="航天基地" data-world="手游端 · 航天基地" data-desc="必出火箭燃料 + 卫星锅 · 最高保底 1.2 亿" data-target="火箭燃料 + 卫星锅" data-require="必出火箭燃料 + 卫星锅（累计带出），保险带出不算" data-extract="5000W" data-max="1.2亿" data-notice="specialty" data-img="assets/特产单航天基地666R.jpg">
+          <span class="sf-cover"><img src="assets/特产单航天基地666R.jpg" alt="特产单·航天基地666R" loading="lazy"></span>
           <div class="sf-head"><span class="tier-price">666<i>R</i></span><span class="tier-safe">最高保底 <b>1.2亿</b></span></div>
           <div class="sf-lines"><div class="sf-line"><b>航天基地</b> · 必出火箭燃料 + 卫星锅</div><div class="sf-line">累计带出，保险带出不算</div></div>
           <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
@@ -4981,43 +5017,57 @@
         <div class="mp-note">大大怪电竞 · 4 档</div>
       </div>
       <div class="pr-list">
-        <button type="button" class="pr-card" data-pkg="环太平洋单·四处">
-          <div class="pr-top">
-            <span class="pr-tier"><b>4</b><i>处</i></span>
-            <span class="pr-desc">监狱四处不同复活点成功撤离</span>
-            <span class="pr-price">388R</span>
-          </div>
-          <div class="pr-foot">
-            <span class="pr-safe">保底 <b>2888W</b></span>
-            <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
-          </div>
-        </button>
-        <button type="button" class="pr-card" data-pkg="环太平洋单·五处">
-          <div class="pr-top">
-            <span class="pr-tier"><b>5</b><i>处</i></span>
-            <span class="pr-desc">监狱五处不同复活点成功撤离</span>
-            <span class="pr-price">788R</span>
-          </div>
-          <div class="pr-foot">
-            <span class="pr-safe">保底 <b>4666W</b></span>
-            <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
-          </div>
-        </button>
-        <button type="button" class="pr-card" data-pkg="环太平洋单·六处">
-          <div class="pr-top">
-            <span class="pr-tier"><b>6</b><i>处</i></span>
-            <span class="pr-desc">监狱六处不同复活点成功撤离</span>
-            <span class="pr-price">1288R</span>
-          </div>
-          <div class="pr-foot">
-            <span class="pr-safe">保底 <b>5666W</b></span>
-            <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
-          </div>
-        </button>
-        <button type="button" class="pr-card pr-featured" data-pkg="环太平洋单·七处">
+        <button type="button" class="pr-card pr-featured" data-pkg="环太平洋单·四处" data-img="assets/环太平洋四处.jpg">
           <div class="pr-thumb">
-            <span class="pr-thumb-ph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.7"/><path d="m4 18 5-4.6 4 3.4 3-2.6 4 3.8"/></svg>图片预留</span>
-            <img src="assets/pacific-7.jpg" alt="环太平洋单·七处" loading="lazy" onerror="this.style.display='none'">
+            <img src="assets/环太平洋四处.jpg" alt="环太平洋单·四处" loading="lazy">
+          </div>
+          <div class="pr-main">
+            <div class="pr-top">
+              <span class="pr-tier"><b>4</b><i>处</i></span>
+              <span class="pr-desc">监狱四处不同复活点成功撤离</span>
+              <span class="pr-price">388R</span>
+            </div>
+            <div class="pr-foot">
+              <span class="pr-safe">保底 <b>2888W</b></span>
+              <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </button>
+        <button type="button" class="pr-card pr-featured" data-pkg="环太平洋单·五处" data-img="assets/环太平洋五处.jpg">
+          <div class="pr-thumb">
+            <img src="assets/环太平洋五处.jpg" alt="环太平洋单·五处" loading="lazy">
+          </div>
+          <div class="pr-main">
+            <div class="pr-top">
+              <span class="pr-tier"><b>5</b><i>处</i></span>
+              <span class="pr-desc">监狱五处不同复活点成功撤离</span>
+              <span class="pr-price">788R</span>
+            </div>
+            <div class="pr-foot">
+              <span class="pr-safe">保底 <b>4666W</b></span>
+              <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </button>
+        <button type="button" class="pr-card pr-featured" data-pkg="环太平洋单·六处" data-img="assets/环太平洋六处.jpg">
+          <div class="pr-thumb">
+            <img src="assets/环太平洋六处.jpg" alt="环太平洋单·六处" loading="lazy">
+          </div>
+          <div class="pr-main">
+            <div class="pr-top">
+              <span class="pr-tier"><b>6</b><i>处</i></span>
+              <span class="pr-desc">监狱六处不同复活点成功撤离</span>
+              <span class="pr-price">1288R</span>
+            </div>
+            <div class="pr-foot">
+              <span class="pr-safe">保底 <b>5666W</b></span>
+              <span class="pr-buy">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </button>
+        <button type="button" class="pr-card pr-featured" data-pkg="环太平洋单·七处" data-img="assets/环太平洋七处.jpg">
+          <div class="pr-thumb">
+            <img src="assets/环太平洋七处.jpg" alt="环太平洋单·七处" loading="lazy">
           </div>
           <div class="pr-main">
             <div class="pr-top">
@@ -5048,25 +5098,24 @@
         <div class="series-title">手游千万只是开始</div>
         <div class="series-sub">体验 · 进阶 · 终极 ｜ 逐级进阶更高保底</div>
       </div>
-      <div class="tier-grid">
-        <button type="button" class="tier-card" data-pkg="趣味系列·体验版">
-          <span class="tier-name">体验版</span>
-          <span class="tier-price">368R</span>
-          <span class="tier-safe">保底 <b>300W</b></span>
-          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+      <div class="sf-list">
+        <button type="button" class="sf-card sf-pic" data-pkg="趣味系列·体验版" data-img="assets/千万只是开始体验版.jpg" data-desc="体验版 · 保险带出 · 保底 300W">
+          <span class="sf-cover"><img src="assets/千万只是开始体验版.jpg" alt="千万只是开始·体验版" loading="lazy"></span>
+          <div class="sf-head"><span class="tier-price">368<i>R</i></span><span class="tier-safe">保底 <b>300W</b></span></div>
+          <div class="sf-lines"><div class="sf-line"><b>体验版</b> · 千万只是开始，逐级进阶更高保底</div></div>
+          <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
-        <button type="button" class="tier-card" data-pkg="趣味系列·进阶版">
-          <span class="tier-name">进阶版</span>
-          <span class="tier-price">588R</span>
-          <span class="tier-safe">保底 <b>688W</b></span>
-          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <button type="button" class="sf-card sf-pic" data-pkg="趣味系列·进阶版" data-img="assets/千万只是开始进阶版.jpg" data-desc="进阶版 · 保险带出 · 保底 688W">
+          <span class="sf-cover"><img src="assets/千万只是开始进阶版.jpg" alt="千万只是开始·进阶版" loading="lazy"></span>
+          <div class="sf-head"><span class="tier-price">588<i>R</i></span><span class="tier-safe">保底 <b>688W</b></span></div>
+          <div class="sf-lines"><div class="sf-line"><b>进阶版</b> · 千万只是开始，逐级进阶更高保底</div></div>
+          <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
-        <button type="button" class="tier-card tier-hot" data-pkg="趣味系列·终极版">
-          <span class="tier-rec">推荐</span>
-          <span class="tier-name">终极版</span>
-          <span class="tier-price">888R</span>
-          <span class="tier-safe">保底 <b>1088W</b></span>
-          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <button type="button" class="sf-card sf-pic" data-pkg="趣味系列·终极版" data-img="assets/千万只是开始终极版.jpg" data-desc="终极版 · 保险带出 · 保底 1088W">
+          <span class="sf-cover"><img src="assets/千万只是开始终极版.jpg" alt="千万只是开始·终极版" loading="lazy"></span>
+          <div class="sf-head"><span class="tier-price">888<i>R</i></span><span class="tier-safe">保底 <b>1088W</b></span></div>
+          <div class="sf-lines"><div class="sf-line"><b>终极版</b> · 千万只是开始，逐级进阶更高保底</div></div>
+          <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
       </div>
     </div>
@@ -5106,7 +5155,8 @@
         <div class="mp-note">双玩法 · 2 档</div>
       </div>
       <div class="fun-list">
-        <div class="fun-card">
+        <div class="fun-card fun-pic" data-img="assets/咱俩练练.jpg">
+          <span class="sf-cover"><img src="assets/咱俩练练.jpg" alt="咱俩练练" loading="lazy"></span>
           <div class="fun-head">
             <span class="fun-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.8-3.6 3-5.3 5.5-5.3s4.7 1.7 5.5 5.3"/><circle cx="17" cy="9" r="2.3"/><path d="M15.2 14.2c2.1.2 3.5 1.6 4.1 3.9"/></svg></span>
             <div class="fun-title-wrap"><div class="fun-title">咱俩练练</div><div class="fun-sub">老板 VS 双打手</div></div>
@@ -5124,7 +5174,8 @@
             <button type="button" class="fun-buy" data-fun="咱俩练练">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
           </div>
         </div>
-        <div class="fun-card">
+        <div class="fun-card fun-pic" data-img="assets/你俩练练.jpg">
+          <span class="sf-cover"><img src="assets/你俩练练.jpg" alt="你俩练练" loading="lazy"></span>
           <div class="fun-head">
             <span class="fun-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
             <div class="fun-title-wrap"><div class="fun-title">你俩练练</div><div class="fun-sub">双打手 1V1</div></div>
@@ -5150,7 +5201,8 @@
         <div class="mp-note">血条玩法 · 358 元</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="邪恶机器人·358R" data-flag="邪恶机器人" data-world="手游端 · 邪恶机器人" data-img="assets/mascot-community.png" data-desc="初始 10 点血量 · 撤离金额越高扣血越多" data-safe="初始 <b>10 点血量</b>">
+        <button type="button" class="sf-card sf-pic" data-pkg="邪恶机器人·358R" data-flag="邪恶机器人" data-world="手游端 · 邪恶机器人" data-img="assets/邪恶机器人.jpg" data-desc="初始 10 点血量 · 撤离金额越高扣血越多" data-safe="初始 <b>10 点血量</b>">
+          <span class="sf-cover"><img src="assets/邪恶机器人.jpg" alt="邪恶机器人·358R" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">358<i>R</i></span>
             <span class="tier-safe">初始血量 <span class="rb-hp">10 点</span></span>
@@ -5200,17 +5252,26 @@
     <div class="mp-sec">
       <div class="mp-sec-head">
         <div class="mp-sec-title">七宗罪 <span class="chip">SINS</span></div>
-        <div class="mp-note">系列任务 · 3 档</div>
+        <div class="mp-note">系列任务 · 任选三 / 五 / 全部七宗</div>
       </div>
-      <div class="tier-grid">
-        <button type="button" class="tier-card" data-pkg="七宗罪·任选三宗罪" data-flag="七宗罪" data-world="手游端 · 七宗罪" data-img="assets/op-redwolf.jpg" data-desc="老板任选三宗罪，不可重复 · 基础保底 3888W">
-          <span class="tier-name">任选三宗罪</span><span class="tier-price">456<i>R</i></span><span class="tier-safe">基础保底 <b>3888W</b></span><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+      <div class="sf-list">
+        <button type="button" class="sf-card sf-pic" data-pkg="七宗罪·任选三宗罪" data-flag="七宗罪" data-world="手游端 · 七宗罪" data-img="assets/七宗罪任选三宗罪.jpg" data-desc="段位一 · 危险开启 · 老板任选三宗罪，不可重复 · 基础保底 3888W">
+          <span class="sf-cover"><img src="assets/七宗罪任选三宗罪.jpg" alt="七宗罪·任选三宗罪" loading="lazy"></span>
+          <div class="sf-head"><span class="tier-price">456<i>R</i></span><span class="tier-safe">基础保底 <b>3888W</b></span></div>
+          <div class="sf-lines"><div class="sf-line"><b>段位一 · 危险开启</b> · 任选三宗罪，不可重复</div><div class="sf-line">完成所选任务并撤离成功即算完成一罪</div></div>
+          <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
-        <button type="button" class="tier-card" data-pkg="七宗罪·任选五宗罪" data-flag="七宗罪" data-world="手游端 · 七宗罪" data-img="assets/op-redwolf.jpg" data-desc="老板任选五宗罪，不可重复 · 基础保底 6888W">
-          <span class="tier-name">任选五宗罪</span><span class="tier-price">733<i>R</i></span><span class="tier-safe">基础保底 <b>6888W</b></span><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <button type="button" class="sf-card sf-pic" data-pkg="七宗罪·任选五宗罪" data-flag="七宗罪" data-world="手游端 · 七宗罪" data-img="assets/七宗罪任选五宗罪.jpg" data-desc="段位二 · 任务激化 · 老板任选五宗罪，不可重复 · 基础保底 6888W">
+          <span class="sf-cover"><img src="assets/七宗罪任选五宗罪.jpg" alt="七宗罪·任选五宗罪" loading="lazy"></span>
+          <div class="sf-head"><span class="tier-price">733<i>R</i></span><span class="tier-safe">基础保底 <b>6888W</b></span></div>
+          <div class="sf-lines"><div class="sf-line"><b>段位二 · 任务激化</b> · 任选五宗罪，不可重复</div><div class="sf-line">完成所选任务并撤离成功即算完成一罪</div></div>
+          <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
-        <button type="button" class="tier-card tier-hot" data-pkg="七宗罪·全选七宗罪" data-flag="七宗罪" data-world="手游端 · 七宗罪" data-img="assets/op-redwolf.jpg" data-desc="完成全部七宗罪任务 · 基础保底 9999W">
-          <span class="tier-rec">推荐</span><span class="tier-name">全选七宗罪</span><span class="tier-price">1020<i>R</i></span><span class="tier-safe">基础保底 <b>9999W</b></span><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <button type="button" class="sf-card sf-pic" data-pkg="七宗罪·全选七宗罪" data-flag="七宗罪" data-world="手游端 · 七宗罪" data-img="assets/七宗罪全选七宗罪.jpg" data-desc="段位三 · 终极截单 · 完成全部七宗罪任务 · 基础保底 9999W">
+          <span class="sf-cover"><img src="assets/七宗罪全选七宗罪.jpg" alt="七宗罪·全选七宗罪" loading="lazy"></span>
+          <div class="sf-head"><span class="tier-price">1020<i>R</i></span><span class="tier-safe">基础保底 <b>9999W</b></span></div>
+          <div class="sf-lines"><div class="sf-line"><b>段位三 · 终极截单</b> · 血条清空结算，完成全部七宗罪</div><div class="sf-line">全部任务完成并撤离成功即结单</div></div>
+          <div class="sf-foot"><span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span></div>
         </button>
       </div>
     </div>
@@ -5369,7 +5430,7 @@
     </div>
 
     <div class="sn-hero">
-      <img src="assets/mascot-community.png" alt="大大怪电竞邪恶机器人">
+      <img src="assets/邪恶机器人.jpg" alt="大大怪电竞邪恶机器人">
       <span class="sn-tag">大大怪电竞</span>
       <div class="sn-hero-txt">
         <div class="sn-title">邪恶机器人</div>
@@ -5383,7 +5444,7 @@
         <div class="sn-sec-note">358 元 · 初始 10 点血量</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="邪恶机器人·358R" data-flag="邪恶机器人" data-world="大大怪电竞 · 邪恶机器人" data-img="assets/mascot-community.png" data-desc="初始 10 点血量 · 撤离金额越高扣血越多" data-safe="初始 <b>10 点血量</b>">
+        <button type="button" class="sf-card" data-pkg="邪恶机器人·358R" data-flag="邪恶机器人" data-world="大大怪电竞 · 邪恶机器人" data-img="assets/邪恶机器人.jpg" data-desc="初始 10 点血量 · 撤离金额越高扣血越多" data-safe="初始 <b>10 点血量</b>">
           <div class="sf-head">
             <span class="tier-price">358<i>R</i></span>
             <span class="tier-safe">初始血量 <span class="rb-hp">10 点</span></span>
@@ -5744,7 +5805,8 @@
         <div class="mp-note">高阶 · 三角洲趣味单 · 5 档</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="端游·航天一日游·简单版">
+        <button type="button" class="sf-card sf-pic" data-pkg="端游·航天一日游·简单版" data-img="assets/航天一日游简单版.jpg">
+          <span class="sf-cover"><img src="assets/航天一日游简单版.jpg" alt="航天一日游·简单版" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">688<i>R</i></span>
             <span class="tier-safe">保底 <b>3288W</b></span>
@@ -5756,7 +5818,8 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="端游·航天一日游·困难版">
+        <button type="button" class="sf-card sf-pic" data-pkg="端游·航天一日游·困难版" data-img="assets/航天一日游困难版.jpg">
+          <span class="sf-cover"><img src="assets/航天一日游困难版.jpg" alt="航天一日游·困难版" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">988<i>R</i></span>
             <span class="tier-safe">保底 <b>4288W</b></span>
@@ -5768,7 +5831,8 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="端游·航天一日游·地狱版">
+        <button type="button" class="sf-card sf-pic" data-pkg="端游·航天一日游·地狱版" data-img="assets/航天一日游地狱版.jpg">
+          <span class="sf-cover"><img src="assets/航天一日游地狱版.jpg" alt="航天一日游·地狱版" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">1288<i>R</i></span>
             <span class="tier-safe">保底 <b>5888W</b></span>
@@ -5780,7 +5844,8 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="端游·航天一日游·至尊版">
+        <button type="button" class="sf-card sf-pic" data-pkg="端游·航天一日游·至尊版" data-img="assets/航天一日游至尊版.jpg">
+          <span class="sf-cover"><img src="assets/航天一日游至尊版.jpg" alt="航天一日游·至尊版" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">1888<i>R</i></span>
             <span class="tier-safe">保底 <b>8888W</b></span>
@@ -5792,7 +5857,8 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="端游·航天一日游·辈子版">
+        <button type="button" class="sf-card sf-pic" data-pkg="端游·航天一日游·辈子版" data-img="assets/航天一日游辈子版.jpg">
+          <span class="sf-cover"><img src="assets/航天一日游辈子版.jpg" alt="航天一日游·辈子版" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">2888<i>R</i></span>
             <span class="tier-safe">保底 <b>8888W</b></span>
@@ -5852,7 +5918,8 @@
         <div class="mp-note">娱乐 · 双玩法 · 2 档</div>
       </div>
       <div class="fun-list">
-        <div class="fun-card" data-pkg="端游·咱俩练练">
+        <div class="fun-card fun-pic" data-pkg="端游·咱俩练练" data-img="assets/咱俩练练.jpg">
+          <span class="sf-cover"><img src="assets/咱俩练练.jpg" alt="端游·咱俩练练" loading="lazy"></span>
           <div class="fun-head">
             <span class="fun-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.8-3.6 3-5.3 5.5-5.3s4.7 1.7 5.5 5.3"/><circle cx="17" cy="9" r="2.3"/><path d="M15.2 14.2c2.1.2 3.5 1.6 4.1 3.9"/></svg></span>
             <div class="fun-title-wrap"><div class="fun-title">咱俩练练</div><div class="fun-sub">老板 VS 双打手</div></div>
@@ -5870,7 +5937,8 @@
             <button type="button" class="fun-buy" data-fun="咱俩练练">下单 <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
           </div>
         </div>
-        <div class="fun-card" data-pkg="端游·你俩练练">
+        <div class="fun-card fun-pic" data-pkg="端游·你俩练练" data-img="assets/你俩练练.jpg">
+          <span class="sf-cover"><img src="assets/你俩练练.jpg" alt="端游·你俩练练" loading="lazy"></span>
           <div class="fun-head">
             <span class="fun-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
             <div class="fun-title-wrap"><div class="fun-title">你俩练练</div><div class="fun-sub">双打手 1V1</div></div>
@@ -7146,6 +7214,10 @@
     </div>
 
     <div class="sn-sec">
+      <div class="sn-intro">七宗罪是大大怪电竞的<b>系列任务玩法</b>：老板从七宗罪中<b>任选三宗 / 五宗</b>，或挑战<b>全部七宗</b>；打手按对应条件完成任务并<b>撤离成功</b>即算完成一罪，全部完成后按所选档位保底结单。</div>
+    </div>
+
+    <div class="sn-sec">
       <div class="sn-sec-head">
         <div class="sn-sec-title">任务规则</div>
         <div class="sn-sec-note">7 项 · 任选完成</div>
@@ -7186,28 +7258,59 @@
 
     <div class="sn-sec">
       <div class="sn-sec-head">
+        <div class="sn-sec-title">板板须知</div>
+        <div class="sn-sec-note">下单前请阅读</div>
+      </div>
+      <div class="sn-notice">
+        <ol>
+          <li><span class="sn-n">1</span><span><b>三宗罪、五宗罪由板板自选</b>（不能重复选同一个）</span></li>
+          <li><span class="sn-n">2</span><span>打手选图，完成一个任务后可更换其他地图；完成任务<b>没有先后顺序</b>，撤离成功一局只可以完成一罪（打手选图完成哪一个）</span></li>
+          <li><span class="sn-n">3</span><span><b>傲慢</b>：打手开局背包里不能私藏高级护甲和头盔，可带头修甲、拿别人的用；<b>懒惰</b>：前期不打架，只蹲人或打最后一队</span></li>
+          <li><span class="sn-n">4</span><span>炸单带出低于 <b>100W</b> 补 <b>60W</b> 一把，高于不补；丢包撤离带出低于 <b>200W</b> 补 <b>60W</b> 一把，高于不补</span></li>
+          <li><span class="sn-n">5</span><span><b>双倒算炸单</b>；若板板自愿救打手则不算炸单，以撤离图为准</span></li>
+          <li><span class="sn-n">6</span><span>本单节奏较快，板板需<b>听从打手指挥</b>；故意送人头、故意截红可直接结单</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="sn-sec">
+      <div class="sn-sec-head">
         <div class="sn-sec-title">套餐价格</div>
         <div class="sn-sec-note">3 档可选</div>
       </div>
-      <div class="tier-grid">
-        <button type="button" class="tier-card" data-pkg="七宗罪·任选三宗罪">
-          <span class="tier-name">任选三宗罪</span>
-          <span class="tier-price">456<i>R</i></span>
-          <span class="tier-safe">基础保底 <b>3888W</b></span>
-          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+      <div class="sf-list">
+        <button type="button" class="sf-card sf-pic" data-pkg="七宗罪·任选三宗罪" data-img="assets/七宗罪任选三宗罪.jpg" data-desc="段位一 · 危险开启 · 老板任选三宗罪，不可重复 · 基础保底 3888W">
+          <span class="sf-cover"><img src="assets/七宗罪任选三宗罪.jpg" alt="七宗罪·任选三宗罪" loading="lazy"></span>
+          <div class="sf-head">
+            <span class="tier-price">456<i>R</i></span>
+            <span class="tier-safe">基础保底 <b>3888W</b></span>
+          </div>
+          <div class="sf-lines"><div class="sf-line"><b>段位一 · 危险开启</b> · 任选三宗罪，不可重复</div></div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
         </button>
-        <button type="button" class="tier-card" data-pkg="七宗罪·任选五宗罪">
-          <span class="tier-name">任选五宗罪</span>
-          <span class="tier-price">733<i>R</i></span>
-          <span class="tier-safe">基础保底 <b>6888W</b></span>
-          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <button type="button" class="sf-card sf-pic" data-pkg="七宗罪·任选五宗罪" data-img="assets/七宗罪任选五宗罪.jpg" data-desc="段位二 · 任务激化 · 老板任选五宗罪，不可重复 · 基础保底 6888W">
+          <span class="sf-cover"><img src="assets/七宗罪任选五宗罪.jpg" alt="七宗罪·任选五宗罪" loading="lazy"></span>
+          <div class="sf-head">
+            <span class="tier-price">733<i>R</i></span>
+            <span class="tier-safe">基础保底 <b>6888W</b></span>
+          </div>
+          <div class="sf-lines"><div class="sf-line"><b>段位二 · 任务激化</b> · 任选五宗罪，不可重复</div></div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
         </button>
-        <button type="button" class="tier-card tier-hot" data-pkg="七宗罪·全选七宗罪">
-          <span class="tier-rec">推荐</span>
-          <span class="tier-name">全选七宗罪</span>
-          <span class="tier-price">1020<i>R</i></span>
-          <span class="tier-safe">基础保底 <b>9999W</b></span>
-          <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+        <button type="button" class="sf-card sf-pic" data-pkg="七宗罪·全选七宗罪" data-img="assets/七宗罪全选七宗罪.jpg" data-desc="段位三 · 终极截单 · 完成全部七宗罪任务 · 基础保底 9999W">
+          <span class="sf-cover"><img src="assets/七宗罪全选七宗罪.jpg" alt="七宗罪·全选七宗罪" loading="lazy"></span>
+          <div class="sf-head">
+            <span class="tier-price">1020<i>R</i></span>
+            <span class="tier-safe">基础保底 <b>9999W</b></span>
+          </div>
+          <div class="sf-lines"><div class="sf-line"><b>段位三 · 终极截单</b> · 血条清空结算，完成全部七宗罪</div></div>
+          <div class="sf-foot">
+            <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+          </div>
         </button>
       </div>
     </div>
