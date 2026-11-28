@@ -2185,14 +2185,15 @@
 
   /* ================= 订单详情页 / 下单页 ================= */
   #orderDetail,#checkout{
-    z-index:34;opacity:0;transform:translateX(102%);
+    z-index:46;opacity:0;transform:translateX(102%);
     display:flex;flex-direction:column;
     background:radial-gradient(50% 24% at 8% 6%,rgba(255,205,150,.24),transparent 70%),
       radial-gradient(45% 22% at 96% 40%,rgba(255,205,150,.18),transparent 72%),
       #fff;
   }
-  #checkout{z-index:36}
+  #checkout{z-index:48}
   #app.order-open #orderDetail{opacity:1;transform:translateX(0)}
+  #app.order-open .tabbar,#app.checkout-open .tabbar{transform:translateY(120%);opacity:0;pointer-events:none}
   #app.order-open #mobilePage,#app.order-open #gingerbreadPage{opacity:.4;transform:translateX(-14%) scale(.96)}
   #app.checkout-open #checkout{opacity:1;transform:translateX(0)}
   #app.checkout-open #orderDetail{opacity:.4;transform:translateX(-14%) scale(.96)}
@@ -3246,6 +3247,77 @@
   .pfr-home.wx:hover{color:#fff;border-color:rgba(255,255,255,.75);box-shadow:0 0 18px rgba(61,218,91,.5)}
   .pfr-ava.off img{filter:grayscale(.9) brightness(.92);opacity:.55}
 
+  /* ================= 微信支付 ================= */
+  .pay-sheet{
+    position:absolute;inset:0;z-index:82;display:flex;align-items:flex-end;
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .3s ease,visibility .3s ease;
+  }
+  .pay-sheet.show{opacity:1;visibility:visible;pointer-events:auto}
+  .pay-mask{position:absolute;inset:0;background:rgba(8,14,9,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+  .pay-panel{
+    position:relative;z-index:2;width:100%;padding:16px 20px 24px;border-radius:22px 22px 0 0;
+    background:#fff;transform:translateY(105%);
+    transition:transform .42s cubic-bezier(.22,.9,.18,1);
+    box-shadow:0 -24px 60px -22px rgba(20,30,20,.4);
+  }
+  .pay-sheet.show .pay-panel{transform:translateY(0)}
+  .pay-head{display:flex;align-items:center;justify-content:space-between}
+  .pay-brand{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:#20202a}
+  .pay-brand svg{width:18px;height:18px}
+  .pay-close{
+    width:26px;height:26px;border-radius:50%;border:0;background:#f2f4f1;color:#8b8f8a;
+    font-size:15px;line-height:1;display:grid;place-items:center;cursor:pointer;
+    transition:background .25s,color .25s;
+  }
+  .pay-close:hover{background:#e7efe6;color:#1fa437}
+  .pay-amount{margin-top:16px;text-align:center;color:#16231a}
+  .pay-amount small{font-size:15px;font-weight:800;margin-right:2px}
+  .pay-amount b{font-size:36px;font-weight:900;letter-spacing:-.03em;line-height:1}
+  .pay-merchant{margin-top:5px;text-align:center;font-size:8.5px;color:#9a97a8}
+  .pay-method{
+    display:flex;align-items:center;gap:9px;margin-top:16px;padding:12px;border-radius:14px;
+    background:#f5f8f4;border:1px solid #e6eee4;
+  }
+  .pay-method-ic{
+    width:30px;height:30px;flex:0 0 auto;border-radius:9px;display:grid;place-items:center;
+    background:linear-gradient(150deg,#3dda5b,#1fa437);color:#fff;
+  }
+  .pay-method-ic svg{width:18px;height:18px}
+  .pay-method b{display:block;font-size:10.5px;font-weight:800;color:#20202a}
+  .pay-method small{display:block;margin-top:2px;font-size:8px;color:#9a97a8}
+  .pay-check{
+    margin-left:auto;width:17px;height:17px;border-radius:50%;display:grid;place-items:center;
+    background:#2BB741;color:#fff;font-size:9px;font-weight:900;
+  }
+  .pay-btn{
+    width:100%;margin-top:16px;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.4);
+    appearance:none;font-family:inherit;font-size:11.5px;font-weight:900;letter-spacing:.06em;color:#fff;
+    cursor:pointer;background:linear-gradient(145deg,#3dda5b,#1fa437);
+    box-shadow:0 14px 28px -14px rgba(31,164,55,.7);
+    transition:transform .25s,box-shadow .25s,filter .25s;
+  }
+  .pay-btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+  .pay-btn:disabled{opacity:.75;cursor:default;transform:none}
+  .pay-note{margin-top:10px;text-align:center;font-size:7px;line-height:1.6;color:#a9a5b8}
+  .pay-success{display:none;flex-direction:column;align-items:center;padding:16px 0 2px}
+  .pay-panel.paid .pay-body{display:none}
+  .pay-panel.paid .pay-success{display:flex}
+  .ps-ic{
+    width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(145deg,#3dda5b,#1fa437);color:#fff;font-size:24px;font-weight:900;
+    box-shadow:0 16px 30px -14px rgba(31,164,55,.7);
+  }
+  .pay-success h4{margin-top:12px;font-size:15px;font-weight:900;color:#20202a}
+  .pay-success p{margin-top:6px;font-size:9px;color:#9a97a8}
+  .pay-success p b{color:#1fa437;font-size:11px}
+  #payDone{
+    width:100%;margin-top:18px;padding:11px;border-radius:14px;border:1px solid #e3e0ee;
+    appearance:none;font-family:inherit;font-size:11px;font-weight:900;color:#3a3648;
+    background:#f7f6fb;cursor:pointer;transition:background .25s,transform .25s;
+  }
+  #payDone:hover{background:#f0eef9;transform:translateY(-1px)}
+
   /* ================= 签到有礼 ================= */
   #signPage{
     z-index:46;
@@ -3685,6 +3757,22 @@
   #app.dark .co-chip.on,#app.dark .co-opt.on{
     background:linear-gradient(160deg,#E88B2A,#B85408);color:#fff;border-color:rgba(255,255,255,.3);
   }
+
+  /* 微信支付弹层 */
+  #app.dark .pay-panel{background:#171a24;box-shadow:0 -24px 60px -22px rgba(0,0,0,.85)}
+  #app.dark .pay-brand{color:#f0eef6}
+  #app.dark .pay-close{background:rgba(255,255,255,.08);color:#cfccd8}
+  #app.dark .pay-close:hover{background:rgba(255,255,255,.15);color:#5ee07a}
+  #app.dark .pay-amount{color:#f2f0f8}
+  #app.dark .pay-merchant{color:#9a97a8}
+  #app.dark .pay-method{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
+  #app.dark .pay-method b{color:#eceaf4}
+  #app.dark .pay-method small{color:#9a97a8}
+  #app.dark .pay-note{color:#8d8a9c}
+  #app.dark .pay-success h4{color:#f2f0f8}
+  #app.dark .pay-success p{color:#9a97a8}
+  #app.dark #payDone{background:#222634;border-color:rgba(255,255,255,.1);color:#e8e6f2}
+  #app.dark #payDone:hover{background:#2a2f40}
 
   /* 微信登录弹层 */
   #app.dark .ls-panel{background:#171a24;box-shadow:0 -24px 60px -22px rgba(0,0,0,.85)}
@@ -6841,6 +6929,46 @@
     </div>
   </div>
 
+  <!-- ================= 微信支付 ================= -->
+  <div class="pay-sheet" id="paySheet" aria-hidden="true">
+    <div class="pay-mask" data-pay-close></div>
+    <div class="pay-panel" id="payPanel">
+      <div class="pay-body">
+        <div class="pay-head">
+          <span class="pay-brand">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="24" fill="#2BB741"/>
+              <path d="M19.6 9C11.5 9 5 14.7 5 21.7c0 4 2.2 7.6 5.6 9.9l-1.4 4.6 5-2.6c1.6.5 3.4.8 5.2.8.9 0 1.8-.1 2.6-.3a10.7 10.7 0 0 1-.7-3.8c0-6.2 5.6-11.2 12.5-11.2h.9C33 12.9 26.8 9 19.6 9Z" fill="#fff"/>
+              <path d="M43 29.3c0-5.4-4.8-9.7-10.7-9.7s-10.7 4.3-10.7 9.7 4.8 9.7 10.7 9.7c1.3 0 2.5-.2 3.7-.5l3.9 2-1.1-3.6c2.6-1.9 4.2-4.7 4.2-7.6Z" fill="#fff"/>
+            </svg>
+            微信支付
+          </span>
+          <button type="button" class="pay-close" data-pay-close aria-label="关闭">✕</button>
+        </div>
+        <div class="pay-amount"><small>¥</small><b id="payAmount">78.00</b></div>
+        <div class="pay-merchant">收款方：大大怪电竞（三角洲陪玩代练）</div>
+        <div class="pay-method">
+          <span class="pay-method-ic">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M19.6 9C11.5 9 5 14.7 5 21.7c0 4 2.2 7.6 5.6 9.9l-1.4 4.6 5-2.6c1.6.5 3.4.8 5.2.8.9 0 1.8-.1 2.6-.3a10.7 10.7 0 0 1-.7-3.8c0-6.2 5.6-11.2 12.5-11.2h.9C33 12.9 26.8 9 19.6 9Z" fill="#fff"/>
+              <path d="M43 29.3c0-5.4-4.8-9.7-10.7-9.7s-10.7 4.3-10.7 9.7 4.8 9.7 10.7 9.7c1.3 0 2.5-.2 3.7-.5l3.9 2-1.1-3.6c2.6-1.9 4.2-4.7 4.2-7.6Z" fill="#fff"/>
+            </svg>
+          </span>
+          <div><b>微信支付</b><small>零钱 / 银行卡</small></div>
+          <span class="pay-check">✓</span>
+        </div>
+        <button type="button" class="pay-btn" id="payNow">立即支付</button>
+        <p class="pay-note">支付即代表同意《虚拟商品购买协议》，支付成功后订单自动生效</p>
+      </div>
+      <div class="pay-success">
+        <div class="ps-ic">✓</div>
+        <h4>支付成功</h4>
+        <p>已支付 <b id="paySuccessAmount">¥78.00</b>，订单已提交</p>
+        <button type="button" id="payDone">完成</button>
+      </div>
+    </div>
+  </div>
+
   <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
     <div class="age-mask"></div>
     <div class="age-card">
@@ -6934,6 +7062,8 @@
   document.getElementById('backBtn').addEventListener('click', closeDetail);
   document.addEventListener('keydown', e=>{
     if(e.key === 'Escape'){
+      const ps = document.getElementById('paySheet');
+      if(ps && ps.classList.contains('show')){ ps.classList.remove('show'); ps.setAttribute('aria-hidden','true'); return; }
       const ls = document.getElementById('loginSheet');
       if(ls && ls.classList.contains('show')){ ls.classList.remove('show'); ls.setAttribute('aria-hidden','true'); return; }
       if(app.classList.contains('welcome-open') || app.classList.contains('gate-open')) return;
@@ -7520,7 +7650,53 @@
     document.getElementById('coSubmit').addEventListener('click', ()=>{
       if(!co.account.value.trim()){ showToast('请填写游戏ID'); co.account.focus(); return; }
       if(!co.contact.value.trim()){ showToast('请填写联系方式'); co.contact.focus(); return; }
-      showToast('订单提交成功，客服将尽快联系你');
+      openPay();
+    });
+  }
+
+  /* 微信支付 */
+  const paySheet = document.getElementById('paySheet');
+  const payPanel = document.getElementById('payPanel');
+  const payAmount = document.getElementById('payAmount');
+  const paySuccessAmount = document.getElementById('paySuccessAmount');
+  const payNow = document.getElementById('payNow');
+  const coTotalEl = document.getElementById('coTotal');
+
+  function openPay(){
+    if(!paySheet) return;
+    const raw = (coTotalEl ? coTotalEl.textContent : '0').replace(/[^\d.]/g,'');
+    const amt = Number(raw || 0).toFixed(2);
+    payAmount.textContent = amt;
+    paySuccessAmount.textContent = '¥' + amt;
+    payPanel.classList.remove('paid');
+    payNow.disabled = false;
+    payNow.textContent = '立即支付';
+    paySheet.classList.add('show');
+    paySheet.setAttribute('aria-hidden','false');
+  }
+  function closePay(){
+    paySheet.classList.remove('show');
+    paySheet.setAttribute('aria-hidden','true');
+  }
+  document.querySelectorAll('#paySheet [data-pay-close]').forEach(el=>{
+    el.addEventListener('click', closePay);
+  });
+  if(payNow){
+    payNow.addEventListener('click', ()=>{
+      if(payNow.disabled) return;
+      payNow.disabled = true;
+      payNow.textContent = '支付中…';
+      setTimeout(()=>{ payPanel.classList.add('paid'); }, 820);
+    });
+  }
+  const payDone = document.getElementById('payDone');
+  if(payDone){
+    payDone.addEventListener('click', ()=>{
+      closePay();
+      app.classList.remove('checkout-open','order-open');
+      const ordersTab = document.querySelector('.tab[data-tab="orders"]');
+      if(ordersTab) ordersTab.click();
+      showToast('支付成功，订单已提交');
     });
   }
 
