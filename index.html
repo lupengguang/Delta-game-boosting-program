@@ -2817,11 +2817,12 @@
   /* 封面在右侧：左文右图 */
   .sf-card.sf-pic{
     display:grid;grid-template-columns:minmax(0,1fr) 96px;
-    grid-template-areas:"head cover" "lines cover" "foot cover";
+    grid-template-areas:"head cover" "lines cover" "chips cover" "foot cover";
     column-gap:10px;align-items:start;
   }
   .sf-card.sf-pic .sf-head{grid-area:head}
   .sf-card.sf-pic .sf-lines{grid-area:lines}
+  .sf-card.sf-pic .gun-chips{grid-area:chips}
   .sf-card.sf-pic .sf-foot{grid-area:foot;justify-content:flex-start}
   .sf-card.sf-pic .sf-cover{grid-area:cover;align-self:stretch;height:auto;min-height:90px;margin-bottom:0}
   .sf-head{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;border-bottom:1px dashed rgba(210,97,14,.3)}
@@ -4620,7 +4621,8 @@
         <div class="mp-note">大大怪电竞 · 3 档</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="枪械单·低阶玩法">
+        <button type="button" class="sf-card sf-pic" data-pkg="枪械单·低阶玩法" data-img="assets/枪械单 (1).png">
+          <span class="sf-cover"><img src="assets/枪械单 (1).png" alt="枪械单·低阶玩法" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">118<i>R</i></span>
             <span class="tier-safe">基础保底 <b>1900W</b></span>
@@ -4633,7 +4635,8 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="枪械单·高阶玩法">
+        <button type="button" class="sf-card sf-pic" data-pkg="枪械单·高阶玩法" data-img="assets/枪械单 (2).png">
+          <span class="sf-cover"><img src="assets/枪械单 (2).png" alt="枪械单·高阶玩法" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">288<i>R</i></span>
             <span class="tier-safe">基础保底 <b>3888W</b></span>
@@ -4646,7 +4649,8 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="枪械单·全收集版">
+        <button type="button" class="sf-card sf-pic" data-pkg="枪械单·全收集版" data-img="assets/枪械单 (3).png">
+          <span class="sf-cover"><img src="assets/枪械单 (3).png" alt="枪械单·全收集版" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">1288<i>R</i></span>
             <span class="tier-safe">基础保底 <b>6888W</b></span>
@@ -5373,7 +5377,8 @@
         <div class="mp-note">基础 → 高阶 · 大大怪电竞 · 3 档</div>
       </div>
       <div class="sf-list">
-        <button type="button" class="sf-card" data-pkg="端游·枪械单·低阶玩法">
+        <button type="button" class="sf-card sf-pic" data-pkg="端游·枪械单·低阶玩法" data-img="assets/枪械单 (1).png">
+          <span class="sf-cover"><img src="assets/枪械单 (1).png" alt="端游·枪械单·低阶玩法" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">118<i>R</i></span>
             <span class="tier-safe">基础保底 <b>1900W</b></span>
@@ -5386,7 +5391,8 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="端游·枪械单·高阶玩法">
+        <button type="button" class="sf-card sf-pic" data-pkg="端游·枪械单·高阶玩法" data-img="assets/枪械单 (2).png">
+          <span class="sf-cover"><img src="assets/枪械单 (2).png" alt="端游·枪械单·高阶玩法" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">288<i>R</i></span>
             <span class="tier-safe">基础保底 <b>3888W</b></span>
@@ -5399,7 +5405,8 @@
             <span class="tier-buy">下单 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
           </div>
         </button>
-        <button type="button" class="sf-card" data-pkg="端游·枪械单·全收集版">
+        <button type="button" class="sf-card sf-pic" data-pkg="端游·枪械单·全收集版" data-img="assets/枪械单 (3).png">
+          <span class="sf-cover"><img src="assets/枪械单 (3).png" alt="端游·枪械单·全收集版" loading="lazy"></span>
           <div class="sf-head">
             <span class="tier-price">1288<i>R</i></span>
             <span class="tier-safe">基础保底 <b>6888W</b></span>
